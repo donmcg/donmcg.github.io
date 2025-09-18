@@ -1,3 +1,4 @@
 title: donmcg project site
 description: A static site hosted on GitHub Pages.
-theme: minima
+#theme: minima
+theme: hacker
