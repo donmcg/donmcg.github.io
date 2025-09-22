@@ -1,0 +1,9 @@
+Gemfile.lock
+.DS_Store
+._.DS_Store
+
+# _site is created by jekyll on M2 with "bundle exec jekyll serve ..."
+/_site
+
+# trash is a place to put stuff that could be deleted
+/trash

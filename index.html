@@ -1,0 +1,50 @@
+---
+layout: default
+title: Home
+myPageVariable: fooValue
+---
+<!DOCTYPE html>
+    <section>
+      <h1>Hello World!</h1>
+  		<h1>{{"THIS IS DOWNCASE" | downcase }}</h1>
+  		<h1>{{"this is capitalize of lower case" | capitalize }}</h1>
+  		{{ page.myPageVariable }}
+  		{% highlight ruby mark_lines="1 2" %}
+def foo
+  puts 'foo'
+end
+      {% endhighlight %}
+  		{% highlight julia linenos %}
+function foo()
+  print("foo\n")
+end
+      {% endhighlight %}
+  
+  		{% link assets/image/hif44.exploded.gif %}
+  
+  		{% comment %}
+  {% post_url 2025-10-18-post-1 %} # can't find the post; why?
+  		{% endcomment %}
+    </section>
+
+    <section>
+		  {{ page.myPageVariable }}
+		  {{ site.author }}
+<nav>
+  <a href="/">Home</a>
+  <a href="/about.html">About</a>
+</nav>
+     {% include navigation.html %}
+    </section>
+
+    <section>
+    	{{ page.myPageVariable }}
+      {%for post in paginator.posts %}
+    	<article>
+    	  <h1>{{ post.title }}</h1>
+    	  <a href="{{ post.url }}">{{post.date | date: "%Y-%m-%d %H:%M" }}</a>
+    	  {{ post.content }}
+    	</article>
+      {% endfor %}
+    </section>
+
