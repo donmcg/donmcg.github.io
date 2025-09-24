@@ -13,12 +13,25 @@ site posts:
 paginator posts: 
 {{ paginator.posts }}
 -->
+
+<h2>paginator Posts</h2>
+<ul>
+  {% for post in paginator.posts %}
+    <li>
+      <h4>{{post.url}}</h4>
+      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+<!--			{{ post.excerpt }} -->
+<!--      {{ post.content }} -->
+    </li>
+  {% endfor %}
+</ul>
 {% endcomment %}
 
+<h2>site Posts</h2>
 <ul>
   {% for post in site.posts %}
     <li>
-      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
 <!--			{{ post.excerpt }} -->
 <!--      {{ post.content }} -->
     </li>

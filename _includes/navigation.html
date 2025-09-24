@@ -4,4 +4,9 @@
       {{ item.name }}
     </a>
   {% endfor %}
+
+    <a href="{{ '/fizzbin/index.html' | relative_url }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+      {{ "fizzy" }}
+    </a>
+
 </nav>

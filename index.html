@@ -37,6 +37,7 @@ end
      {% include navigation.html %}
     </section>
 
+{% comment %}
     <section>
     	{{ page.myPageVariable }}
       {%for post in paginator.posts %}
@@ -44,7 +45,9 @@ end
     	  <h1>{{ post.title }}</h1>
     	  <a href="{{ post.url }}">{{post.date | date: "%Y-%m-%d %H:%M" }}</a>
     	  {{ post.content }}
+    	  {{ post.excerpt }}
     	</article>
       {% endfor %}
     </section>
+{% endcomment %}
 
