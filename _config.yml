@@ -24,9 +24,16 @@ theme: minima
 #theme: hacker
 title: donmcg project site
 #description: A static site hosted on GitHub Pages.
-description: >- # this means to ignore newlines until next key:
-  Successful and
-  unsuccessful efforts. 
+# Successful and
+# unsuccessful efforts. 
+#description: >- # this means to ignore newlines until next key:
+#description: # \n is ignored ...
+#  "The happiest of all lives is a busy solitude\n - Voltaire"
+#description: | # block format
+#  The happiest of all lives is a busy solitude
+#  - Voltaire
+description: # \n is ignored ...
+  'The happiest of all lives is a busy solitude. Voltaire'
 url: "https://donmcg.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 github_username:  gun_donmcg
@@ -36,7 +43,11 @@ author:  author_donmcg
 # other settings 
 name: name_donmcg
 owner: owner_donmcg
+
+# note there is only one paginate_path. 
+# this means that paginate only works for one set of posts
 paginate_path: "/fizzbin/page:num"
+paginate: 3
 
 # Build settings
 #theme: hacker-blog
@@ -45,14 +56,26 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
 
-paginate: 3
-
 # header_pages controls the order and allows for deep path names
 header_pages:
   - index.html
   - about.md
   - blog.html
   - fizzbin/index.html
+  - meat.html
+  - plant.html
+  - rock.html
+
+# collections provides post content by context
+# paginate will not work for any of these; use site instead
+collections:
+  animal:
+    output: true
+  vegetable:
+    output: true
+  mineral:
+    output: true
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -62,8 +85,8 @@ header_pages:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-#exclude:
-#   - trash/
+exclude:
+  - trash/
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/
