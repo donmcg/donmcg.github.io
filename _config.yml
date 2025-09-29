@@ -22,7 +22,8 @@
 # these are site variables used by the theme
 theme: minima
 #theme: hacker
-title: donmcg project site
+#title: donmcg project site
+title: fairhillbillies
 #description: A static site hosted on GitHub Pages.
 # Successful and
 # unsuccessful efforts. 
@@ -60,7 +61,7 @@ plugins:
 header_pages:
   - index.html
   - about.md
-  - blog.html
+  - blog.md
   - fizzbin/index.html
   - meat.html
   - plant.html
