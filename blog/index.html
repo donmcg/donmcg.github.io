@@ -1,0 +1,116 @@
+---
+layout: default
+title: Blog
+---
+<!-- use html instead of md for styling this page -->
+
+<h1>Blog Posts by Page</h1>
+
+{% comment %}
+<ol>
+  {% for post in site.posts %}
+    <li>
+      <h3>
+			  <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
+				-
+				<span class="author">
+					<a href="{{ post.url }}">{{ post.title }}</a>
+        </span>
+<!--			{{ post.excerpt }} -->
+<!--      {{ post.content }} -->
+			</h3>
+    </li>
+  {% endfor %}
+</ol>
+-->
+{% endcomment %}
+
+
+<h3>
+	<span class="author">
+    Go to <a href="{% link blog/blog_all.html %}">all posts on one page</a>
+	</span>
+</h3>
+
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous">
+      Newer
+    </a>
+  {% else %}
+    <span class="previous">Newest</span>
+  {% endif %}
+  <span class="page_number ">
+    (Page: {{ paginator.page }} of {{ paginator.total_pages }})
+  </span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next">Older</a>
+  {% else %}
+    <span class="next ">Oldest</span>
+  {% endif %}
+</div>
+
+<!-- This loops through the paginated posts -->
+<!--
+<p>paginator.page:{{ paginator.page }}</p>
+<p>paginator.per_page:{{ paginator.per_page }}</p>
+<p>paginator.previous_page:{{ paginator.previous_page }}</p>
+<p>paginator.total_pages:{{ paginator.total_pages }}</p>
+
+<p>paginator.items:{{ paginator.items }}</p>
+
+<p>posts:{{ site.posts | size }}</p>
+<p>items:{{ site.paginate }}</p>
+
+-->
+
+{% assign items = site.posts | size %} <!-- because paginator.items is not reliable -->
+{% assign start_index = paginator.page | minus:1 | times:paginator.per_page | plus:1 %}
+{% assign reverse_start_index = items | minus:start_index | plus:1 %}
+
+<!--
+<p>Starting index on this page: {{ start_index }}</p>
+<p>Reverse starting index on this page: {{ reverse_start_index }}</p>
+-->
+
+<!--
+<ol start={{ paginator.page | minus:1 | times:paginator.per_page | plus:1 }}>
+-->
+<div>
+	<p></p>
+<ol reversed start={{ reverse_start_index }}>
+{% for post in paginator.posts %}
+  <li>
+	  <h3>
+			  <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
+				-
+				<span class="author">
+					<a href="{{ post.url }}">{{ post.title }}</a>
+        </span>
+	  </h3>
+  </li>
+{% endfor %}
+</ol>
+</div>
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous">
+      Previous
+    </a>
+  {% else %}
+    <span class="previous">Previous</span>
+  {% endif %}
+  <span class="page_number ">
+    Page: {{ paginator.page }} of {{ paginator.total_pages }}
+  </span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+  {% else %}
+    <span class="next ">Next</span>
+  {% endif %}
+</div>
+
+
+

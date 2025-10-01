@@ -4,6 +4,11 @@ title: Blog
 ---
 
 {% comment %}
+Attempting to mix html with markdown rapidly becomes a holy mess.
+If I really want to preserve scss styling just use html instead of md
+{% endcomment %}
+
+{% comment %}
 # about this web site
 - bullet one
 {% include navigation.html %}
@@ -14,6 +19,8 @@ title: Blog
 
 {% for post in site.posts %}
 1.   [{{ post.title }}]( {{ post.url }} )
+---
+<span class="date">{{ post.date }}</span>
 {% endfor %}
 
 {% comment %}

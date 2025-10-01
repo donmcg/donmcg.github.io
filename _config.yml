@@ -47,7 +47,8 @@ owner: owner_donmcg
 
 # note there is only one paginate_path. 
 # this means that paginate only works for one set of posts
-paginate_path: "/fizzbin/page:num"
+#paginate_path: "/fizzbin/page:num"
+paginate_path: "/blog/page:num"
 paginate: 3
 
 # Build settings
@@ -61,8 +62,8 @@ plugins:
 header_pages:
   - index.html
   - about.md
-  - blog.md
-  - fizzbin/index.html
+  - blog/index.html
+#  - fizzbin/index.html
   - meat.html
   - plant.html
   - rock.html
