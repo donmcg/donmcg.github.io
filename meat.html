@@ -2,6 +2,11 @@
 layout: default
 title: animal
 ---
+
+{% assign foo = "bar" %}
+{{ foo }}
+{% include myinclude.html foo=foo %}
+
 <h1>Meat</h1>
 
 <!--
@@ -16,34 +21,155 @@ title: animal
 </ul>
 -->
 
-<h2>post site.animal</h2>
 <!-- This loops through the site posts -->
+<!--
+<h2>post site.animal</h2>
 {% for post in site.animal %}
   <h1><a href="{{ post.url }}">{{ post.phylum }}</a></h1>
   <p class="author">
     <span class="date">{{ post.class }}</span>
   </p>
   <div class="content">
-    {{ post.content }}
+		   {{ post.content }} 
   </div>
 {% endfor %}
-
-<!-- Pagination links
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path }}" class="previous">
-      Previous
-    </a>
-  {% else %}
-    <span class="previous">Previous</span>
-  {% endif %}
-  <span class="page_number ">
-    Page: {{ paginator.page }} of {{ paginator.total_pages }}
-  </span>
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}" class="next">Next</a>
-  {% else %}
-    <span class="next ">Next</span>
-  {% endif %}
-</div>
 -->
+
+<div>
+	<h3> Searching for topical pages</h3>
+	{% assign topics = "" | split: ',' %}
+  {% for page in site.animal %}
+    {% for topic in page.topics %}
+		  {% if topics contains topic %}
+			{% else %}
+			{{ topic }} new topic found on {{ page.title }}<br> 
+			  {% assign topics = topics | push: topic %}
+			{% endif %}
+	  {% endfor %}
+	{% endfor %}
+	<br>
+	topics:    {{topics}}<br>
+	topics[0]: {{topics[0]}}<br>
+	topics[1]: {{topics[1]}}<br>
+	topics[2]: {{topics[2]}}<br>
+	topics[3]: {{topics[3]}}<br>
+  <br>
+
+	topics: {{ topics }}<br>
+	<h3> Topics found on all topical pages:</h3>
+  {% for topic in topics %}
+	{{ topic }}<br> 
+	{% endfor %}
+  <br>
+	<h3> Building topical lists:</h3>
+			{% comment %}
+			This approach has high overhead?
+			{% endcomment %}
+	{% assign topic_pages = "" | split: '|' %}
+  {% for topic in topics %}
+	<h3>	{{ topic }}</h3> 
+    {% for page in site.animal %}
+		  {% if page.topics contains topic %}
+{% comment %}
+{% endcomment %}
+page.title: {{page.title}}<br>
+page.url: {{page.url}}<br>
+{% comment %}
+	      {% assign page_ref = "" | split: ',' %}
+	      {% assign page_ref = page_ref | push: page_ref_fields %}
+{% endcomment %}
+	      {% assign page_ref = topic | append: ',' | append: page.url | append: ',' | append: page.title | split: ',' %}
+
+{% comment %}
+	      {% assign page_ref_fields = topic | append: "," | append: page.title | append: "," | append: page.url | split: ',' %}
+page_ref_fields: {{ page_ref_fields }}<br>
+page_ref_fields[0]: {{ page_ref_fields[0] }}<br>
+{% endcomment %}
+
+page_ref: {{page_ref}}<br>
+page_ref[0]: {{ page_ref[0] }}<br>
+page_ref[1]: {{ page_ref[1] }}<br>
+page_ref[2]: {{ page_ref[2] }}<br>
+
+	      {% assign topic_pages = topic_pages | push: page_ref %}
+		topic_pages so far:		{{ topic_pages }}<br><br>
+<br>
+			{% endif %}
+    {% endfor %}
+	{% endfor %}
+  <br>
+	topic_pages[0]: {{topic_pages[0]}}<br>
+	topic_pages[0][0]: {{topic_pages[0][0]}}<br>
+	topic_pages[0][1]: {{topic_pages[0][1]}}<br>
+	topic_pages[0][2]: {{topic_pages[0][2]}}<br>
+	topic_pages[1]: {{topic_pages[1]}}<br>
+	topic_pages[2]: {{topic_pages[2]}}<br>
+	<br>
+
+<div>
+	<h2>Pages by topic</h2>
+  {% for topic in topics %}
+	<h3>Topic: {{ topic }}</h3>
+    {% for page_ref in topic_pages %}
+		  {% if topic == page_ref[0] %}
+        <h4><a href="{{ page_ref[1] }}">{{ page_ref[2] }}</a></h4>
+			{% endif %}
+	  {% endfor %}
+	{% endfor %}
+</div>
+
+{% comment %}
+everything below here is just leftover from previous flailing
+
+	{% assign notebook_posts = site.animal | sort: 'topic[notebook]' %}
+	{% assign post_posts = site.animal | sort: 'topic[post]' %}
+	{% assign project_posts = site.animal | sort: 'topic[project]' %}
+
+		<br> 
+		Notebook Posts:
+  {% for post in notebook_posts %}
+		<br>post.title: {{ post.title }} 
+	{% endfor %}
+
+		<br> 
+		Post Posts:
+  {% for post in post_posts %}
+		<br>post.title: {{ post.title }} 
+	{% endfor %}
+
+		<br> 
+		Project Posts:
+  {% for post in project_posts %}
+		<br>post.title: {{ post.title }} 
+	{% endfor %}
+		{% comment %}
+		{% endcomment %}
+	<!--
+	-->
+</div>
+
+<div>
+	<p></p>
+  <ol>
+  {% for post in site.animal %}
+    <li>
+	    <h3>
+			    <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
+				  -
+				  <span class="author">
+					  <a href="{{ post.url }}">{{ post.title }}</a>
+          </span>
+  <div class="content">
+		<br>post.title: {{ post.title }} 
+		<br>
+		{% for topic in post.topics %}
+		<br>topic: {{ topic }}
+		{% endfor %}
+  </div>
+	    </h3>
+    </li>
+  {% endfor %}
+  </ol>
+</div>
+{% endcomment %}
+
