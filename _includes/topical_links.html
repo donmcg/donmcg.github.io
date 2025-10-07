@@ -1,0 +1,111 @@
+{% comment %}
+---
+layout: default
+title: category links organized by topic
+---
+{% endcomment %}
+
+{% comment use this include as follows %}
+{% assign mypages = site.category %}
+{% include topical_links.html pages=mypages %}
+{% endcomment %}
+
+{% comment %}
+<br>
+pages: {{ pages }}<br>
+include.pages: {{ include.pages }}<br>
+category: {{ category }}<br>
+site.vegetable: {{ site.vegetable }}<br>
+site.string: {{ site."vegetable" }}<br> <!-- works -->
+site.string2: {{ "site.vegetable" }}<br> <!-- doesn't work -->
+{% assign mypages = site. | append: {{category}} %}
+mypages: {{ mypages }}<br> <!-- does something... but what? -->
+site: {{ site }}<br> <!-- works -->
+categories: {{ site.categories }} <br>
+collections: {{ site.collections }} <br>
+
+include.collection: {{ include.collection }} <br> <!-- works -->
+{% endcomment %}
+
+<!--	<h3> Searching for topical pages</h3> -->
+
+	{% assign topics = "" | split: ',' %}
+  {% for page in include.pages %}
+	<!--	  <p>page title: {{ page.title }}</p> -->
+    {% for topic in page.topics %}
+		  {% if topics contains topic %}
+			{% else %}
+			<!--		{{ topic }} new topic found on {{ page.title }}<br> --> 
+			  {% assign topics = topics | push: topic %}
+			{% endif %}
+	  {% endfor %}
+	{% endfor %}
+
+{% comment %}
+	<br>
+	topics:    {{topics}}<br>
+	topics[0]: {{topics[0]}}<br>
+	topics[1]: {{topics[1]}}<br>
+	topics[2]: {{topics[2]}}<br>
+	topics[3]: {{topics[3]}}<br>
+  <br>
+
+	<h3> Topics found on all topical pages:</h3>
+  {% for topic in topics %}
+	{{ topic }}<br> 
+	{% endfor %}
+  <br>
+	<h3> Building topical lists:</h3>
+{% endcomment %}
+			{% comment %}
+			This approach has high overhead?
+			{% endcomment %}
+
+	{% assign topic_pages = "" | split: '|' %}
+  {% for topic in topics %}
+	<!--	<h3>	{{ topic }}</h3> -->
+    {% for page in include.pages %}
+		  {% if page.topics contains topic %}
+	      {% assign page_ref = topic | append: ',' | append: page.url | append: ',' | append: page.title | split: ',' %}
+	      {% assign topic_pages = topic_pages | push: page_ref %}
+
+{% comment %}
+page.title: {{page.title}}<br>
+page.url: {{page.url}}<br>
+page_ref: {{page_ref}}<br>
+page_ref[0]: {{ page_ref[0] }}<br>
+page_ref[1]: {{ page_ref[1] }}<br>
+page_ref[2]: {{ page_ref[2] }}<br>
+topic_pages so far:		{{ topic_pages }}<br><br>
+<br>
+{% endcomment %}
+
+			{% endif %}
+    {% endfor %}
+	{% endfor %}
+
+{% comment %}
+  <br>
+	topic_pages[0]: {{topic_pages[0]}}<br>
+	topic_pages[0][0]: {{topic_pages[0][0]}}<br>
+	topic_pages[0][1]: {{topic_pages[0][1]}}<br>
+	topic_pages[0][2]: {{topic_pages[0][2]}}<br>
+	topic_pages[1]: {{topic_pages[1]}}<br>
+	topic_pages[2]: {{topic_pages[2]}}<br>
+	<br>
+{% endcomment %}
+
+<div>
+	<h2>Pages by topic</h2>
+  {% for topic in topics %}
+	<h3>{{ topic | capitalize }}</h3>
+	  <blockquote>
+    {% for page_ref in topic_pages %}
+		  {% if topic == page_ref[0] %}
+        <h4><a href="{{ page_ref[1] }}">{{ page_ref[2] }}</a></h4>
+			{% endif %}
+	  {% endfor %}
+	  </blockquote>
+	{% endfor %}
+</div>
+

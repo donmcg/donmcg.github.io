@@ -21,6 +21,12 @@
 
 # these are site variables used by the theme
 theme: minima
+#theme: jekyll-theme-slate
+#theme: jekyll-theme-midnight
+#theme: jekyll-swiss
+#theme: jekyll-seo-tag
+#
+#theme: jekyll-theme-primer
 #theme: hacker
 #title: donmcg project site
 title: fairhillbillies
@@ -45,6 +51,18 @@ author:  author_donmcg
 name: name_donmcg
 owner: owner_donmcg
 
+# for LaTex
+# this stuff is not needed.  see _includes/head.html
+#markdown: kramdown
+#highlighter: rouge
+#kramdown:
+#  math_engine: mathjax
+#   <script type="text/javascript" async
+#     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+#   </script>
+
+
+
 # note there is only one paginate_path. 
 # this means that paginate only works for one set of posts
 #paginate_path: "/fizzbin/page:num"
@@ -55,15 +73,16 @@ paginate: 3
 #theme: hacker-blog
 plugins:
 #  - jekyll-remote-theme
-  - jekyll-feed
+#  - jekyll-feed
   - jekyll-paginate
 
 # header_pages controls the order and allows for deep path names
 header_pages:
   - index.html
   - about.md
-  - blog/index.html
+  - blog/index.html # special case for paginator
 #  - fizzbin/index.html
+  - library/veggie_topical.html
   - meat.html
   - plant.html
   - rock.html

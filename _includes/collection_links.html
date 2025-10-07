@@ -1,0 +1,22 @@
+{% comment %}
+---
+layout: default
+title: category links organized by topic
+---
+{% endcomment %}
+
+{% comment use this include as follows %}
+{% assign mypages = site.category %}
+{% include collection_links.html pages=mypages %}
+{% endcomment %}
+
+<div>
+	  <blockquote>
+      {% for page in include.pages %}
+	      <span class="author">
+          <h4><a href="{{ page.url }}">{{ page.title }}</a></h4>
+	      </span>
+	    {% endfor %}
+	  </blockquote>
+</div>
+
