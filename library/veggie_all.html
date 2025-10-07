@@ -1,0 +1,37 @@
+---
+layout: default
+title: veggie_all
+collection: vegetable # the collection to be passed
+---
+<h1>Plant</h1>
+
+<!--
+{% comment %}
+{% assign veggie_pages = site.vegetable %}
+{% assign category = "vegetable" %}
+{% include topical_links.html pages=veggie_pages category=category %}
+
+{% include topical_links.html collection=page.collection %}
+{% endcomment %}
+-->
+<h2>All Pages</h2>
+<h3>
+  <span class="author">
+		  Go to <a href="{% link library/veggie_topical.html %}">Pages by topic</a>
+	  </span>
+</h3>
+
+{% include collection_links.html pages=site.vegetable %}
+
+{% comment %}
+<h2> And now for our regularly scheduled links... </h2>
+<ul>
+  {% for plant in site.vegetable %}
+    <li>
+      <h2>{{ plant.order }}</h2>
+      <h3>{{ plant.phylum }}</h3>
+      <p>{{ plant.content | markdownify }}</p>
+    </li>
+  {% endfor %}
+</ul>
+{% endcomment %}
