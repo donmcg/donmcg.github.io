@@ -3,6 +3,7 @@ layout: default
 title: Home
 ---
 <!DOCTYPE html>
+{% comment %}
 <section>
 <!--
       <h1>Hello World!</h1>
@@ -27,6 +28,7 @@ title: Home
 	</ol>
 
 </section>
+{% endcomment %}
 
 <!--
 <section>
@@ -40,3 +42,13 @@ title: Home
   {% include navigation.html %}
 </section>
 
+<ol>
+{% comment %}
+{% endcomment %}
+<li>Animal</li>
+{% include topics_list.html pages=site.animal %}
+<li>Vegetable</li>
+{% include topics_list.html pages=site.vegetable %}
+<li>Mineral</li>
+{% include topics_list.html pages=site.mineral %}
+</ol>
