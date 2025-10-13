@@ -51,4 +51,8 @@ title: Home
 {% include topics_list.html pages=site.vegetable %}
 <li>Mineral</li>
 {% include topics_list.html pages=site.mineral %}
+<li>Mineral topics</li>
+{% include binder_topics_list.html collection=site.mineral name="mineral" %}
+<li>Mineral themes</li>
+{% include binder_themes_list.html collection=site.mineral name="mineral" %}
 </ol>

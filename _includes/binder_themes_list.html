@@ -1,0 +1,136 @@
+{% comment %}
+---
+layout: default
+title: category links organized by theme
+---
+{% endcomment %}
+
+{% comment use this include as follows %}
+include binder_themes_list collection=site.**collection** name="**name**"
+{% endcomment %}
+
+{% comment %}
+<br>
+pages: {{ pages }}<br>
+include.pages: {{ include.pages }}<br>
+category: {{ category }}<br>
+site.vegetable: {{ site.vegetable }}<br>
+site.string: {{ site."vegetable" }}<br> <!-- works -->
+site.string2: {{ "site.vegetable" }}<br> <!-- doesn't work -->
+{% assign mypages = site. | append: {{category}} %}
+mypages: {{ mypages }}<br> <!-- does something... but what? -->
+site: {{ site }}<br> <!-- works -->
+categories: {{ site.categories }} <br>
+collections: {{ site.collections }} <br>
+
+include.collection: {{ include.collection }} <br> <!-- works -->
+{% endcomment %}
+
+<!--	<h3> Searching for theme pages</h3> -->
+<h3> Searching for themes in the {{ include.name }} collection </h3>
+
+	{% assign themes = "" | split: ',' %}
+  {% for file in include.collection %}
+
+			<!-- limit displayed themes to those associated with chapters -->
+		    "{{ file.title }}" is a chapter <br>
+    	  <!--	  <p>file title: {{ file.title }}</p> -->
+          {% for theme in file.binder.themes %}
+		        {% if themes contains theme %}
+			      {% else %}
+			      <!--		{{ theme }} new theme found on {{ file.title }}<br> --> 
+				      new theme "{{theme}}" found in {{ file.title }}<br> 
+			        {% assign themes = themes | push: theme %}
+			      {% endif %}
+	      {% endfor %}
+
+	{% endfor %}
+
+{% comment %}
+<h3> Searching for theme pages in the book "{{ include.book }}"</h3>
+	{% assign themes = "" | split: ',' %}
+  {% for page in include.pages %}
+	<!--	  <p>page title: {{ page.title }}</p> -->
+	<p>page title: {{ page.title }}</p>
+    {% for theme in page.themes %}
+		  {% if themes contains theme %}
+			{% else %}
+			<!--		{{ theme }} new theme found on {{ page.title }}<br> --> 
+			{{ theme }} new theme found on {{ page.title }}<br> 
+			  {% assign themes = themes | push: theme %}
+			{% endif %}
+	  {% endfor %}
+	{% endfor %}
+{% endcomment %}
+
+	<br>
+	{% comment %}
+	themes:    {{themes}}<br>
+	themes[0]: {{themes[0]}}<br>
+	themes[1]: {{themes[1]}}<br>
+	themes[2]: {{themes[2]}}<br>
+	themes[3]: {{themes[3]}}<br>
+	{% endcomment %}
+
+	<h3> Themes found in the {{ include.name }} collection </h3>
+  {% for theme in themes %}
+	  theme: "{{ theme }}"<br> 
+	{% endfor %}
+  <br>
+	<h3> Building theme lists:</h3>
+
+			{% comment %}
+			This approach has high overhead?
+			{% endcomment %}
+
+	{% assign theme_pages = "" | split: '|' %}
+  {% for theme in themes %}
+	<!--	<h3>	{{ theme }}</h3> -->
+    {% for page in include.collection %}
+		  {% if page.binder.themes contains theme %}
+	      {% assign page_ref = theme | append: ',' | append: page.url | append: ',' | append: page.title | split: ',' %}
+	      {% assign theme_pages = theme_pages | push: page_ref %}
+
+{% comment %}
+page.title: {{page.title}}<br>
+page.url: {{page.url}}<br>
+page_ref: {{page_ref}}<br>
+page_ref[0]: {{ page_ref[0] }}<br>
+page_ref[1]: {{ page_ref[1] }}<br>
+page_ref[2]: {{ page_ref[2] }}<br>
+theme_pages so far:		{{ theme_pages }}<br><br>
+<br>
+{% endcomment %}
+
+			{% endif %}
+    {% endfor %}
+	{% endfor %}
+
+{% comment %}
+  <br>
+	theme_pages[0]: {{theme_pages[0]}}<br>
+	theme_pages[0][0]: {{theme_pages[0][0]}}<br>
+	theme_pages[0][1]: {{theme_pages[0][1]}}<br>
+	theme_pages[0][2]: {{theme_pages[0][2]}}<br>
+	theme_pages[1]: {{theme_pages[1]}}<br>
+	theme_pages[2]: {{theme_pages[2]}}<br>
+	<br>
+{% endcomment %}
+
+<div>
+	<ol>
+  {% for theme in themes %}
+	<li>{{ theme | capitalize }}</li>
+	  <blockquote>
+			<ol>
+    {% for page_ref in theme_pages %}
+		  {% if theme == page_ref[0] %}
+        <li><a href="{{ page_ref[1] }}">{{ page_ref[2] }}</a></li>
+			{% endif %}
+	  {% endfor %}
+			</ol>
+	  </blockquote>
+	{% endfor %}
+	</ol>
+</div>
+
