@@ -7,14 +7,14 @@ binder:
   topics: [ semi ] # applies to book level
   themes: [ book-with-theme ] # applies to chapter level
 
-book: silicon
-level: book
-reference:
-  level: book
-  book: silicon
-  chapter:
-  page:
-topics: [semi]
+#book: silicon
+#level: book
+#reference:
+#  level: book
+#  book: silicon
+#  chapter:
+#  page:
+#topics: [semi]
 
 family: semimetal
 group: silicon

@@ -7,14 +7,14 @@ binder:
   topics: [ ] # applies to book level
   themes: [ windows ] # applies to chapter level
 
-book: gold
-level: chapter
-themes: [windows]
-reference:
-  level: chapter
-  book: gold
-  chapter: glitz
-  page:
+#book: gold
+#level: chapter
+#themes: [windows]
+#reference:
+#  level: chapter
+#  book: gold
+#  chapter: glitz
+#  page:
 ---
 
 Gold is used to decorate windows with stylish resiliance.

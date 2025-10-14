@@ -7,27 +7,23 @@ binder:
   topics: [ noble ] # applies to book level
   themes: [ theme1, theme2 ] # applies to chapter level
 
-book: argon
-level: book
-topics: [noble]
-reference:
-  level: book
-  book: argon
-  chapter: 
-  page:
-
+#book: argon
+#level: book
+#topics: [noble]
+#reference:
+  #level: book
+  #book: argon
+  #chapter: 
+  #page:
+#
 family: nonmetal
 group: gas
 ---
-file argon_.md
 
 Argon appears as few compounds.
 
-Here are the book chapters for argon:
+Here are the themes for the tome "argon":
 <ol>
-{% comment %}
-{% include book_chapter_list.html pages=site.mineral files=site.mineral book="argon" %}
-{% endcomment %}
 {% include binder_tome_chapter_themes_list.html collection=site.mineral tome="argon" %}
 </ol>
 

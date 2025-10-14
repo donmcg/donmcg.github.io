@@ -7,13 +7,13 @@ binder:
   topics: [ ] # applies to book level
   themes: [ ] # applies to chapter level
 
-book: argon
-level: page
-reference:
-  level: page
-  book: argon
-  chapter: window
-  page: page_a
+#book: argon
+#level: page
+#reference:
+#  level: page
+#  book: argon
+#  chapter: window
+#  page: page_a
 ---
 
 page_a in the tome argon chapter window

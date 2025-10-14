@@ -26,20 +26,20 @@ collections: {{ site.collections }} <br>
 include.collection: {{ include.collection }} <br> <!-- works -->
 {% endcomment %}
 
+{% comment %}
 <!--	<h3> Searching for theme pages</h3> -->
 <h3> Searching for themes in the {{ include.name }} collection </h3>
+{% endcomment %}
 
 	{% assign themes = "" | split: ',' %}
   {% for file in include.collection %}
 
 			<!-- limit displayed themes to those associated with chapters -->
-		    "{{ file.title }}" is a chapter <br>
     	  <!--	  <p>file title: {{ file.title }}</p> -->
           {% for theme in file.binder.themes %}
 		        {% if themes contains theme %}
 			      {% else %}
-			      <!--		{{ theme }} new theme found on {{ file.title }}<br> --> 
-				      new theme "{{theme}}" found in {{ file.title }}<br> 
+			      <!--		{{ theme }} new theme found in {{ file.title }}<br> --> 
 			        {% assign themes = themes | push: theme %}
 			      {% endif %}
 	      {% endfor %}
@@ -70,7 +70,6 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 	themes[1]: {{themes[1]}}<br>
 	themes[2]: {{themes[2]}}<br>
 	themes[3]: {{themes[3]}}<br>
-	{% endcomment %}
 
 	<h3> Themes found in the {{ include.name }} collection </h3>
   {% for theme in themes %}
@@ -78,6 +77,7 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 	{% endfor %}
   <br>
 	<h3> Building theme lists:</h3>
+	{% endcomment %}
 
 			{% comment %}
 			This approach has high overhead?
@@ -118,6 +118,7 @@ theme_pages so far:		{{ theme_pages }}<br><br>
 {% endcomment %}
 
 <div>
+	All themes contained in the collection  "{{ include.name }}".<br><br>
 	<ol>
   {% for theme in themes %}
 	<li>{{ theme | capitalize }}</li>

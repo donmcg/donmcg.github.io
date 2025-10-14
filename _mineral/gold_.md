@@ -7,14 +7,14 @@ binder:
   topics: [ noble ] # applies to book level
   themes: [ ] # applies to chapter level
 
-book: gold
-level: book
-topics: [noble]
-reference:
-  level: book
-  book: gold
-  chapter:
-  page:
+#book: gold
+#level: book
+#topics: [noble]
+#reference:
+#  level: book
+#  book: gold
+#  chapter:
+#  page:
 family: metal
 group: gold
 ---

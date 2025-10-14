@@ -7,16 +7,16 @@ binder:
   topics: [ ] # applies to book level
   themes: [ mig, windows ] # applies to chapter level
 
-book: argon
-level: chapter
-reference:
-  level: chapter
-  book: argon
-  chapter:
-    - mig
-    - windows
-  page:
-themes: [Twindows, Tmig]
+#book: argon
+#level: chapter
+#reference:
+#  level: chapter
+#  book: argon
+#  chapter:
+#    - mig
+#    - windows
+#  page:
+#themes: [Twindows, Tmig]
 ---
 
 Argon is used to fill windows to improve their thermal insulation efficiency.

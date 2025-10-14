@@ -42,17 +42,36 @@ title: Home
   {% include navigation.html %}
 </section>
 
+<br>
+
 <ol>
-{% comment %}
-{% endcomment %}
-<li>Animal</li>
-{% include topics_list.html pages=site.animal %}
-<li>Vegetable</li>
-{% include topics_list.html pages=site.vegetable %}
-<li>Mineral</li>
-{% include topics_list.html pages=site.mineral %}
-<li>Mineral topics</li>
-{% include binder_topics_list.html collection=site.mineral name="mineral" %}
-<li>Mineral themes</li>
-{% include binder_themes_list.html collection=site.mineral name="mineral" %}
+  {% comment %}
+  <li>Animal</li>
+  {% include topics_list.html pages=site.animal %}
+  <li>Vegetable</li>
+  {% include topics_list.html pages=site.vegetable %}
+  <li>Mineral</li>
+  {% include topics_list.html pages=site.mineral %}
+  {% endcomment %}
+
+  <li>Animal</li>
+  {% include binder_topics_list.html collection=site.animal name="animal" %}
+
+  <li>Vegetable</li>
+  {% include binder_topics_list.html collection=site.vegetable name="vegetable" %}
+
+  <li>Mineral</li>
+  {% include binder_topics_list.html collection=site.mineral name="mineral" %}
+
+  {% comment %}
+  <li>Mineral themes</li>
+	this example of binder_themes_list is added for completeness <br><br>
+  {% include binder_themes_list.html collection=site.mineral name="mineral" %}
+  {% endcomment %}
+
+  {% comment %}
+  <li>Mineral argon themes</li>
+  {% include binder_tome_chapter_themes_list.html collection=site.mineral tome="argon" %}
+  {% endcomment %}
+  
 </ol>

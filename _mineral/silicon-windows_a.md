@@ -7,14 +7,14 @@ binder:
   topics: [ chapter-with-topic ] # applies to book level
   themes: [ windows ] # applies to chapter level
 
-book: silicon
-level: chapter
-reference:
-  level: chapter
-  book: silicon
-  chapter: oddball
-  page:
-themes: [windows]
+#book: silicon
+#level: chapter
+#reference:
+#  level: chapter
+#  book: silicon
+#  chapter: oddball
+#  page:
+#themes: [windows]
 ---
 
 Silicon windows are used to construct MEMs devices.
