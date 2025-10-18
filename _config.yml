@@ -96,6 +96,8 @@ collections:
     output: true
   mineral:
     output: true
+  music:
+    output: true
 
 
 # Exclude from processing.

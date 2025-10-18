@@ -1,0 +1,7 @@
+title: describes a member of the tome hierarchy at one level
+date:   2025-10-12 01:00:00 -0700
+binder:
+  tome:  xyz  # a single word common to all levels
+  level: book # book | chapter | page : presentation level of this file.
+  topics: [ topic1, topic2, ... topicN ] # applies to book level
+  themes: [ theme1, theme2, ... themeN ] # applies to chapter level
