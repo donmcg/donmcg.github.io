@@ -13,3 +13,4 @@ Arrangements for a folk trio:
 1. [OldBlue]({% link assets/file/OldBlue.2.pdf %})
 1. [SaltyDog]({% link assets/file/SaltyDog.1.pdf %})
 1. [DogiesLament]({% link assets/file/DogiesLament.1.pdf %})
+1. [Flatnose]({% link assets/file/Flatnose.1.pdf %})

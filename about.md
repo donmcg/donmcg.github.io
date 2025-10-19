@@ -2,12 +2,18 @@
 layout: default
 title: About
 ---
-# about this web site
+# about fairhillbillies
+
+{% include navigation.html %}
+
+&nbsp;
+
+# Under Construction: Please excuse the dust!
+**Note:** The content below is subject to change without prior notice.
+
 - bullet one
 
 [Link to ScotchAndSoda]({% link assets/file/ScotchAndSoda.pdf %})
-
-{% include navigation.html %}
 
 {% comment %}
 # I don't know why this next line doesn't work.  post can't be found...

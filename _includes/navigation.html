@@ -1,3 +1,8 @@
+{% comment %}
+<!-- see _data/navigation.yml for how to populate the list below  -->
+{% endcomment %}
+
+
 <nav>
   {% for item in site.data.navigation %}
     <a href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
@@ -5,8 +10,12 @@
     </a>
   {% endfor %}
 
+	{% comment %}
+	<!-- the following experimental link does sort of work, may not be needed -->
     <a href="{{ '/fizzbin/index.html' | relative_url }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
       {{ "fizzy" }}
     </a>
+	{% endcomment %}
 
 </nav>
+

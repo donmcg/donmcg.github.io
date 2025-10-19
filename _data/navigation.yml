@@ -1,8 +1,17 @@
+# This file lists the navigation links
+# Note that it refers to files in the _site directory that is filled by jekyll
+# That operation renders .md files as .html
+# So be careful to avoid source files myfile.md and myfile.html in same dir!
+# Also tricky here:  link to a directory /dir/ implies /dir/index.html
 - name: Home
   link: /
 - name: About
   link: /about.html
 - name: Blog
-  link: /blog.html
-- name: Fizzbin
-  link: /fizzbin/index.html
+  link: /blog/
+
+# the following links work, but are experimental
+#- name: BlogBlogAll
+#  link: /blog/blog_all.html
+#- name: Fizzbin
+#  link: /fizzbin/index.html
