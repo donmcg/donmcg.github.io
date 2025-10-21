@@ -13,7 +13,7 @@ title: About
 
 - bullet one
 
-[Link to ScotchAndSoda]({% link assets/file/ScotchAndSoda.pdf %})
+[Link to ScotchAndSoda]({% link assets/leadsheet/ScotchAndSoda.pdf %})
 
 {% comment %}
 # I don't know why this next line doesn't work.  post can't be found...
