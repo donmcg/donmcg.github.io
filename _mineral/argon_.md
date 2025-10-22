@@ -1,4 +1,5 @@
 ---
+layout: default
 date:   2025-10-12 01:00:00 -0700
 title: Argon book
 binder:

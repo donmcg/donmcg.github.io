@@ -1,0 +1,27 @@
+#  _data/leadsheets.yml
+#  The list of pdf files that represent lead sheets
+#  The idea is to have just one location (here) to manage leadsheets.
+#- name: 
+#  alt:
+#  topics: []
+
+- name: Dogies Lament
+  title: a song about cattle
+  link: /assets/leadsheet/DogiesLament.1.pdf
+  perform: [ trio ]
+- name: Flatnose, The tree climbing dog
+  title: a song about a tree climbing dog
+  link: /assets/leadsheet/Flatnose.1.pdf
+  perform: [ trio ]
+- name: Old Blue
+  title: a song about a good dog
+  link: /assets/leadsheet/OldBlue.2.pdf
+  perform: [ trio ]
+- name: Salty Dog
+  title: a song about the nature of relationships
+  link: /assets/leadsheet/SaltyDog.1.pdf
+  perform: [ trio ]
+- name: Scotch And Soda
+  title: a song about wistful love
+  link: /assets/leadsheet/ScotchAndSoda.pdf
+  perform: [ duo, trio ]

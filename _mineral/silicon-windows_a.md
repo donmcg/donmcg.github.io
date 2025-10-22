@@ -1,4 +1,5 @@
 ---
+layout: default
 title: silicon windows chapter
 date:   2025-10-12 01:00:00 -0700
 binder:

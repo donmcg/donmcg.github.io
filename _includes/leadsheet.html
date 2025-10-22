@@ -1,0 +1,22 @@
+{% comment %}
+<!-- see _data/leadsheet.yml for how to populate the list below  -->
+{% endcomment %}
+
+<ol>
+  {% for sheet in site.data.leadsheet %}
+	<li>
+		<a href="{{ sheet.link }}" title="{{ sheet.title }}" >
+			{{ sheet.name }} </a>
+	</li>
+  {% endfor %}
+
+	{% comment %}
+			  {% if page.url == item.link %}style="color: red;"{% endif %}>
+	<!-- the following experimental link does sort of work, may not be needed -->
+    <a href="{{ '/fizzbin/index.html' | relative_url }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+      {{ "fizzy" }}
+    </a>
+	{% endcomment %}
+
+</ol>
+
