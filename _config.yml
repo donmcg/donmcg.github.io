@@ -82,6 +82,7 @@ header_pages:
   - about.md
   - blog/index.html # special case for paginator
 #  - fizzbin/index.html
+  - library/mini_topical.html
   - library/veggie_topical.html
   - meat.html
   - plant.html
@@ -98,6 +99,13 @@ collections:
     output: true
   music:
     output: true
+  mini:
+    output: true
+#    permalink: /:path/ # flattens the contents of _mini/ directly under _site
+#    permalink: /mini/:path/ # mini/xyz.md becomes mini/xyz/index.html
+#    permalink: /mini/ # mini/*.md becomes mini/index.html (one file)
+# mini/blog:
+#   output: true
 
 
 # Exclude from processing.

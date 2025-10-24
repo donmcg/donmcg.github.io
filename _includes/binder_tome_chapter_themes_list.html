@@ -31,7 +31,7 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 	{% assign themes = "" | split: ',' %}
   {% for file in include.collection %}
 	  {% if file.binder.tome == include.tome %}
-		<!-- file title: "{{ file.title }}" level: {{file.binder.level}} belongs to book "{{ include.book }}" <br> -->
+		<!-- file title: "{{ file.title }}" level: {{file.binder.level}} belongs to tome "{{ include.tome }}" <br> -->
 		  {% if file.binder.level == "chapter" %}
 			<!-- limit displayed themes to those associated with chapters -->
     	  <!--	  <p>file title: {{ file.title }}</p> -->
@@ -123,7 +123,8 @@ theme_pages so far:		{{ theme_pages }}<br><br>
 <div>
 	<ol>
   {% for theme in themes %}
-	<li>{{ theme | capitalize }}</li>
+	<!-- <li>{{ theme | capitalize }}</li> -->
+	<li>{{ theme }}</li>
 	  <blockquote>
 			<ol>
     {% for page_ref in theme_pages %}

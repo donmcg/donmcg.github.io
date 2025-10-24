@@ -98,7 +98,8 @@ topic_pages so far:		{{ topic_pages }}<br><br>
 <div>
 	<ol>
   {% for topic in topics %}
-	<li>{{ topic | capitalize }}</li>
+	<!-- <li>{{ topic | capitalize }}</li> -->
+	<li>{{ topic }}</li>
 	  <blockquote>
 			<ol>
     {% for page_ref in topic_pages %}

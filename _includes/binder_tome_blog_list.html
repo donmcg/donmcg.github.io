@@ -1,0 +1,31 @@
+{% comment %}
+---
+layout: default
+title: blog links organized by tome and blog
+---
+{% endcomment %}
+
+{% comment use this include as follows %}
+include binder_tome_blog_list collection=site.**collection** tome=**tome** blog=**blog**
+{% endcomment %}
+
+<!-- <h3> Searching for entries of the "{{ include.blog }}" blog for the tome "{{ include.tome }}"</h3> -->
+
+  {% for file in include.collection %}
+    {% if file.binder.tome == include.tome %}
+    <!-- file title: "{{ file.title }}" level: {{file.binder.level}} belongs to tome "{{ include.tome }}" <br> -->
+      {% if file.binder.level == "blog" %}
+      <!-- limit list items to those associated with blogs -->
+        <!--    <p>file blog: {{ file.blog }}</p> -->
+
+        {% if file.binder.blog == include.blog %}
+
+        <!--          <li><a href="{{ file.url }}">{{ file.title }}</a></li> -->
+          <li><a href="{{ file.url }}">{{ file.date | date: "%Y-%m-%d  " | append: file.title }}</a></li>
+
+        {% endif %} <!-- include.blog -->
+
+      {% endif %} <!-- blog -->
+    {% endif %}  <!-- tome -->
+  {% endfor %}
+

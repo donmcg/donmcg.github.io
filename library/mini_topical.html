@@ -1,0 +1,21 @@
+---
+layout: default
+title: mini
+collection: mini # the collection to be passed
+---
+<h1>Mini (topical)</h1>
+
+<h2>Topical Pages</h2>
+<h3>
+  <span class="author">
+		  Go to <a href="{% link library/mini_all.html %}">All Pages</a>
+	  </span>
+</h3>
+
+{% include binder_topics_list.html collection=site.mini name=mini %}
+
+
+{% comment %}
+{% include binder_themes_list.html collection=site.mini name=mini %}
+{% endcomment %}
+
