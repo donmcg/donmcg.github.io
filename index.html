@@ -53,6 +53,7 @@ title: Home
   {% include topics_list.html pages=site.mineral %}
   {% endcomment %}
 
+	{% comment %}
   <li>Animal</li>
   {% include binder_topics_list.html collection=site.animal name="animal" %}
 
@@ -61,12 +62,13 @@ title: Home
 
   <li>Mineral</li>
   {% include binder_topics_list.html collection=site.mineral name="mineral" %}
+	{% endcomment %}
 
   <li>Mini</li>
-  {% include binder_topics_list.html collection=site.mini name="mini" %}
+  {% include binder_book_topics_list.html collection=site.mini name="mini" %}
 
   <li>Music</li>
-  {% include binder_topics_list.html collection=site.music name="music" %}
+  {% include binder_book_topics_list.html collection=site.music name="music" %}
 
   {% comment %}
   <li>Mineral themes</li>

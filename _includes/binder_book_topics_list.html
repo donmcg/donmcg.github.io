@@ -1,7 +1,7 @@
 {% comment %}
 ---
 layout: default
-title: category links organized by topic
+title: category links for books organized by topic
 ---
 {% endcomment %}
 
@@ -34,7 +34,7 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 	<!--	  <p>page title: {{ page.title }} level: {{ page.binder.level }}</p> -->
 	<!-- limit displayed themes -->
 	<!-- the alternative here would be to limit only to book -->
-		{% if page.binder.level != "page" and page.binder.level != "blog" %}
+		{% if page.binder.level == "book" %}
 
       {% for topic in page.binder.topics %}
 		    {% if topics contains topic %}
@@ -73,7 +73,7 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 	<!--	<h3>	{{ topic }}</h3> -->
     {% for page in include.collection %}
 
-		  {% if page.binder.level != "page" and page.binder.level != "blog"%}
+		  {% if page.binder.level == "book" %}
 
   		  {% if page.binder.topics contains topic %}
 	        {% assign page_ref = topic | append: ',' | append: page.url | append: ',' | append: page.title | split: ',' %}

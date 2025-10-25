@@ -1,7 +1,7 @@
 {% comment %}
 ---
 layout: default
-title: category links organized by theme
+title: category links for chapters organized by theme
 ---
 {% endcomment %}
 
@@ -37,8 +37,7 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 	<!--	  <p>file title: {{ file.title }} level: {{ file.binder.level }}</p> -->
 
 	  <!-- limit displayed themes -->
-		<!-- the alternative here would be to limit only to chapter -->
-		{% if page.binder.level != "page" and page.binder.level != "blog"%}
+		{% if page.binder.level == "chapter" %}
 
       {% for theme in file.binder.themes %}
 		    {% if themes contains theme %}
@@ -94,7 +93,7 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 	<!--	<h3>	{{ theme }}</h3> -->
     {% for page in include.collection %}
 
-		  {% if page.binder.level != "page" and page.binder.level != "blog"%}
+		  {% if page.binder.level == "chapter" %}
 
   		  {% if page.binder.themes contains theme %}
 	        {% assign page_ref = theme | append: ',' | append: page.url | append: ',' | append: page.title | split: ',' %}
