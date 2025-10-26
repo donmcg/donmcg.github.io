@@ -21,7 +21,7 @@ include binder_tome_blog_list collection=site.**collection** tome=**tome** blog=
         {% if file.binder.blog == include.blog %}
 
         <!--          <li><a href="{{ file.url }}">{{ file.title }}</a></li> -->
-          <li><a href="{{ file.url }}">{{ file.date | date: "%Y-%m-%d  " | append: file.title }}</a></li>
+				<li><a href="{{ file.url }}" title="{{ file.tip }}" >{{ file.date | date: "%Y-%m-%d  " | append: file.title }}</a></li>
 
         {% endif %} <!-- include.blog -->
 

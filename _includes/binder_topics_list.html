@@ -76,7 +76,8 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 		  {% if page.binder.level != "page" and page.binder.level != "blog"%}
 
   		  {% if page.binder.topics contains topic %}
-	        {% assign page_ref = topic | append: ',' | append: page.url | append: ',' | append: page.title | split: ',' %}
+
+	        {% assign page_ref = topic | append: ',' | append: page.url | append: ',' | append: page.title | append: ',' | append: page.tip | split: ',' %}
 	        {% assign topic_pages = topic_pages | push: page_ref %}
   
   {% comment %}
@@ -86,6 +87,7 @@ include.collection: {{ include.collection }} <br> <!-- works -->
   page_ref[0]: {{ page_ref[0] }}<br>
   page_ref[1]: {{ page_ref[1] }}<br>
   page_ref[2]: {{ page_ref[2] }}<br>
+  page_ref[3]: {{ page_ref[3] }}<br>
   topic_pages so far:		{{ topic_pages }}<br><br>
   <br>
   {% endcomment %}
@@ -117,7 +119,7 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 			<ol>
     {% for page_ref in topic_pages %}
 		  {% if topic == page_ref[0] %}
-        <li><a href="{{ page_ref[1] }}">{{ page_ref[2] }}</a></li>
+			<li><a href="{{ page_ref[1] }}" title="{{ page_ref[3] }}" >{{ page_ref[2] }}</a></li>
 			{% endif %}
 	  {% endfor %}
 			</ol>

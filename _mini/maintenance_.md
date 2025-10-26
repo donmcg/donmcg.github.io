@@ -1,6 +1,7 @@
 ---
 layout: default
 title: maintenance of my mini
+tip: maintenance overview
 date:   2025-10-22 01:00:00 -0700
 binder:
   tome:  maintenance  # a single word common to all levels
@@ -9,6 +10,6 @@ binder:
   themes: [ ] # applies to chapter level
 ---
 
-Q: Why no British computers?
+Q: Why so few British computers?
 
-A: They wouldn't leak oil.
+A: They don't leak oil.

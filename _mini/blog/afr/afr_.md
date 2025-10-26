@@ -1,6 +1,7 @@
 ---
 layout: default
-title: mini/measurement/afr blog overview
+title: mini/blog/afr blog overview
+tip: afr_.md afr blog overview
 date:   2025-10-22 01:00:00 -0700
 binder:
   tome:  measurement  # a single word common to all levels

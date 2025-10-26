@@ -1,6 +1,7 @@
 ---
 layout: default
 title: mini theme template
+tip: rollover tip
 date:   2025-10-22 01:00:00 -0700
 binder:
   tome:  mini  # a single word common to all levels in the work 

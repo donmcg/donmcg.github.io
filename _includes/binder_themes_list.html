@@ -97,7 +97,8 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 		  {% if page.binder.level != "page" and page.binder.level != "blog"%}
 
   		  {% if page.binder.themes contains theme %}
-	        {% assign page_ref = theme | append: ',' | append: page.url | append: ',' | append: page.title | split: ',' %}
+	        {% assign page_ref = theme | append: ',' | append: page.url | append: ',' | append: page.title | append: ',' | append: page.tip | split: ',' %}
+
 	        {% assign theme_pages = theme_pages | push: page_ref %}
   
   {% comment %}
@@ -107,6 +108,7 @@ include.collection: {{ include.collection }} <br> <!-- works -->
   page_ref[0]: {{ page_ref[0] }}<br>
   page_ref[1]: {{ page_ref[1] }}<br>
   page_ref[2]: {{ page_ref[2] }}<br>
+  page_ref[3]: {{ page_ref[3] }}<br>
   theme_pages so far:		{{ theme_pages }}<br><br>
   <br>
   {% endcomment %}
@@ -138,7 +140,7 @@ include.collection: {{ include.collection }} <br> <!-- works -->
 			<ol>
     {% for page_ref in theme_pages %}
 		  {% if theme == page_ref[0] %}
-        <li><a href="{{ page_ref[1] }}">{{ page_ref[2] }}</a></li>
+			<li><a href="{{ page_ref[1] }}" title="{{ page_ref[3] }}" >{{ page_ref[2] }}</a></li>
 			{% endif %}
 	  {% endfor %}
 			</ol>

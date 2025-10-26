@@ -14,7 +14,7 @@ title: category links organized by topic
 	  <blockquote>
       {% for page in include.pages %}
 	      <span class="author">
-          <h4><a href="{{ page.url }}">{{ page.title }}</a></h4>
+					<h4><a href="{{ page.url }}" title="{{ page.tip }}">{{ page.title }}</a></h4>
 	      </span>
 	    {% endfor %}
 	  </blockquote>
