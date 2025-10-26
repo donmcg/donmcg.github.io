@@ -43,13 +43,20 @@ description: # \n is ignored ...
   'The happiest of all lives is a busy solitude. Voltaire'
 url: "https://donmcg.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
-github_username:  gun_donmcg
+#github_username:  gun_donmcg
+github_username:  donmcg
 email: your-email@example.com
 author:  author_donmcg
+
+#author:  'Errabundi Saepe, Semper Certi'
+#email: '(Often wrong, but always certain.)'
 
 # other settings 
 name: name_donmcg
 owner: owner_donmcg
+
+# prevent default head.html (minima) from loading google.analytics
+environment: development
 
 # for LaTex
 # this stuff is not needed.  see _includes/head.html
@@ -67,7 +74,7 @@ owner: owner_donmcg
 # this means that paginate only works for one set of posts
 #paginate_path: "/fizzbin/page:num"
 paginate_path: "/blog/page:num"
-paginate: 3
+paginate: 5
 
 # Build settings
 #theme: hacker-blog
@@ -81,22 +88,16 @@ header_pages:
   - index.html
   - about.md
   - blog/index.html # special case for paginator
-#  - fizzbin/index.html
   - library/mini_topical.html
-  - library/veggie_topical.html
-  - meat.html
-  - plant.html
-  - rock.html
+#  - fizzbin/index.html
+#  - library/veggie_topical.html
+#  - meat.html
+#  - plant.html
+#  - rock.html
 
 # collections provides post content by context
 # paginate will not work for any of these; use site instead
 collections:
-  animal:
-    output: true
-  vegetable:
-    output: true
-  mineral:
-    output: true
   music:
     output: true
   mini:
@@ -105,6 +106,12 @@ collections:
 #    permalink: /mini/:path/ # mini/xyz.md becomes mini/xyz/index.html
 #    permalink: /mini/ # mini/*.md becomes mini/index.html (one file)
 # mini/blog:
+#   output: true
+# animal:
+#   output: true
+# vegetable:
+#   output: true
+# mineral:
 #   output: true
 
 
