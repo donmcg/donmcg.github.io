@@ -5,23 +5,31 @@
 #  alt:
 #  topics: []
 
+- title: Dirty Old Egg Sucking Dog
+  tip: not every dog is man's best friend
+  link: /assets/leadsheet/DirtyOldEggSuckingDog.2.pdf
+  perform: [ trio ]
 - title: Dogies Lament
-  tip: a song about cattle
-  link: /assets/leadsheet/DogiesLament.1.pdf
+  tip: a dogie has been separated from it's mother
+  link: /assets/leadsheet/DogiesLament.3.pdf
   perform: [ trio ]
 - title: Flatnose, The tree climbing dog
-  tip: a song about a tree climbing dog
-  link: /assets/leadsheet/Flatnose.1.pdf
+  tip: a miraculous dog
+  link: /assets/leadsheet/Flatnose.3.pdf
   perform: [ trio ]
+- title: I Wanna Be A Dog
+  tip: existentialism for kids
+  link: /assets/leadsheet/IWannaBeADog.1.pdf
+  perform: [ trio duo solo ]
 - title: Old Blue
-  tip: a song about a good dog
-  link: /assets/leadsheet/OldBlue.2.pdf
+  tip: best dog
+  link: /assets/leadsheet/OldBlue.4.C.pdf
   perform: [ trio ]
 - title: Salty Dog
-  tip: a song about the nature of relationships
-  link: /assets/leadsheet/SaltyDog.1.pdf
+  tip: romantic relationship
+  link: /assets/leadsheet/SaltyDog.3.pdf
   perform: [ trio ]
 - title: Scotch And Soda
-  tip: a song about wistful love
+  tip: romance with a chaser
   link: /assets/leadsheet/ScotchAndSoda.pdf
   perform: [ duo, trio ]
