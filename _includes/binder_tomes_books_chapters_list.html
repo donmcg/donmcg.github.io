@@ -1,0 +1,250 @@
+  {%- comment -%}
+  ---
+  layout: default
+  title: chapter and book links for all chapters in all books in a tome
+  ---
+  chapters with topics matching book topics will be listed with the book.
+
+  see _includes/multi_level_arrays.html for concept of array handling here.
+
+  {%- endcomment -%}
+  
+  {%- comment use this include as follows -%}
+  include binder_tomes_books_chapters_list sitecoll=site.**sitecoll** collection=**sitecoll** gab=**gab**
+  {%- endcomment -%}
+  
+  {%- assign gab = false -%}
+  {%- if include.gab == true -%}
+    {%- assign gab = true -%}
+    gab is true<br>
+    <!-- gab true comment -->
+  {%- else -%}
+    <!-- gab is false -->
+  {%- endif -%}
+  
+  {%- if gab -%}
+    collection: {{ include.collection }}<br>
+    
+    <br>experiments with assign:<br>
+    {%- assign list13 = "one|two|three" | split: "|" -%}
+    {%- assign list46 = "four|five|six" | split: "|" -%}
+    {%- assign list79 = "seven|eight|nine" | split: "|" -%}
+    {%- assign array1 = "" | split: ',' -%}
+    {%- assign array1 = array1 | push: list13 -%}
+    array1 after first push: "{{ array1 }}"<br>
+    {%- assign array1 = array1 | push: list46 -%}
+    array1 after second push: "{{ array1 }}"<br>
+    {%- assign array1 = array1 | push: list79 -%}
+    array1 after third push: "{{ array1 }}"<br>
+    array1[0] after second push: "{{ array1[0] }}"<br>
+    array1[1] after second push: "{{ array1[1] }}"<br>
+    
+    {%- assign indices = "0,1,2,3" | split: "," -%}
+    {%- for index in indices -%}
+    <!-- index: array1[{{index}}] after second push: "{{ array1[ index ] }}"<br> -->
+    forloop.index0: array1[{{forloop.index0}}] after second push: "{{ array1[ forloop.index0 ] }}"<br>
+    {%- endfor -%}
+  
+  <!-- gab --> {%- endif -%}
+  
+  {%- comment -%}
+  {%- assign array1[0] = list79 -%} <!-- doesn't work, see push, pop, shift, unshift -->
+  {%- for foo in array1 -%}
+  foo: array1[{{forloop.index0}}] after update[0]: "{{ array1[ forloop.index0 ] }}"<br>
+  {%- endfor -%}
+  {%- endcomment -%}
+  
+  {%- if gab -%}
+  changing contents of an array at a particular location:<br>
+  {%- assign dummy = "" | split: ',' -%}
+  {%- for foo in array1 -%}
+    {%- if foo contains "five" -%}
+      {%- assign dummy = dummy | push: list13 -%}
+    {%- else -%}
+      {%- assign dummy = dummy | push: foo -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign array1 = dummy -%}
+  array1 after dummy assignment: "{{ array1 }}"<br>
+  <br>
+  <!-- gab --> {%- endif -%}
+  
+  {%- if gab -%}
+    <!-- <h3> Searching for tomes in collection "{{ include.collection }}"</h3> -->
+    {%- comment -%}
+      structure of variables:
+      tomes[n] a simple array of n tome values, splits on ',' 
+    
+      book array uses ']1[' and ']2[' separators
+      book[0] book url (this is the unique book identifier so it goes first)
+      book[1] book tome
+      book[2] book title
+      book[3] book tip
+      book[4] topics_string[n] ']2[' stringified array for book
+    
+      chapter array uses ']1[' and ']2[' separators
+      chapter[0] chapter url (the unique chapter identifier goes first)
+      chapter[1] chapter tome
+      chapter[2] chapter title
+      chapter[3] chapter tip
+      chapter[4] topics_string[n] ']2[' stringified array for chapter
+    #  chapter[5] themes[n] ']2['stringified array for chapter (not needed here)
+    
+      tome_books[n] an array of chapters uses ']3[' separator
+      tome_chapters[n] an array of chapters uses ']3[' separator
+      book_chapters[n] an array of chapters uses ']3[' separator
+      book_topics[n] an array of topics uses ']2[' separator
+    
+    {%- endcomment -%}
+  <!-- gab --> {%- endif -%}
+  {%- if gab -%}
+  <!-- gab --> {%- endif -%}
+    {%- assign tomes = "" | split: ',' -%}
+    {%- assign tome_books = "" | split: ']3[' -%}
+    {%- assign tome_chapters = "" | split: ']3[' -%}
+    {%- for file in include.sitecoll -%}
+      {%- if file.binder.tome -%}
+        {%- if gab -%}
+          "{{ file.title }}" is in tome "{{ file.binder.tome }}" <br>
+        {%- endif -%}
+        {%- if tomes contains file.binder.tome -%}
+        {%- else -%}
+          {%- if gab -%}
+            new tome "{{file.binder.tome}}" found in {{ file.title }}<br>
+          {%- endif -%}
+          {%- assign tomes = tomes | push: file.binder.tome -%}
+        {%- endif -%} <!-- tomes -->
+  
+          {%- if file.binder.level == "book" -%}
+            {%- if gab -%}
+              new tome book "{{file.binder.tome}}"  {{ file.title }}<br>
+            {%- endif -%}
+            <!-- stringify the topics before appending -->
+            {%- assign topics_string = file.binder.topics | join: ']2[' -%}
+            {%- assign book = file.url | append: ']1['
+              | append: file.binder.tome | append: ']1['
+              | append: file.title | append: ']1['
+              | append: file.tip | append: ']1[' 
+              | append: topics_string
+              | split: ']1[' -%}
+
+            {%- assign tome_books = tome_books | push: book -%}
+          {%- else -%}
+            {%- if gab -%}
+              "{{ file.binder.level }}" is not "book" for {{ file.title }}<br>
+            {%- endif -%}
+          {%- endif -%} <!-- level -->
+    
+          {%- if file.binder.level == "chapter" -%}
+            {%- if gab -%}
+              new tome chapter "{{file.binder.tome}}"  {{ file.title }}<br>
+            {%- endif -%}
+            <!-- stringify the topics before appending -->
+            {%- assign topics_string = file.binder.topics | join: ']2[' -%}
+            {%- assign chapter = file.url | append: ']1['
+              | append: file.binder.tome | append: ']1['
+              | append: file.title | append: ']1['
+              | append: file.tip | append: ']1['
+              | append: topics_string
+              | split: ']1[' -%}
+            {%- assign tome_chapters = tome_chapters | push: chapter -%}
+          {%- else -%}
+            {%- if gab -%}
+              "{{ file.binder.level }}" is not "chapter"
+              for {{ file.title }}<br>
+            {%- endif -%}
+          {%- endif -%} <!-- level -->
+    
+        {%- else -%}
+          {%- if gab -%} no tome in "{{ file.title }}"<br> {%- endif -%}
+        {%- endif -%} <!-- tome -->
+      {%- endfor -%} <!-- sitecoll -->
+  
+    {%- if gab -%}
+      <br> collection: {{include.collection}} tomes: "{{tomes}}" <br>
+      <br>tome_books:<br>
+      {%- for book in tome_books -%}
+        book title: "{{ book[2] }}" <br>
+        tome: "{{ book[1] }}" <br>
+        url: "{{ book[0] }}"<br>
+        topics: "{{ book[4] }}"<br>
+        <br>
+      {%- endfor -%} <!-- book -->
+      <br>tome_chapters:<br>
+      {%- for chapter in tome_chapters -%}
+        chapter title: "{{ chapter[2] }}" <br>
+        tome: "{{ chapter[1] }}" <br>
+        url: "{{ chapter[0] }}"<br>
+        topics: "{{ chapter[3] }}"<br>
+        <br>
+      {%- endfor -%} <!-- chapter -->
+      <br>
+    <!-- gab --> {%- endif -%}
+    
+  {%- comment -%}
+    structure of variables:
+    book_chapters[n] array of chapters for current book
+  {%- endcomment -%}
+      {%- for tome in tomes -%}
+        {%- assign start_tome_list = true -%}
+        {%- assign end_tome_list = true -%}
+        {%- for book in tome_books -%}
+          {%- if book[1] == tome -%}
+            <!-- there is at least one book in the tome -->
+            {%- if start_tome_list == true -%}
+              <li> {{tome | capitalize}} </li>
+              <ul>
+              {%- assign start_tome_list = false -%}
+            {%- endif -%} <!-- start_tome_list -->
+            
+            <li> <a href="{{ book[0] | relative_url }}"
+                    title="{{ book[3] }}" > {{ book[2] }} </a> </li>
+            <!-- build book_chapters -->
+            {%- assign book_chapters = "" | split: ']3[' -%}
+  
+            <!-- unstringify book[4] topics_string -->
+            {%- assign book_topics = book[4] | split: ']2[' -%}
+  
+            {%- for chapter in tome_chapters -%}
+              {%- if chapter[1] == tome -%}
+                <!-- unstringify chapter[4] topics_string -->
+                {%- assign chapter_topics = chapter[4] | split: ']2[' -%}
+                {%- for chapter_topic in chapter_topics -%}
+  
+                <!-- add chapter to book_chapters unless it's there already -->
+                  {%- if book_topics contains chapter_topic -%}
+                    <!-- avoid duplicate chapter listing -->
+                    {%- assign list_chapter = true -%}
+                    {%- for represented_chapter in book_chapters -%}
+                      {%- if chapter[0] == represented_chapter[0] -%}
+                        {%- assign list_chapter = false -%}
+                      {%- endif -%} <!-- represented already -->
+                    {%- endfor -%} <!-- represented_chapter -->
+                    {%- if list_chapter == true -%}
+                      {%- assign book_chapters =
+                                 book_chapters | push: chapter -%}
+                    {%- endif -%} <!-- list_chapter` -->
+
+                  {%- endif -%} <!-- chapter topic in book -->
+  
+                {%- endfor -%} <!-- chapter_topic -->
+              {%- endif -%} <!-- chapter[1] == tome -->
+            {%- endfor -%} <!-- chapter in tome_chapters -->
+  
+            {%- if book_chapters.size != 0 -%}
+              <ol>
+              {%- for chapter in book_chapters -%}
+                <li> <a href="{{ chapter[0] | relative_url }}"
+                        title="{{ chapter[3] }}" > {{ chapter[2] }} </a> </li>
+              {%- endfor -%} <!-- book_chapters -->
+              </ol>
+            {%- endif -%} <!-- book_chapters.size -->
+          {%- endif -%} <!-- book in tome -->
+  
+        {%- endfor -%} <!-- books -->
+  
+        {%- if start_tome_list == false -%}
+          </ul>
+        {%- endif -%} <!-- start_tome_list -->
+      {%- endfor -%} <!-- tomes -->
+  

@@ -1,0 +1,68 @@
+{%- comment -%}
+---
+layout: default
+title: multi-level arrays evaluation
+---
+{%- endcomment -%}
+
+{%- comment use this include as follows -%}
+include multi_level_arrays gab=[false|true]
+{%- endcomment -%}
+
+{%- assign gab = false -%}
+  {%- if include.gab == true -%}
+    {%- assign gab = true -%}
+    gab is true<br>
+    <!-- gab true comment -->
+  {%- else -%}
+    <!-- gab is false -->
+{%- endif -%}
+
+<div>
+  This is a demonstration of multi-level arrays <br>
+<!--  create my_array_1 using ']1[' delimiter: -->
+{%- assign my_array_1 = "a]1[b]1[c" | split: ']1[' -%}
+
+<br> initial my_array_1: "{{my_array_1}}" demonstrates ']1[' as split <br>
+  my_array_1[0]: "{{my_array_1[0]}}" <br>
+  my_array_1[1]: "{{my_array_1[1]}}" <br>
+  my_array_1[2]: "{{my_array_1[2]}}" <br>
+  my_array_1[3]: "{{my_array_1[3]}}" <br>
+
+  <!--  create my_array_2 using ',' delimiter: -->
+  {%- assign my_array_2 = "" | split: ',' -%}
+  {%- assign my_array_2 = my_array_2 | push: "red" -%}
+  {%- assign my_array_2 = my_array_2 | push: "blue" -%}
+  {%- assign my_array_2 = my_array_2 | push: "green" -%}
+  <br> initial my_array_2: "{{my_array_2}}" simple ',' as split <br>
+
+  <!--  stringify my_array_2 using ']2[' delimiter: -->
+  {%- assign my_array_2_string = my_array_2 | join: "]2[" -%}
+  <br> initial my_array_2_string: "{{my_array_2_string}}" demos join <br>
+
+  <!--  place my_array_2_string in my_array_1 using ']1[' delimiter: -->
+  {%- assign my_array_1 = my_array_1 | push: my_array_2_string -%}
+  <br> pushed my_array_1: "{{my_array_1}}" retains ']2[' as split <br>
+  my_array_1[0]: "{{my_array_1[0]}}" <br>
+  my_array_1[1]: "{{my_array_1[1]}}" <br>
+  my_array_1[2]: "{{my_array_1[2]}}" <br>
+  my_array_1[3]: "{{my_array_1[3]}}" <br>
+
+  <br> my_array_1 now contains a stringified copy of my_array_2 <br>
+
+  {%- comment -%}
+  -or instead of push ...-
+  {%- assign my_array_1 = my_array_1 | append: ']1['
+              | append: my_array_2_string | split: ']1[' -%}
+  {%- endcomment -%}
+
+  <!-- recover a copy of my_array_2 -->
+  {%- assign my_array_2_recovered = my_array_1[3] | split: ']2[' -%}
+<br> recovered my_array_2_recovered: "{{my_array_2_recovered}}" <br>
+  my_array_2_recovered[0]: "{{my_array_2_recovered[0]}}" <br>
+  my_array_2_recovered[1]: "{{my_array_2_recovered[1]}}" <br>
+  my_array_2_recovered[2]: "{{my_array_2_recovered[2]}}" <br>
+  my_array_2_recovered[3]: "{{my_array_2_recovered[3]}}" <br>
+
+  <br> ta da! <br>
+</div>

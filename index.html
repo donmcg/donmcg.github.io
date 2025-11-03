@@ -64,11 +64,25 @@ title: Home
   {% include binder_topics_list.html collection=site.mineral name="mineral" %}
 	{% endcomment %}
 
-  <li>Mini</li>
+	{% comment %}
+	{% endcomment %}
+  <li>Mini Topics</li>
   {% include binder_book_topics_list.html collection=site.mini name="mini" %}
 
-  <li>Music</li>
+  <li>Mini Tomes</li>
+	<ul>
+  {%- include binder_tomes_books_chapters_list.html
+              sitecoll=site.mini collection="mini" gab=false -%}
+	</ul>
+
+  <li>Music Topics</li>
   {% include binder_book_topics_list.html collection=site.music name="music" %}
+
+  <li>Music Tomes</li>
+	<ul>
+  {%- include binder_tomes_books_chapters_list.html
+              sitecoll=site.music collection="music" gab=false -%}
+	</ul>
 
   {% comment %}
   <li>Mineral themes</li>

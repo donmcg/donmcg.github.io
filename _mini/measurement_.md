@@ -6,7 +6,7 @@ date:   2025-10-22 01:00:00 -0700
 binder:
   tome:  measurement  # a single word common to all levels
   level: book # book | chapter | page : presentation level of this file.
-  topics: [measurement fizzbin]
+  topics: [measurement, fizzbin, project]
   themes: [ ] # applies to chapter level
 ---
 
