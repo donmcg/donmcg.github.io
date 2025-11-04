@@ -238,6 +238,8 @@
                         title="{{ chapter[3] }}" > {{ chapter[2] }} </a> </li>
               {%- endfor -%} <!-- book_chapters -->
               </ol>
+            {%- else -%}
+              <br> <!-- whitespace for chapter-less books -->
             {%- endif -%} <!-- book_chapters.size -->
           {%- endif -%} <!-- book in tome -->
   
