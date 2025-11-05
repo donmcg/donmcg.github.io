@@ -1,6 +1,6 @@
 ---
 layout: default
-title: SU Piston Position Sensing (chapter)
+title: SU Piston Position Sensing
 tip: SU piston position measurement
 date:   2025-11-03 01:00:00 -0700
 binder:
