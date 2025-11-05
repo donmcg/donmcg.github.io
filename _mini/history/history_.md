@@ -9,15 +9,23 @@ binder:
   topics: [history]
   themes: [ ] # applies to chapter level
 ---
-I've had several minis (and similar).
+I've had several vehicles from 50's thru 70's (mostly mini saloons).
 
+There is a story to be told...
+
+- pugeot nitrided
+- crescent Världsmästarcykeln
+- suzuki 250
 - honda 90
-- clown car saloon
-- red 850 saloon
-- traveler
+- "clown car" 850
+- "red" 850
 - volvo pv544 b18d
-- 66 bug
+- traveler 850
+- '66 bug 1600
+- cooper 1275
+- honda 550-4
 - mg midget 1275
-- exponent saloon
-- iniw 63 saloon
-- mkV body shell saloon
+- "exponent" AA 1275
+- "gus" vw squareback 1600
+- "iniw" 63 shell
+- mk-V heritage A+
