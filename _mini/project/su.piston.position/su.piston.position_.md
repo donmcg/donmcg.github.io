@@ -1,6 +1,6 @@
 ---
 layout: default
-title: SU Piston Position (Book) 
+title: SU Piston Position
 tip: SU piston height masurement
 date:   2025-11-03 01:00:00 -0700
 binder:

@@ -65,9 +65,9 @@ title: Home
 	{% endcomment %}
 
 	{% comment %}
-	{% endcomment %}
   <li>Mini Topics</li>
   {% include binder_book_topics_list.html collection=site.mini name="mini" %}
+	{% endcomment %}
 
   <li>Mini Tomes</li>
 	<ul>
@@ -75,8 +75,10 @@ title: Home
               sitecoll=site.mini collection="mini" gab=false -%}
 	</ul>
 
+	{% comment %}
   <li>Music Topics</li>
   {% include binder_book_topics_list.html collection=site.music name="music" %}
+	{% endcomment %}
 
   <li>Music Tomes</li>
 	<ul>

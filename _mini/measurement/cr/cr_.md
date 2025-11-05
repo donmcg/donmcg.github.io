@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Compression Ratio (book)
+title: Compression Ratio
 tip: CR measurement
 date:   2025-10-22 01:00:00 -0700
 binder:

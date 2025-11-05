@@ -1,6 +1,6 @@
 ---
 layout: default
-title: maintenance of my mini
+title: Maintenance of the mini
 tip: maintenance overview
 date:   2025-10-22 01:00:00 -0700
 binder:
@@ -12,4 +12,4 @@ binder:
 
 Q: Why so few British computers?
 
-A: They don't leak oil.
+A: They won't leak oil.

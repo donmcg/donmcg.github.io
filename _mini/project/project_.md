@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Mini Projects (book)
+title: Project Summary
 tip: mini project overview
 date:   2025-10-30 01:00:00 -0700
 binder:

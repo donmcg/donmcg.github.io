@@ -88,7 +88,7 @@ header_pages:
   - index.html
   - about.md
   - blog/index.html # special case for paginator
-  - library/mini_topical.html
+#  - library/mini_topical.html
 #  - fizzbin/index.html
 #  - library/veggie_topical.html
 #  - meat.html

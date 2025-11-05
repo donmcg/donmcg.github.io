@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Air Fuel Ratio (Book) 
+title: Air Fuel Ratio
 tip: AFR measurement
 date:   2025-11-04 01:00:00 -0700
 binder:

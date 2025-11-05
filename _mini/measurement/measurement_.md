@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Mini Measurements
+title: Measurement Summary
 tip: measurement overview
 date:   2025-10-22 01:00:00 -0700
 binder:
@@ -10,7 +10,7 @@ binder:
   themes: [ ] # applies to chapter level
 ---
 
-Many interesting mini measurements...
+Many interesting things to measure...
 
 ### Chapter themes:
 <ol>
