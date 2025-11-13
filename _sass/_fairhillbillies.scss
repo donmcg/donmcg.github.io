@@ -1,0 +1,204 @@
+// _sass/_fairhillbillies.scss
+
+/**
+ * These definitions are used somewhere on the fairhillbillies site...
+ * Be careful modifying them!
+ */ 
+
+// Demonstrate that I have been able to configure and use _sass
+    .my-custom-class {
+      color: blue;
+//      font-size: 1.2em;
+      font-size: $small-font-size;
+    }
+
+    .another-class {
+      background-color: lightgray;
+      padding: 10px;
+//    font-size: $small-font-size;
+      @include relative-font-size(1.9375);
+    }
+
+/**
+ * Images
+ */
+// Basic Images
+
+// Do not change these examples
+// ---- ExampleK
+.containerExampleK {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.figureExampleK {
+  max-height: 20%;
+  max-width: 20%;
+}
+
+.textExampleK {
+    padding-left: 20px;
+}
+// ---- End of ExampleK
+
+// ---- figure.html
+// places 50% image side-by-side with caption
+.containerFig {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+  
+.figureFig {
+  max-height: 100%;
+  max-width: 100%;
+  border: 1px solid #555;
+}
+
+.textFig {
+}
+// ---- End figure.html
+
+// ---- img_cap_link.html
+// places 50% image side-by-side with caption
+.containerImgCap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+  
+.figureImgCap {
+  max-height: 50%;
+  max-width: 50%;
+}
+
+.textImgCap {
+    padding-left: 20px;
+}
+// ---- End img_cap_link.html
+
+// experimental 
+// Things below this line are allowed to change as needed in the moment
+
+/**
+ * Images
+ */
+/*
+
+//------------------------
+
+//body {
+//  padding: 50px;
+//}
+
+// !!! Do not use 'img'  it affects all images on the entire site!
+//  img {
+//    max-width: 25%;
+//    max-height:15%;
+//    float: left;
+//  }
+  
+
+// use img+em with _include/figure.html ??
+img+em,
+figcaption {
+  font-size: 1rem;
+  font-style: normal;
+  display: block;
+  text-align: center;
+  margin-top: -1rem;
+  color: red;
+}
+
+//------------------------
+.containerJ {
+  border: 3px solid blue;
+  padding: 20px 40px 40px;
+  max-width: 640px;
+  display: flex;
+  &__image {
+//    margin: 20px 30px 0 0;
+//    width: 200px;
+    width: 20%;
+    object-fit: contain;
+    align-self: flex-start;
+  }
+  &__text {
+    flex: 1 1 auto;
+  }
+}
+//------------------------
+
+.left-text {
+  float: left;
+  color: green;
+}
+
+.right-text {
+  float: right;
+  color: blue;
+}
+
+// Left justified at 50% size
+.left-50-img {
+//  display: block;
+  width: 50%;
+//  margin-left: 0px;
+//  margin-right: auto;
+  float: left;
+  margin-right: 1em;
+}
+
+// Right justified at 50% size
+.right-50-img {
+//  display: block;
+  width: 50%;
+//  margin-left: 0px;
+//  margin-right: auto;
+  float: right;
+  margin-left: 1em;
+}
+
+.ex-img {
+  max-width: 10%;
+  vertical-align: middle;
+}
+
+/**
+ * Figures
+ */
+.ex-figure {
+  display: block;
+  max-width: 10%;
+  vertical-align: middle;
+}
+
+.ex-figure2 > .ex-img {
+  display: block;
+}
+
+.ex-figcaption {
+  color: red;
+  font-size: 2.2em;
+//  font-size: $small-font-size;
+}
+
+// centered at 50% size
+.ex-center-50-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+// left justified at 50% size
+.ex-left-50-img {
+  display: block;
+  margin-left: 0px;
+  margin-right: auto;
+  width: 50%;
+}
+

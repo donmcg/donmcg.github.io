@@ -1,0 +1,19 @@
+{% comment %}
+ // a centered image with a caption below it
+ // include figure.html
+            img-dir="...assets/" img-file="image.png"
+						alt=".alt"
+						caption="my caption"
+{% endcomment %}
+
+<div class="containerFig">
+  <div class="figureFig">
+		  <img alt="{{include.alt}}" loading="lazy"
+		       src="{{include.img-dir}}{{include.img-file}}" />
+  </div>
+  <p class="textFig">
+			{{include.caption}}
+  </p>
+</div>
+
+

@@ -1,0 +1,24 @@
+{% comment %}
+ // an image with a caption to it's right; both supporting the same link
+ // include img_cap_link.html
+            img-dir="...assets/" img-file="image.png"
+						alt=".alt"
+						caption="my caption"
+            link-dir=".../" link-file="page.html"
+{% endcomment %}
+
+<div class="containerImgCap">
+  <div class="figureImgCap">
+		<a href="{{include.link-dir}}{{include.link-file}}" >
+		  <img alt="{{include.alt}}" loading="lazy"
+		       src="{{include.img-dir}}{{include.img-file}}" />
+		</a>
+  </div>
+  <div class="textImgCap">
+		<a href="{{include.link-dir}}{{include.link-file}}" >
+			{{include.caption}}
+		</a>
+  </div>
+</div>
+
+

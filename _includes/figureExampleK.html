@@ -1,0 +1,22 @@
+{% comment %}
+ // an image with a caption to it's right 
+ // include figureExampleK.html
+            img-dir="...assets/" img-file="image.png"
+						alt=".alt" caption="my caption"
+ // This include is used only for highlighting _fairlillbillies.scss ExampleK
+ // do not edit it without due consideration.
+{% endcomment %}
+
+<div class="containerExampleK">
+  <div class="figureExampleK">
+		<img alt="{{include.alt}}" loading="lazy"
+		     src="{{include.img-dir}}{{include.img-file}}" />
+  </div>
+  <div class="textExampleK">
+    {{include.caption}}
+  </div>
+</div>
+<br>
+
+
+

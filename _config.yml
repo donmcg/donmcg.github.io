@@ -58,6 +58,9 @@ owner: owner_donmcg
 # prevent default head.html (minima) from loading google.analytics
 environment: development
 
+# experimental use of kramdown
+markdown: kramdown
+
 # for LaTex
 # this stuff is not needed.  see _includes/head.html
 #markdown: kramdown
