@@ -9,6 +9,7 @@ binder:
   topics: [ ] # applies to book level
   themes: [ calib.7.2 ] # applies to chapter level
 ---
+Last update {{ page.date | date: "%d %b %Y" }}.
 
 {% assign image = site.url | append: "/assets/mini/project/su.piston.position/calib.7.2/" %}
 {% capture image-dir %}
