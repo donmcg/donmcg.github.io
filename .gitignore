@@ -6,4 +6,4 @@ Gemfile.lock
 /_site
 
 # trash is a place to put stuff that could be deleted
-/trash
+**/trash

@@ -2,7 +2,7 @@
 layout: page
 title: Calibration fixture 7.2 drawings
 tip: drawings of calib.7.2
-date:   2025-11-05 01:00:00 -0700
+date:   2025-11-28 01:00:00 -0700
 binder:
   tome:  project  # a single word common to all levels in the work 
   level: page # identifies presentation level of this file.
@@ -18,40 +18,11 @@ Last update {{ page.date | date: "%d %b %Y" }}.
 
 # SU Piston Position Calibration Fixture for 7.2 design
 
-After initial characterization of a few sensors it has become evident
-that there is significant variation in both phototransistor beta 
-and in the optical loss of the led-target-phototransistor path.
-Hence the detector design will be improved if these variations are
-accounted for.
-
-The initial fixture for these kind of measurements provides excellent
-resolution of x-z positioning of the sensor to target, but is awkward
-in assembly and requires removing the flex sensor from its sheet
-and making solder connections.  While not insurmountable, these are 
-destructive steps and do not scale well to evaluating multiple sensors.
-
-The calib.7.2 fixture is intended to overcome some of these limitations.
-With it the sensor does not need to be removed from its sheet, no solder
-connections are needed, and the optical path closely resembles in-situ.
-In addition, the target is able to move through its entire range and with
-a future upgrade this motion can be calibrated with a micrometer.
-
-Construction of the fixture begins with a plywood base plate upon which
-subsequent components are stacked.  The base plate carries a pogo pin
-assembly and a clamp for making electrical contact to the sensor.
-It provides mounting support for the flex sheet and is static safe.
-
-An overlay plate lays on top of the flex sheet and provides an opening
-for the sensor, a channel for the target and a guide for
-the target carrier.  The overlay plate has its own clamp.
-
-The target carrier retains the target in its own channel and provides
-the means to align and shift the target above the sensor.  The channels
-in the target carrier and overlay are set to provide a target-sensor
-spacing similar to that when installed in the carburettor.
+Construction projects that require even a minor degree of precision
+benefit from scaled drawings for fit and assembly.  These are drawings
+for the calib_7.2 fixture.
 
 ---
-
 <br>
 ### 3p_sensor_7.2 flex sheet
 
@@ -176,6 +147,53 @@ flex sheet.
            caption='Calib.7.2 fixture without overlay plate'
 %}
 
+<br>
+### Calib.7.2 fixture assembly
+
+Here's a photograph of the completed fixture.
+
+{% include figure.html
+           img-dir=image-dir
+           img-file='small_calib_7.2_assy.jpeg'
+           alt='Photograph of calib.7.2 fixture without carrier'
+           caption='Calib.7.2 fixture without carrier'
+%}
+
+<br>
+### Calib.7.2 sensor 
+
+Here's a close up of the sensor area.
+
+{% include figure.html
+           img-dir=image-dir
+           img-file='calib_7.2_sensor.jpeg'
+           alt='Photograph of calib.7.2 fixture sensor area'
+           caption='Calib.7.2 fixture sensor area'
+%}
+
+The black rectangles are the phototransistors.  Directly above each
+phototransistor is its associated infrared LED.  The flex PCB can be
+seen below the active devices.  R Y B refers to the position of the 
+Red, Yellow, and Blue channels.
+
+<br>
+### Calib.7.2 fixture with micrometer
+
+Here's a photograph of the fixture with the micrometer positioning 
+assembly added.
+
+{% include figure.html
+           img-dir=image-dir
+           img-file='small_calib_7.2_with_micrometer.jpeg'
+           alt='Photograph of calib.7.2 fixture with micrometer'
+           caption='Calib.7.2 fixture with micrometer'
+%}
+
+The X-micrometer, to the left, provides position adjustment and measurement
+at 1-mil increments.  The total travel is 1/2-inches.  This travel is
+less than that of the piston itself, but is more than adequate for 
+development of the system.  Adjustment of the micrometer is quite smooth
+and satisfying.
 
 {% comment %}
 <!-- these images are not needed -->
