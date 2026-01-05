@@ -150,7 +150,7 @@ flex sheet.
 <br>
 ### Calib.7.2 fixture assembly
 
-Here's a photograph of the completed fixture.
+Here's a photograph of the completed fixture with the carrier removed.
 
 {% include figure.html
            img-dir=image-dir
@@ -159,10 +159,12 @@ Here's a photograph of the completed fixture.
            caption='Calib.7.2 fixture without carrier'
 %}
 
+The nickle provides a bit of rake for the pogo pin clamp.
+
 <br>
 ### Calib.7.2 sensor 
 
-Here's a close up of the sensor area.
+Here's a close up of the business area.
 
 {% include figure.html
            img-dir=image-dir
@@ -174,7 +176,8 @@ Here's a close up of the sensor area.
 The black rectangles are the phototransistors.  Directly above each
 phototransistor is its associated infrared LED.  The flex PCB can be
 seen below the active devices.  R Y B refers to the position of the 
-Red, Yellow, and Blue channels.
+Red, Yellow, and Blue channels.  When installed in the carb, the R
+channel will be upper most.
 
 <br>
 ### Calib.7.2 fixture with micrometer
