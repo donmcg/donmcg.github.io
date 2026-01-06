@@ -90,6 +90,7 @@ plugins:
 header_pages:
   - index.html
   - about.md
+  - README.md
   - blog/index.html # special case for paginator
 #  - library/mini_topical.html
 #  - fizzbin/index.html

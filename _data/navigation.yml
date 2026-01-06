@@ -5,10 +5,12 @@
 # Also tricky here:  link to a directory /dir/ implies /dir/index.html
 - name: Home
   link: /
-- name: About
-  link: /about.html
 - name: Blog
   link: /blog/
+- name: About
+  link: /about.html
+- name: README
+  link: /README.html
 
 # the following links work, but are experimental
 #- name: BlogBlogAll
