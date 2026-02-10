@@ -57,6 +57,13 @@
   border: 1px solid #555;
 }
 
+// same as figureFig but with broad white border
+.ghostFig {
+  max-height: 100%;
+  max-width: 100%;
+  border: 10px solid white;
+}
+
 .textFig {
 }
 // ---- End figure.html

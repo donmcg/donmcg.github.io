@@ -15,7 +15,7 @@ binder:
 Here is needed: **binder_tome_book_chapter_list.html** that provides
 a list of topics with links to supporting chapters...
 
-[SU Piston Position Blog]({{ site.url | append: "/mini/project/su.piston.position/su.piston.position_blog.html" }})
+[SU Piston Position Blog]({{ site.url | append: "/mini/project/su.piston.position/su.piston.position-blog.html" }})
 
 {%- comment -%}
 The *su piston position* blog:

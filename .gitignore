@@ -7,3 +7,6 @@ Gemfile.lock
 
 # trash is a place to put stuff that could be deleted
 **/trash
+
+# xxx.tmp is a place to put stuff that could be used later
+*.tmp/

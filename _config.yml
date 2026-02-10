@@ -61,6 +61,12 @@ environment: development
 # experimental use of kramdown
 markdown: kramdown
 
+# attempting to enable Alerts 9feb2026 
+kramdown:
+  input: GFM
+plugins:
+  - jekyll-gfm-admonitions
+
 # for LaTex
 # this stuff is not needed.  see _includes/head.html
 #markdown: kramdown
@@ -89,9 +95,9 @@ plugins:
 # header_pages controls the order and allows for deep path names
 header_pages:
   - index.html
+  - blog/index.html # special case for paginator
   - about.md
   - README.md
-  - blog/index.html # special case for paginator
 #  - library/mini_topical.html
 #  - fizzbin/index.html
 #  - library/veggie_topical.html
