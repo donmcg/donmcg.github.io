@@ -42,7 +42,6 @@ Here's a view of newKey.4
            caption='New Guide Key 7, rev 4'
 %}
 
-> [!TIP]
 > There is more to say...
 
 ---

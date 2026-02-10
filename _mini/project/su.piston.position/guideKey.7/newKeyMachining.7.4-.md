@@ -32,8 +32,6 @@ Here's a view of newKey.4
 
 ## Guide Key 7 machining procedure rev 4:
 
-> [!CAUTION]
->
 > This page has not yet been formatted for presentation
 > and does not have updated notes added.  
 > In fact, this very caution alert does not work!
@@ -57,14 +55,6 @@ As with V3 but accounts for 1/8em flexture due to high side loads.
 {% endhighlight %}
 
 {% comment %}
-requires Alert extensions
-not quite sure how to do that
-NOTE TIP IMPORTANT WARNING CAUTION
-
-> [!NOTE]
-> first line
-> additional line
-
 {% endcomment %}
 
 0. Stock material: 0.25" Brass Square Bar 360-H02 Extruded
