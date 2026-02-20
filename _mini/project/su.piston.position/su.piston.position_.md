@@ -15,7 +15,22 @@ binder:
 Here is needed: **binder_tome_book_chapter_list.html** that provides
 a list of topics with links to supporting chapters...
 
+### Blog:
+
 [SU Piston Position Blog]({{ site.url | append: "/mini/project/su.piston.position/su.piston.position-blog.html" }})
+
+> using **binder_tome_chapter_themes_list.html**: tome is project; too coarse
+
+### Chapter themes:
+<ol>
+{% include binder_tome_chapter_themes_list.html collection=site.mini tome="project" %}
+</ol>
+
+### Book topics:
+<ol>
+{% include binder_tome_book_topics_list.html collection=site.mini tome="project" %}
+</ol>
+
 
 {%- comment -%}
 The *su piston position* blog:
@@ -25,3 +40,8 @@ The *su piston position* blog:
   </ol>
 </div>
 {%- endcomment -%}
+
+#### page.title: {{ page.title }}
+
+#### page.url: {{ page.url }}
+

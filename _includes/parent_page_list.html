@@ -1,0 +1,105 @@
+{% comment %}
+---
+layout: default
+title: page list as found in matching group
+---
+{% endcomment %}
+
+{% comment %}
+  use this include as follows
+  the use of ( ) vs { } here prevents liquid confusion
+  (%- assign my_tome_pages = tome_pages | push: page -%)
+    (%- for my_parent in tome_books -%)
+        --or--
+    (%- for my_parent in tome_chapters -%)
+  
+  (% include parent_page_list.html gab=my_gab tome_pages=my_tome_pages parent=my_parent %)
+{% endcomment %}
+
+
+{% comment %}
+  parent: psudonym for book or chapter
+  motif: psudonym for topic(for book) or theme(for chapter)
+  
+  inputs:
+  gab
+  tome_pages  -> externally collected all pages in tome
+  parent      -> external book or chapter data structue
+
+{% endcomment %}
+
+{% assign gab = include.gab %}
+{% assign tome_pages = include.tome_pages %}
+{% assign parent = include.parent %}
+{% assign level = parent[5] %}
+
+<!-- motif is used as a substitute for theme or topic -->
+{% if level == 'book' %} <!-- book -->
+  {% assign parent_motifs = parent[6] | split: ']2[' %}
+{% elsif level == 'chapter' %} <!-- chapter -->
+  {% assign parent_motifs = parent[7] | split: ']2[' %}
+{% endif %}
+
+<!---  add pages in parent, if any -->
+<!-- build parent_pages: a list of pages in current parent -->
+{% assign parent_pages = "" | split: ']3[' %}
+
+{% for page in tome_pages %}
+
+  <!-- look for pages that match book|parent motif -->
+  {% if level == 'book' %} <!-- book -->
+    {% assign page_motifs = page[6] | split: ']2[' %} <!-- topics -->
+  {% elsif level == 'chapter' %} <!-- parent -->
+    {% assign page_motifs = page[7] | split: ']2[' %} <!-- themes -->
+  {% endif %}
+  {% for page_motif in page_motifs %}
+    {% if gab %}
+      page "{{ page[1] }}" has motif "{{page_motif}}" <br>
+    {% endif %}
+
+  <!-- add page to parent_pages unless it's there already -->
+    {% if parent_motifs contains page_motif %}
+      {% if gab %}
+        page motif "{{page_motif}}" <br>
+        page "{{ page[1] }}" and parent "{{ parent[1] }}" match motifs "{{page_motif}}" <br>
+      {% endif %}
+
+      <!-- avoid duplicate page listing in same parent -->
+      {% assign list_page = true %}
+      {% for represented_page in parent_pages %}
+        {% if page[0] == represented_page[0] %}
+          {% assign list_page = false %}
+        {% endif %} <!-- represented already -->
+      {% endfor %} <!-- represented_page -->
+
+      {% if list_page == true %}
+        {% assign parent_pages = parent_pages | push: page %}
+        {% if gab %}
+           added page "{{ page[1] }}" to parent "{{ parent[1] }}" <br>
+           parent "{{ parent[1] }}" has pages "{{ parent_pages }}" <br>
+        {% endif %}
+      {% endif %} <!-- list_page` -->
+
+    {% endif %} <!-- page motif in parent -->
+
+  {% endfor %} <!-- page_motif -->
+
+{% endfor %} <!-- page in tome_pages -->
+
+<!-- build of parent_pages is completed -->
+{% if parent_pages.size != 0 %}
+  {% if gab %}
+    parent "{{parent[1]}}" has pages "{{ parent_pages }}" <br>
+  {% endif %}
+  <ul>
+  {% for page in parent_pages %}
+        <li> <a href="{{ page[0] | relative_url }}"
+                title="{{ page[2] }}" > {{ page[1] }} </a> </li>
+  {% endfor %} <!-- page in parent_pages -->
+  </ul>
+{% endif %} <!---  end add pages in parent, if any -->
+
+<!---  end add pages in parent -->
+
+
+

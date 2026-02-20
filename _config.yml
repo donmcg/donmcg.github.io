@@ -64,8 +64,8 @@ markdown: kramdown
 # attempting to enable Alerts 9feb2026 
 kramdown:
   input: GFM
-plugins:
-  - jekyll-gfm-admonitions
+#plugins:
+#  - jekyll-gfm-admonitions
 
 # for LaTex
 # this stuff is not needed.  see _includes/head.html
@@ -111,6 +111,8 @@ collections:
   music:
     output: true
   mini:
+    output: true
+  scan:
     output: true
 #    permalink: /:path/ # flattens the contents of _mini/ directly under _site
 #    permalink: /mini/:path/ # mini/xyz.md becomes mini/xyz/index.html
