@@ -18,8 +18,8 @@ title: page list as found in matching group
 
 
 {% comment %}
-  parent: psudonym for book or chapter
-  motif: psudonym for topic(for book) or theme(for chapter)
+  parent: pseudonym for book or chapter
+  motif: pseudonym for topic(for book) or theme(for chapter)
   
   inputs:
   gab
@@ -33,7 +33,7 @@ title: page list as found in matching group
 {% assign parent = include.parent %}
 {% assign level = parent[5] %}
 
-<!-- motif is used as a substitute for theme or topic -->
+<!-- motif is used as a pseudonym for theme or topic -->
 {% if level == 'book' %} <!-- book -->
   {% assign parent_motifs = parent[6] | split: ']2[' %}
 {% elsif level == 'chapter' %} <!-- chapter -->

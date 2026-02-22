@@ -1,0 +1,99 @@
+{% comment %}
+---
+layout: default
+title: sort and convert a file binder into an array
+---
+{% endcomment %}
+
+{% comment %}
+  use this include as follows
+  the use of ( ) vs { } here prevents liquid confusion
+
+    <!-- initialize binder aggregate structures -->
+    (%- assign tome_books = "" | split: ']3[' -%)
+    (%- assign tome_chapters = "" | split: ']3[' -%)
+    (%- assign tome_pages = "" | split: ']3[' -%)
+    (%- assign tome_blogs = "" | split: ']3[' -%)
+    <!-- begin main -->
+    (%- for my_file in site.collection -%) 
+    ...
+    (% include file_binder_array.html gab=my_gab tome=my_tome file=my_file %)
+{% endcomment %}
+
+
+{% comment %}
+  Formats file into file_binder_array for external processing
+
+  inputs:
+  gab
+  file      -> file extracted from the site listing
+
+	It does not seem possible to pass an array, like tome_book into
+	this context via include.push_to, and succeed in the actual push
+	That must be done in the outer context.
+
+	So instead the global array "binder_entry" is declared and filled here.
+	binder_entry will evaluate to "" if not filled here after each invocation.
+
+{% endcomment %}
+
+    <!-- level structures -->
+{%- comment -%}
+  binders are declared in the markdown frontmatter:
+
+  title:
+  tip:
+  date:
+  binder:
+    tome:  xyz  # a single word common to all levels
+    level: book # book | chapter | page | log: presentation level of this file.
+    topics: [ topic1, topic2, ... topicN ] # applies to book level
+    themes: [ theme1, theme2, ... themeM ] # applies to chapter level
+
+  In this script each md file will have it's frontmatter contents,
+  reorganized by level into an array-like structure:
+      For example
+      book | chapter | page | log [0] => url
+      book | chapter | page | log [1] => title
+      book | chapter | page | log [2] => tip
+      book | chapter | page | log [3] => date
+      book | chapter | page | log [4] => tome
+      book | chapter | page | log [5] => level
+      book | chapter | page | log [6] => topics_string
+      book | chapter | page | log [7] => themes_string
+
+{%- endcomment -%}
+
+
+{% assign gab = include.gab %}
+{% assign file = include.file %}
+{% assign levels = "book,chapter,page,log" | split: "," %} <!-- allowed levels -->
+{%- assign binder_entry = "" -%}
+
+{%- if levels contains file.binder.level -%}
+  {%- if gab -%}
+	  file_binder_array: {{ file.binder.level }} level for "{{ file.title }}" found <br>
+  {%- endif -%}
+  <!-- stringify the topics before appending -->
+  {%- assign topics_string = file.binder.topics | join: ']2[' -%}
+  {%- assign themes_string = file.binder.themes | join: ']2[' -%}
+  {%- assign entry = file.url | append: ']1['
+    | append: file.title | append: ']1['
+    | append: file.tip | append: ']1[' 
+    | append: file.date | append: ']1[' 
+    | append: file.binder.tome | append: ']1['
+    | append: file.binder.level | append: ']1['
+    | append: topics_string | append: ']1['
+    | append: themes_string
+    | split: ']1[' -%}
+
+  <!-- append to external global array -->
+	{%- assign binder_entry = entry -%}
+
+{%- else -%}
+  {%- if gab -%}
+    file.binder.level "{{ file.binder.level }}" is not one of "{{ levels }}"<br>
+  {%- endif -%}
+{%- endif -%} <!-- level -->
+    
+

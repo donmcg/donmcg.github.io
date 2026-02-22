@@ -12,8 +12,8 @@ binder:
 
 # SU Piston Position Book
 
-Here is needed: **binder_tome_book_chapter_list.html** that provides
-a list of topics with links to supporting chapters...
+Here is needed: **binder_tome_book_chapters_pages_list.html** that provides
+a list of topics with links to supporting chapters and pages...
 
 ### Blog:
 

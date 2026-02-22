@@ -16,7 +16,7 @@
 
 {%- comment -%}
   use this include as follows:
-  include binder_tome_books_chapters_pages_list sitecoll=site.**sitecoll** tome=**bindertome** gab=**gab**
+  include binder_tome_books_chapters_pages_list sitecoll=site.my_coll tome=my_tome gab=gab
 {%- endcomment -%}
   
 
@@ -172,101 +172,33 @@
   
           <!-- book -->
           {%- if file.binder.level == "book" -%}
-            {%- if gab -%}
-              new book "{{ file.title }}" found in tome "{{file.binder.tome}}" <br>
-            {%- endif -%}
-            <!-- stringify the topics before appending -->
-            {%- assign topics_string = file.binder.topics | join: ']2[' -%}
-            {%- assign themes_string = file.binder.themes | join: ']2[' -%}
-            {%- assign book = file.url | append: ']1['
-              | append: file.title | append: ']1['
-              | append: file.tip | append: ']1[' 
-              | append: file.date | append: ']1[' 
-              | append: file.binder.tome | append: ']1['
-              | append: file.binder.level | append: ']1['
-              | append: topics_string | append: ']1['
-              | append: themes_string
-              | split: ']1[' -%}
-
-            <!-- warning: are multiple books with same title allowed? -->
-            {%- assign tome_books = tome_books | push: book -%}
-          {%- else -%}
-            {%- if gab -%}
-              {%- comment -%}
-              <!-- not a useful gab -->
-              "{{ file.binder.level }}" is not "book" for "{{ file.title }}"<br>
-              {%- endcomment -%}
-            {%- endif -%}
-          {%- endif -%} <!-- level -->
+            {%- include file_binder_array.html gab=gab file=file -%}
+            {%- unless binder_entry == "" -%}
+              <!-- append to tome_books -->
+							{%- assign tome_books = tome_books | push: binder_entry -%}
+            {%- endunless -%} <!-- binder_entry -->
+						{%- if gab -%} size of tome_books {{ tome_books | size }} <br> {%- endif -%}
+          {%- endif -%} <!-- book -->
     
           <!-- chapter -->
           {%- if file.binder.level == "chapter" -%}
-            <!-- stringify the topics before appending -->
-            {%- assign topics_string = file.binder.topics | join: ']2[' -%}
-            <!-- stringify the themes before appending -->
-            {%- assign themes_string = file.binder.themes | join: ']2[' -%}
-            {%- if gab -%}
-              new chapter "{{ file.title }}" found in tome "{{file.binder.tome}}" <br>
-              topics: "{{topics_string}}" <br>
-              themes: "{{themes_string}}" <br>
-            {%- endif -%}
-            {%- assign chapter = file.url | append: ']1['
-              | append: file.title | append: ']1['
-              | append: file.tip | append: ']1['
-              | append: file.date | append: ']1['
-              | append: file.binder.tome | append: ']1['
-              | append: file.binder.level | append: ']1['
-              | append: topics_string | append: ']1['
-              | append: themes_string
-              | split: ']1[' -%}
-            {%- assign tome_chapters = tome_chapters | push: chapter -%}
-{%- comment -%}
-            {%- if gab -%}
-              recapitulation: <br>
-        chapter title: "{{ chapter[1] }}" <br>
-        tome: "{{ chapter[4] }}" <br>
-        url: "{{ chapter[0] }}"<br>
-        tip: "{{ chapter[2] }}"<br>
-        topics: "{{ chapter[6] }}"<br>
-        themes: "{{ chapter[7] }}"<br>
-            {%- endif -%}
-{%- endcomment -%}
-          {%- else -%}
-            {%- if gab -%}
-              {%- comment -%}
-              <!-- not a useful gab -->
-              "{{ file.binder.level }}" is not "chapter" for {{ file.title }}<br>
-              {%- endcomment -%}
-            {%- endif -%}
-          {%- endif -%} <!-- level -->
+            {%- include file_binder_array.html gab=gab file=file -%}
+            {%- unless binder_entry == "" -%}
+              <!-- append to tome_chapters -->
+							{%- assign tome_chapters = tome_chapters | push: binder_entry -%}
+            {%- endunless -%} <!-- binder_entry -->
+						{%- if gab -%} size of tome_chapters {{ tome_chapters | size }} <br> {%- endif -%}
+          {%- endif -%} <!-- chapter -->
     
           <!-- page -->
           {%- if file.binder.level == "page" -%}
-            {%- if gab -%}
-              new page "{{ file.title }}" found in tome "{{file.binder.tome}}" <br>
-            {%- endif -%}
-            <!-- stringify the themes before appending -->
-            {%- assign themes_string = file.binder.themes | join: ']2[' -%}
-            <!-- stringify the topics before appending -->
-            {%- assign topics_string = file.binder.topics | join: ']2[' -%}
-            {%- assign page = file.url | append: ']1['
-              | append: file.title | append: ']1['
-              | append: file.tip | append: ']1['
-              | append: file.date | append: ']1['
-              | append: file.binder.tome | append: ']1['
-              | append: file.binder.level | append: ']1['
-              | append: topics_string | append: ']1['
-              | append: themes_string
-              | split: ']1[' -%}
-            {%- assign tome_pages = tome_pages | push: page -%}
-          {%- else -%}
-            {%- if gab -%}
-              {%- comment -%}
-              <!-- not a useful gab -->
-              "{{ file.binder.level }}" is not "page" for {{ file.title }}<br>
-              {%- endcomment -%}
-            {%- endif -%}
-          {%- endif -%} <!-- level -->
+            {%- include file_binder_array.html gab=gab file=file -%}
+            {%- unless binder_entry == "" -%}
+              <!-- append to tome_pages -->
+							{%- assign tome_pages = tome_pages | push: binder_entry -%}
+            {%- endunless -%} <!-- binder_entry -->
+						{%- if gab -%}	size of tome_pages {{ tome_pages | size }} <br> {%- endif -%}
+          {%- endif -%} <!-- page -->
     
         {%- else -%}
           {%- if gab -%} not tome "{{ include.tome }}" for "{{ file.title }}"<br> {%- endif -%}
