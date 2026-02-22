@@ -1,0 +1,289 @@
+
+{%- comment -%}
+  ---
+  layout: default
+  title: chapters and pages listed links for a topic in a tome
+  ---
+  chapters with topics matching book topics will be listed. 
+  pages with topics matching book topics will be listed with each book.
+  pages with themes matching chapter themes will be listed with each chapter.
+
+  see _includes/multi_level_arrays.html for concept of array handling here.
+
+{%- endcomment -%}
+
+{%- comment -%}
+  use this include as follows:
+  include binder_tome_books_chapter_pages_list sitecoll=site.my_coll tome=my_tome topic=my_topics gab=gab
+{%- endcomment -%}
+
+{%- assign gab = false -%}
+{%- if include.gab == true -%}
+  {%- assign gab = true -%}
+    gab is true<br>
+    <!-- gab true comment -->
+{%- else -%}
+    <!-- gab is false -->
+{%- endif -%}
+ 
+<!-- main script begins here -->
+
+<!-- level structures -->
+{%- comment -%}
+  binders are declared in the markdown frontmatter:
+
+  title:
+  tip:
+  date:
+  binder:
+    tome:  xyz  # a single word common to all levels
+    level: book # book | chapter | page | log: presentation level of this file.
+    topics: [ topic1, topic2, ... topicN ] # applies to book level
+    themes: [ theme1, theme2, ... themeM ] # applies to chapter level
+
+  In this script each md file will have it's frontmatter contents,
+  reorganized by level into an array-like structure:
+      For example
+      book | chapter | page | log [0] => url
+      book | chapter | page | log [1] => title
+      book | chapter | page | log [2] => tip
+      book | chapter | page | log [3] => date
+      book | chapter | page | log [4] => tome
+      book | chapter | page | log [5] => level
+      book | chapter | page | log [6] => topics_string
+      book | chapter | page | log [7] => themes_string
+
+{%- endcomment -%}
+
+<!-- initialize binder aggregate structures -->
+{%- assign tomes = "" | split: ',' -%}
+{%- assign tome_books = "" | split: ']3[' -%}
+{%- assign tome_chapters = "" | split: ']3[' -%}
+{%- assign tome_pages = "" | split: ']3[' -%}
+{%- assign tome_blogs = "" | split: ']3[' -%}
+{%- assign chapter_themes = "" | split: ']3[' -%}
+
+{%- assign matching_topics = include.topic -%}
+
+{%- if gab -%}
+  <br> matching_tome is {{ include.tome }} <br>
+       matching_topics are {{ matching_topics }} <br>
+{%- endif -%}
+
+<!-- begin main -->
+{%- for file in include.sitecoll -%}
+  {%- if file.binder.tome == include.tome -%}
+    {%- if gab -%}
+      <br> "{{ file.title }}" is a member of requested tome "{{ file.binder.tome }}" <br>
+    {%- endif -%}
+
+    {%- unless tomes contains file.binder.tome -%}
+      {%- if gab -%}
+        first occurrence of tome "{{file.binder.tome}}" found in "{{ file.title }}"<br>
+      {%- endif -%}
+      {%- assign tomes = tomes | push: file.binder.tome -%}
+    {%- endunless -%} <!-- tomes -->
+  
+    {%- assign found_topic_match = false -%}
+    {%- for btopic in file.binder.topics -%}
+      {%- if found_topic_match == false -%} <!-- stop looking once match is found -->
+        {%- if matching_topics contains btopic -%}
+          {%- assign found_topic_match = true -%}
+        {%- endif -%} <!-- contains -->
+      {%- endif -%} <!-- found_topic_match == false -->
+    {%- endfor -%} <!-- btopic -->
+    {%- if found_topic_match -%}
+      <!-- add the file only if it has any matching topics -->
+
+      <!-- book -->
+      {%- if file.binder.level == "book" -%}
+        {%- if gab -%} found_topic_match! {{ btopic }} for "{{ file.title }}" <br> {%- endif -%}
+          {%- include file_binder_array.html gab=gab file=file -%}
+          {%- unless binder_entry == "" -%}
+            <!-- append to tome_books -->
+            {%- assign tome_books = tome_books | push: binder_entry -%}
+          {%- endunless -%} <!-- binder_entry -->
+          {%- if gab -%} size of tome_books {{ tome_books | size }} <br> {%- endif -%}
+      {%- endif -%} <!-- book -->
+  
+      <!-- chapter -->
+      {%- if file.binder.level == "chapter" -%}
+        {%- include file_binder_array.html gab=gab file=file -%}
+        {%- unless binder_entry == "" -%}
+          <!-- append to tome_chapters -->
+          {%- assign tome_chapters = tome_chapters | push: binder_entry -%}
+
+					<!-- accumulate chapter_themes for page identification -->
+					{%- for chapter_theme in file.binder.themes -%}
+					  {%- unless chapter_themes contains chapter_theme -%}
+              {%- assign chapter_themes = chapter_themes | push: chapter_theme -%}
+					  {%- endunless -%}
+					{%- endfor -%} <!-- chapter_theme -->
+
+        {%- endunless -%} <!-- binder_entry -->
+        {%- if gab -%} size of tome_chapters {{ tome_chapters | size }} <br> {%- endif -%}
+      {%- endif -%} <!-- chapter -->
+  
+      <!-- pages that match the topics -->
+      {%- if file.binder.level == "page" -%}
+        {%- include file_binder_array.html gab=gab file=file -%}
+        {%- unless binder_entry == "" -%}
+          <!-- append to tome_pages -->
+          {%- assign tome_pages = tome_pages | push: binder_entry -%}
+        {%- endunless -%} <!-- binder_entry -->
+        {%- if gab -%}  size of tome_pages {{ tome_pages | size }} <br> {%- endif -%}
+      {%- endif -%} <!-- page -->
+
+    {%- endif -%} <!-- found_topic_match -->
+  
+  {%- else -%}
+    {%- if gab -%} not tome "{{ include.tome }}" for "{{ file.title }}"<br> {%- endif -%}
+  {%- endif -%} <!-- tome -->
+
+{%- endfor -%} <!-- sitecoll -->
+
+<!-- now look for pages that are related to the chapter_themes that were found -->
+{%- for file in include.sitecoll -%}
+  {%- if file.binder.tome == include.tome -%}
+    {%- if file.binder.level == "page" -%}
+      {%- assign page_has_theme = false -%}
+			{%- for page_theme in file.binder.themes -%}
+			  {%- if chapter_themes contains page_theme -%}
+          {%- assign page_has_theme = true -%}
+				{%- endif -%} <!-- page_theme in chapter_themes -->
+			{%- endfor -%} <!-- page_theme -->
+
+			{%- if page_has_theme -%}
+        <!-- it is possible that page will be added twice if topic also matches? -->
+        {%- include file_binder_array.html gab=gab file=file -%}
+        {%- unless binder_entry == "" -%}
+          <!-- append to tome_pages -->
+          {%- assign tome_pages = tome_pages | push: binder_entry -%}
+        {%- endunless -%} <!-- binder_entry -->
+        {%- if gab -%}  size of tome_pages {{ tome_pages | size }} <br> {%- endif -%}
+
+			{%- endif -%} <!-- page_has_theme -->
+
+    {%- endif -%} <!-- page -->
+  {%- endif -%} <!-- tome -->
+{%- endfor -%} <!-- sitecoll -->
+  
+<!-- summary presentation -->
+{%- if gab -%}
+  <br>site tomes: "{{tomes}}" <br>
+  <br>tome_books:<br>
+  {%- for book in tome_books -%}
+    book title: "{{ book[1] }}" <br>
+    tome: "{{ book[4] }}" <br>
+    url: "{{ book[0] }}"<br>
+    tip: "{{ book[2] }}"<br>
+    topics: "{{ book[6] }}"<br>
+    themes: "{{ book[7] }}"<br>
+    <br>
+  {%- endfor -%} <!-- book -->
+
+  <br>tome_chapters:<br>
+  {%- for chapter in tome_chapters -%}
+    chapter title: "{{ chapter[1] }}" <br>
+    tome: "{{ chapter[4] }}" <br>
+    url: "{{ chapter[0] }}"<br>
+    tip: "{{ chapter[2] }}"<br>
+    topics: "{{ chapter[6] }}"<br>
+    themes: "{{ chapter[7] }}"<br>
+    <br>
+  {%- endfor -%} <!-- chapter -->
+  <br>
+
+  <br>tome_pages:<br>
+  {%- for page in tome_pages -%}
+    page title: "{{ page[1] }}" <br>
+    tome: "{{ page[4] }}" <br>
+    url: "{{ page[0] }}"<br>
+    tip: "{{ page[2] }}"<br>
+    topics: "{{ page[6] }}"<br>
+    themes: "{{ page[7] }}"<br>
+    <br>
+  {%- endfor -%} <!-- page -->
+  <br>
+<!-- gab --> {%- endif -%}
+
+  <!-- begin the final rendering -->
+  {%- for tome in tomes -%}
+    <!-- set start_tome_list true for tome bullets, false for no tome bullets -->
+    {%- assign start_tome_list = false -%}
+    {%- assign end_tome_list = start_tome_list -%}
+
+    {%- for book in tome_books -%}
+      {%- if book[4] == tome -%}
+        <!-- there is at least one book in the tome -->
+        {%- if start_tome_list == true -%}
+          <li> {{tome | capitalize}} </li>
+          <ul>
+          {%- assign start_tome_list = false -%}
+          {%- assign end_tome_list = true -%}
+        {%- endif -%} <!-- start_tome_list -->
+        
+        <li> <a href="{{ book[0] | relative_url }}"
+                title="{{ book[2] }}" > {{ book[1] }} </a> </li>
+
+        <!-- list pages in book -->
+        {%- include parent_page_list.html gab=gab tome_pages=tome_pages parent=book -%}
+
+        <!-- build book_chapters: a list of chapters in current book -->
+        {%- assign book_chapters = "" | split: ']3[' -%}
+  
+        <!-- unstringify book[6] topics_string -->
+        {%- assign book_topics = book[6] | split: ']2[' -%}
+  
+        {%- for chapter in tome_chapters -%}
+          {%- if chapter[4] == tome -%}
+            <!-- unstringify chapter[6] topics_string -->
+            {%- assign chapter_topics = chapter[6] | split: ']2[' -%}
+            {%- for chapter_topic in chapter_topics -%}
+  
+            <!-- add chapter to book_chapters unless it's there already -->
+              {%- if book_topics contains chapter_topic -%}
+                <!-- avoid duplicate chapter listing -->
+                {%- assign list_chapter = true -%}
+                {%- for represented_chapter in book_chapters -%}
+                  {%- if chapter[0] == represented_chapter[0] -%}
+                    {%- assign list_chapter = false -%}
+                  {%- endif -%} <!-- represented already -->
+                {%- endfor -%} <!-- represented_chapter -->
+                {%- if list_chapter == true -%}
+                  {%- assign book_chapters =
+                             book_chapters | push: chapter -%}
+                {%- endif -%} <!-- list_chapter` -->
+
+              {%- endif -%} <!-- chapter topic in book -->
+  
+            {%- endfor -%} <!-- chapter_topic -->
+          {%- endif -%} <!-- chapter[4] == tome -->
+        {%- endfor -%} <!-- chapter in tome_chapters -->
+        <!-- completed build of book_chapters -->
+  
+        {%- if book_chapters.size != 0 -%}
+          <ol>
+          {%- for chapter in book_chapters -%}
+            <li> <a href="{{ chapter[0] | relative_url }}"
+                    title="{{ chapter[2] }}" > {{ chapter[1] }} </a> </li>
+
+            <!-- list pages in chapter -->
+            {%- include parent_page_list.html gab=gab tome_pages=tome_pages parent=chapter -%}
+
+          {%- endfor -%} <!-- book_chapters -->
+          </ol>
+        {%- else -%}
+				  {%- comment -%}
+				  {%- endcomment -%}
+            <br> <!-- whitespace for chapter-less books -->
+        {%- endif -%} <!-- book_chapters.size -->
+      {%- endif -%} <!-- book in tome -->
+  
+    {%- endfor -%} <!-- books -->
+  
+  {%- endfor -%} <!-- tomes -->
+  {%- if end_tome_list == true -%}
+    </ul>
+  {%- endif -%} <!-- end_tome_list -->
+  

@@ -249,8 +249,9 @@
     structure of variables:
     book_chapters[n] array of chapters for current book {%- endcomment -%}
       {%- for tome in tomes -%}
+   		  <!-- set start_tome_list true for tome bullets, false for no tome bullets -->
         {%- assign start_tome_list = true -%}
-        {%- assign end_tome_list = true -%}
+        {%- assign end_tome_list = start_tome_list -%}
         {%- for book in tome_books -%}
           {%- if book[4] == tome -%}
             <!-- there is at least one book in the tome -->
@@ -258,6 +259,7 @@
               <li> {{tome | capitalize}} </li>
               <ul>
               {%- assign start_tome_list = false -%}
+						  {%- assign end_tome_list = true -%}
             {%- endif -%} <!-- start_tome_list -->
             
             <li> <a href="{{ book[0] | relative_url }}"
@@ -317,8 +319,8 @@
   
         {%- endfor -%} <!-- books -->
   
-        {%- if start_tome_list == false -%}
-          </ul>
-        {%- endif -%} <!-- start_tome_list -->
       {%- endfor -%} <!-- tomes -->
+      {%- if end_tome_list == true -%}
+        </ul>
+      {%- endif -%} <!-- end_tome_list -->
   
