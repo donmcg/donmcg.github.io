@@ -72,6 +72,10 @@ with sensor 7 series.
 
 Guide Key 7 is designed to mate with the 7 series of sensors. 
 
+### Machining Log:
+
+[Guide Key 7 machining]({{ site.url | append: "/mini/project/su.piston.position/guideKey.7/newKey.machining-blog.html" }})
+
 Here's a view of newKey.4.  This drawing is intended to assist with
 the setup and direction of milling operations as described by the
 [New Key Milling Procedure V4]({{ site.url | append: "/mini/project/su.piston.position/guideKey.7/newKeyMachining.7.4-.html" }}) .

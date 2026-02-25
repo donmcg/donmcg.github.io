@@ -17,9 +17,10 @@ binder:
 {% include binder_tome_topic_chapters_pages_list.html sitecoll=site.mini tome=page.binder.tome topic="su.piston.position" gab=false %}
 </ul>
 
-### Blog:
+### Blogs:
 
-[SU Piston Position Blog]({{ site.url | append: "/mini/project/su.piston.position/su.piston.position-blog.html" }})
+- [SU Piston Position Blog]({{ site.url | append: "/mini/project/su.piston.position/su.piston.position-blog.html" }})
+- [Guide Key 7 Machining]({{ site.url | append: "/mini/project/su.piston.position/guideKey.7/newKey.machining-blog.html" }})
 
 {%- comment -%}
 Here is needed: **binder_tome_topic_chapters_pages_list.html** that provides

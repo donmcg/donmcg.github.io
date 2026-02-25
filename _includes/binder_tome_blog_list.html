@@ -8,172 +8,86 @@ title: blog links organized by tome and blog
 {%- comment -%}
 use this include as follows 
 
-include binder_tome_blog_list sitecoll=site.**collection** tome=**tome** blog=**blog** gab=gab
+include binder_tome_blog_list sitecoll=site.**collection** tome=**tome** blog=**blog** gab=gab order='reverse'
 
 Note: the **blog** argument simply needs to be unique to all posts
-within the particular blog. By convention the path to the blog is
-used for that purpose.
-{% endcomment %}
+within the particular blog. By convention the path to the blog is used for that purpose.
+{%- endcomment -%}
 
-{%- assign gab = false -%}
-{%- if include.gab == true -%}
-  {%- assign gab = true -%}
-{%- endif -%}
-
-{%- if gab -%}
-{%- endif gab -%}
+{%- assign gab = include.gab | default: false -%}
+{%- assign order = include.order | default: 'reverse' -%} 
 
 {%- if gab -%}
   Searching for entries of the "{{ include.blog }}" blog for the tome "{{ include.tome }}" <br>
 {%- endif gab -%}
 
-<!--
-	I don't know how to split an array of files taken from include.sitecoll
-	so it's tricky to collect the blog entries and then sort them by date.
-  It's a bit heavy handed, so I just sort the entire sitecoll by date
-	and proceed from there... seems a waste...
-
-	But the following crashes the server!, complains of nil
-{ assign sorted_sitecoll = include.sitecoll | sort: "date" | reverse }
-{ for file in sorted_sitecoll }
--->
-<!-- split must be added to make posts an array -->
-{%- assign posts = "" | split: "]1[" -%}
+<!-- split must be added to make fposts an array -->
 {%- assign fposts = "" | split: ", " -%}
 
 {%- for file in include.sitecoll -%}
   {%- if gab -%}
-	{% comment %}
-	  <!-- file title: "{{ file.title }}" level: "{{file.binder.level}}" <br> -->
-		<!--		file date: "{{ file.date }}" title: "{{ file.title }}" level: "{{file.binder.level}}" <br> -->
-	{% endcomment %}
+  {%- comment -%}
+    <!-- file title: "{{ file.title }}" level: "{{file.binder.level}}" <br> -->
+    <!--    file date: "{{ file.date }}" title: "{{ file.title }}" level: "{{file.binder.level}}" <br> -->
+  {%- endcomment -%}
   {%- endif gab -%}
 
-  {% if file.binder.tome == include.tome %}
+  {%- if file.binder.tome == include.tome -%}
 
     {%- if gab -%}
-  		<!-- file title: "{{ file.title }}" level: {{file.binder.level}} belongs to tome "{{ include.tome }}" <br> -->
+      <!-- file title: "{{ file.title }}" level: {{file.binder.level}} belongs to tome "{{ include.tome }}" <br> -->
     {%- endif gab -%}
 
-    {% if file.binder.level == "blog" %}
+    {%- if file.binder.level == "blog" -%}
 
       {%- if gab -%}
         <!-- limit list items to those associated with blogs -->
-				file "{{ file.title }}" <br> blog: {{ file.blog }} <br>
+        file "{{ file.title }}" <br> blog: {{ file.blog }} <br>
       {%- endif gab -%}
 
-      {% if file.binder.blog == include.blog %}
+      {%- if file.binder.blog == include.blog -%}
 
-			<!-- post[0]date [1]url [2]title [3]tip -->
-			<!-- below will sort on date: post[0] -->
-			{%- assign post = file.date | date: "%Y-%m-%d " | append: ']2[' |
-			      append: file.url   | append: ']2[' |
-						append: file.title | append: ']2[' |
-						append: file.tip   | append: ']2[' |
-						 split: "]2[" -%}
+        <!-- collect the post files for sorting -->
+        {%- assign fposts = fposts | push: file -%}
 
-			{%- assign posts = posts | push: post -%}
-			{%- assign fposts = fposts | push: file -%}
+        {%- if gab -%}
+          fposts size: {{ fposts.size }} <br>
+          date: {{ post[0] }}<br> url: "{{post[1]}}"<br> title: "{{post[2]}}"<br> tip: {{post[3]}}" <br>
+        {%- endif -%}
+      
+        {%- comment -%}
+            <!-- <li><a href="{{ file.url }}">{{ file.title }}</a></li> -->
+            <li><a href="{{ file.url }}" title="{{ file.tip }}" >{{ file.date | date: "%Y%m%d  " | append: file.title }}</a></li>
+        {%- endcomment -%}
 
-  {%- if gab -%}
-    {%- comment -%}
-    {%- endcomment -%}
-		posts size: {{ posts.size }} <br>
-	  date: {{ post[0] }}<br> url: "{{post[1]}}"<br> title: "{{post[2]}}"<br> tip: {{post[3]}}" <br>
-  {%- endif -%}
-
-  {%- comment -%}
-      <!-- <li><a href="{{ file.url }}">{{ file.title }}</a></li> -->
-      <li><a href="{{ file.url }}" title="{{ file.tip }}" >{{ file.date | date: "%Y-%m-%d  " | append: file.title }}</a></li>
-  {%- endcomment -%}
-
-      {% endif %} <!-- include.blog -->
-
-    {% endif %} <!-- blog -->
-  {% endif %}  <!-- tome -->
-{% endfor %}
-
-<!-- present the newest post first -->
-{%- comment -%}
-{%- endcomment -%}
-
-<!-- this next part is complicated; sort does not operate on [0] -->
-{% comment %} Example: Sort by the first element (index 1) {% endcomment %}
-{% comment %}{% assign my_data = "a:3,c:1,b:2" | split: "," %}{% endcomment %}
-{% assign my_data = posts %}
-
-{% assign sortable_array = "" %}
-
-  {% assign sortable_array = sortable_array | append: parts[0] | append: ":" | append: item | append: "|" %}
-
-{% for item in my_data %}
-	item size: {{ item.size }} <br>
-	-item[0]: {{ item[0] }} <br>
-	-item[1]: {{ item[1] }} <br>
-	item: {{ item }} <br>
-	<br>
-  {% assign parts = item | split: "]2[" %}
-	parts size: {{ parts.size }} <br>
-	parts[0]: {{ parts[0] }} <br>
-  {% comment %} Create a "key:original_value" string, putting the sorting value first {% endcomment %}
-	{% comment %}
-  {% assign sortable_array = sortable_array | append: parts[0] | append: ":" | append: item | append: "|" %}
-	{% endcomment %}
-	{% assign sortable_array = sortable_array | append: item[0] | append: "]3[" | append: item | append: "]4[" %}
-	sortable_array: {{sortable_array}} <br>
-	<br>
-{% endfor %}
-
-{% comment %} Sort the string array, then split back to array {% endcomment %}
-{% assign sorted_data = sortable_array | split: "]4[" | sort | reverse %}
-sorted_data size: {{ sorted_data.size }} <br>
--sorted_data[0]: {{ sorted_data[0] }} <br>
--sorted_data[1]: {{ sorted_data[1] }} <br>
-sorted_data: {{sorted_data}} <br>
-<br>
-{% assign sorted_value = sorted_data | split: "]3[" %}
-sorted_value size: {{ sorted_value.size }} <br>
-sorted_value: {{sorted_value}} <br>
-<br>
-
-{% comment %} Now iterate through sorted_data (elements will be "2:b:2", "1:c:1", etc.) {% endcomment %}
-{% for sorted_item in sorted_data %}
-  sorted_item size: {{ sorted_item.size }} <br>
-  -sorted_item[0]: {{ sorted_item[0] }} <br>
-  -sorted_item[1]: {{ sorted_item[1] }} <br>
-  sorted_item: {{sorted_item}} <br>
-<br>
-  {% assign real_value = sorted_item | split: "]3[" | last %}
-	real_value size: {{ real_value.size }} <br>
-	real_value: {{ real_value }} <br>
-	real_value[0]: {{ real_value[0] }} <br>
-	<br>
-{% endfor %}
-
-<!-- whew!, that's done -->
-
-  {%- comment -%}
-	  <br>post: {{post}} <br>
-  {%- endcomment -%}
-{%- for post in posts -%}
-  {%- if gab -%}
-	  <br>date: {{ post[0] }}<br> url: "{{post[1]}}"<br> title: "{{post[2]}}"<br> tip: {{post[3]}}" <br>
-  {%- endif -%}
-
-	<li><a href="{{ post[1] }}" title="{{ post[3] }}" >{{post[0]}}  {{post[2]}}</a></li>
-
+      {%- endif -%} <!-- file.binder.blog == include.blog -->
+    {%- endif -%} <!-- blog -->
+  {%- endif -%} <!-- tome -->
 {%- endfor -%}
 
-fposts size: {{ fposts.size }} <br>
-{% assign sorted_fposts = fposts | sort: 'date' | reverse %}
+{%- if order == 'reverse' -%}
+  <!-- present the newest post first -->
+  {%- assign sorted_fposts = fposts | sort: 'date' | reverse -%}
+{%- else -%}
+  {%- assign sorted_fposts = fposts | sort: 'date' -%}
+{%- endif -%}
 
-sorted_fposts size: {{ sorted_fposts.size }} <br>
-{% for file in sorted_fposts %}
-  title: "{{ file.title }}" date: "{{ file.date }}" <br>
-  <li><a href="{{ file.url }}" title="{{ file.tip }}" >{{ file.date | date: "%Y-%m-%d  " | append: file.title }}</a></li>
-{% endfor %}
-<br>
+{%- for post in sorted_fposts -%}
+  {%- comment -%}
+  <!-- title: "{{ post.title }}" date: "{{ post.date }}" <br> -->
 
-completed binder_tome_blog_list <br>
-
+	<li>{{ post.date | date: "%d %b %Y - " }}<a href="{{ post.url }}" title="{{ post.tip }}" >
+			{{ post.title }}</a></li>
+  {%- endcomment -%}
+	<!-- use same format as in ../blog/index.html -->
+  <li>
+	  <h3>
+			  <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
+				-
+				<span class="author">
+					<a href="{{ post.url }}" title="{{ post.tip }}">{{ post.title }}</a>
+        </span>
+	  </h3>
+  </li>
+{%- endfor -%}
 

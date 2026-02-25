@@ -17,6 +17,6 @@ binder:
 
 <div>
   <ol>
-  {% include binder_tome_blog_list.html collection=site.mini tome="project" blog="project/su.piston.position/blog" %}
+  {% include binder_tome_blog_list.html sitecoll=site.mini tome="project" blog="project/su.piston.position/blog" gab=false %}
   </ol>
 </div>
