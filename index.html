@@ -39,9 +39,27 @@ title: Home
 </section>
 -->
 
+{%- comment -%}
+<iframe src="https://www.clocksimulator.com/?embed=true"
+  width="200" height="200"
+  style="border:none; border-radius:50%; overflow:hidden;">
+</iframe>
+
+<iframe src="https://www.clocksimulator.com/?embed=true&theme=transparent"
+  width="200" height="200" allowtransparency="true"
+  style="border:none; border-radius:50%; overflow:hidden;">
+</iframe>
+{%- endcomment -%}
+
+<iframe src="https://www.clocksimulator.com/?embed=true&theme=light"
+  width="200" height="200"
+  style="float:right; border:none; border-radius:50%; overflow:hidden;">
+</iframe>
+
 <section>
   {% include navigation.html %}
 </section>
+
 <br>
 
 Last update of site: {{ "now" | date: "%d %b %Y" }}.
