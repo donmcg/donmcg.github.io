@@ -12,16 +12,15 @@ binder:
 
 # AFR Book
 
-Here is needed: **binder_tome_book_chapter_list.html** that provides
-a list of topics with links to supporting chapters...
+**Air-Fuel ratio (AFR)** is the mass ratio of air to a solid, liquid,
+or gaseous fuel present in a combustion process.
 
-[SU AFR Blog]({{ site.url | append: "/mini/measurement/afr/afr_blog.html" }})
+### Topics:
+<ul>
+{% include binder_tome_topic_chapters_pages_list.html sitecoll=site.mini tome=page.binder.tome topic="afr" gab=false %}
+</ul>
 
-{%- comment -%}
-The *AFR* blog:
-<div>
-  <ol>
-  {% include binder_tome_blog_list.html collection=site.mini tome="measurement" blog="measurement/afr/blog" %}
-  </ol>
-</div>
-{%- endcomment -%}
+### Blogs:
+
+- [AFR Blog]({{ site.url | append: "/mini/measurement/afr/afr-blog.html" }})
+

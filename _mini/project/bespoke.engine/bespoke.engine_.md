@@ -14,20 +14,21 @@ binder:
 
 ## Rebuild the engine such that it can run well with available fuels.
 
-(under construction)
+### Topics:
+<ul>
+{% include binder_tome_topic_chapters_pages_list.html sitecoll=site.mini tome=page.binder.tome topic="bespoke.engine" gab=false %}
+</ul>
 
-Here is needed: **binder_tome_book_chapter_list.html** that provides
-a list of topics with links to supporting chapters...
+### Blogs:
+
+- None at this time.
 
 {%- comment -%}
-[SU Piston Position Blog]({{ site.url | append: "/mini/project/su.piston.position/su.piston.position_blog.html" }})
+- [SU Piston Position Blog]({{ site.url | append: "/mini/project/bespoke.engine/bespoke.engine-blog.html" }})
+- [Guide Key 7 Machining]({{ site.url | append: "/mini/project/bespoke.engine/guideKey.7/newKey.machining-blog.html" }})
+
+#### page.title: {{ page.title }}
+
+#### page.url: {{ page.url }}
 {%- endcomment -%}
 
-{%- comment -%}
-The *su piston position* blog:
-<div>
-  <ol>
-  {% include binder_tome_blog_list.html collection=site.mini tome="project" blog="project/su.piston.position/blog" %}
-  </ol>
-</div>
-{%- endcomment -%}

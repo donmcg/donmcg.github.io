@@ -12,9 +12,16 @@ binder:
 
 # Compression Ratio Book
 
-Here is needed: **binder_tome_book_chapter_list.html** that provides
-a list of topics with links to supporting chapters...
+**Compression ratio (CR)** is the ratio between the maximum
+*(Bottom Dead Center)* and minimum *(Top Dead Center)* volume during the
+compression stage of the power cycle in a piston engine.
 
-[CR Blog]({{ site.url | append: "/mini/measurement/cr/cr_blog.html" }})
+### Topics:
+<ul>
+{% include binder_tome_topic_chapters_pages_list.html sitecoll=site.mini tome=page.binder.tome topic="cr" gab=false %}
+</ul>
 
+### Blogs:
+
+- [CR Blog]({{ site.url | append: "/mini/measurement/cr/cr-blog.html" }})
 

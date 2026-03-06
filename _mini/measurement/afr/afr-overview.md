@@ -12,5 +12,13 @@ binder:
 
 # Air Fuel Ratio
 
-AFR is the instantaneous value of the ratio of air to fuel.
+**Air-Fuel ratio (AFR)** is the mass ratio of air to a solid, liquid,
+or gaseous fuel present in a combustion process.
+
+It is the purpose of carburetion to provide the proper AFR under all
+conditions of operation.  The venerable S.U carburettor achieves
+this objective largely by matching its needle profile to the demand
+of the engine.
+
+A bespoke engine suggests a bespoke needle profile.
 
