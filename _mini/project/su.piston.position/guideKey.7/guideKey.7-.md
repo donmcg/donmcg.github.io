@@ -18,6 +18,8 @@ Last update {{ page.date | date: "%d %b %Y" }}.
 
 # SU Piston Position Guide Key 
 
+## Log:  [Guide Key 7 Machining]({{ site.url | append: "/mini/project/su.piston.position/guideKey.7/newKey.machining-blog.html" }})
+
 Here's a drawing of the standard guide key from an HIF6. It features an 
 anchor with a beveled hole for a countersink head screw and a tongue
 which bends at a right angle.

@@ -6,7 +6,8 @@ date:   2025-11-04 01:00:00 -0700
 binder:
   tome:  project  # a single word common to all levels
   level: chapter # book | chapter | blog | page : presentation level of this file.
-  topics: [su.piston.position]
+# topics: [su.piston.position]
+  topics: []
   themes: [ ] # applies to chapter level
   blog: project/su.piston.position/blog
 ---

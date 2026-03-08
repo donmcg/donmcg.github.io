@@ -23,6 +23,8 @@ Last update {{ page.date | date: "%d %b %Y" }}.
 > The modern mechanical carburettor is a highly developed
 > device capable of accurately delivering the incorrect air/fuel mixture.
 
+## Log:  [SU Piston Position Blog]({{ site.url | append: "/mini/project/su.piston.position/su.piston.position-blog.html" }})
+
 ## Principle of Operation
 
 Sensing the piston position is facilitated with three components:

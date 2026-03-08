@@ -5,7 +5,8 @@ tip: instructions for machining guide key 7
 date:   2026-02-25 01:00:00 -0700
 binder:
   tome:  project  # a single word common to all levels in the work 
-  level: chapter # identifies presentation level of this file.
+# level: chapter # identifies presentation level of this file.
+  level: page # identifies presentation level of this file.
   topics: [ ] # applies to book level
   themes: [ guideKey.7 ] # applies to chapter level
 ---
