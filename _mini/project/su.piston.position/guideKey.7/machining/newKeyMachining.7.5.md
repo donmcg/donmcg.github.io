@@ -2,13 +2,13 @@
 layout: default
 title: Rev.5 Guide Key 7 Machining Procedure
 tip: machining guide key 7, rev 5
-date:   2026-03-19 01:00:00 -0700
+date:   2026-03-25 01:00:00 -0700
 binder:
   tome:  project  # a single word common to all levels in the work 
   level: blog # identifies presentation level of this file.
   topics: [ ] # applies to book level
   themes: [ guideKey.7 ] # applies to chapter level
-  blog: project/su.piston.position/guideKey.7/machining
+  blog: prddoject/su.piston.position/guideKey.7/machining
 ---
 
 {% include mathjax.html %}
@@ -62,7 +62,8 @@ hd | 4" x 10" Mill Tooling Plate | hold-down
 1/4em | End Mill Holder | 1/4" end mill
 1/8em | End Mill Holder | 1/8" end mill
 1/8sd | 1/8" collet | 1/8" short drill
-1/8hc | 1/4" collet | 1/8" hole center
+1/8cd | 1/4" collet | 1/8" center drill
+1/4cs | 1/4" collet | 1/4" countersink (1-flute 60$^{\circ}$)
 5/16cs | 1/4" collet | 5/16" countersink (6-flute 60$^{\circ}$)
 caliper | hand | digital caliper
 
@@ -212,7 +213,7 @@ _`NCC:`_`No Climb Cut, No cut made despite climb direction motion`
     * X is at -15mil
 
     <br>
-7. 1/8hc: Locate screw hole and make divot
+7. 1/8cd: Locate screw hole and make divot
     * Retract Z and change tool
     * Advance Y from 45mil to 187.5mil
     * Advance X from -15mil to 432.5mil
@@ -235,20 +236,27 @@ _`NCC:`_`No Climb Cut, No cut made despite climb direction motion`
     * Turn off mill
 
     <br>
-9.  5/16cs (6-flute 60$^{\circ}$): Countersink the screw hole  
+9.  1/4cs (1-flute 60$^{\circ}$): Countersink the screw hole  
     __This step is for the HIF6 1/8-40 BSW imperial screw.__
     * The top diameter of the chamfer must exceed 184mil
       to accomodate the BSW screw.  
       (as measured)
 
     <br>
-    __/This step is an experimental procedure to 
-    establish the countersink for the screw. /__
+    __/This step is the result of experimental procedure to 
+    establish the countersink for the screw.
+    See [Countersink experiment 7.5]({{ site.url | append: "/mini/project/su.piston.position/guideKey.7/machining/countersink.7.5.html" }})
+    for details.
+    /__
 
     For $S$=diameter of screw hole, $D$=diameter of cs, $H$=depth of cs, $\theta$=angle of countersink:  
 
     <p style="text-align: center;">
       $H = \frac{D-S}{2 tan(\frac{\theta}{2})}$
+    </p>
+
+    <p style="text-align: center;">
+      $D = S + {2 H tan(\frac{\theta}{2})}$
     </p>
 
     For HIF6: $S$=125mil, $D$=185mil, $\theta$=60$^{\circ}$:  
@@ -257,7 +265,14 @@ _`NCC:`_`No Climb Cut, No cut made despite climb direction motion`
       $H = \frac{185-125}{2 tan(\frac{60}{2})} \approx 52mil$
     </p>
 
+    As a result of the
+    [experiment]({{ site.url | append: "/mini/project/su.piston.position/guideKey.7/machining/countersink.7.5.html" }}),
+    while 52mil is technically the correct result,
+    based on the original guide key,
+    it was found that 60mil is better suited to the actual screw.
+
     * Retract Z and change tool
+    * Minimally deburr screw hole entry without enlarging hole.
     * Advance Z to ohmmeter contact  
       _The tip of cs will be inside the screw hole.  
       The contact will be at the rim of the screw hole.  
@@ -266,10 +281,11 @@ _`NCC:`_`No Climb Cut, No cut made despite climb direction motion`
     * Set Z=0
     * Retract Z to -15mil from 0
     * Turn on mill
-    * Advance Z to 52mil from -15mil 
+    * Advance Z to 60mil from -15mil 
     * Retract Z to -15mil from 0
     * Turn off mill
-    * __*evaluate diameter of resulting countersink*__
+    * Measure: large diameter of cs should be $\approx$ 194mil
+      + Diameter Measured: <ins>..........</ins> mil
 
     <br>
 10. 1/8em: Penultimate cut second side of tongue  
