@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Rev.5 Guide Key 7 Machining Proposal
-tip: machining guide key 7, rev 5
-date:   2026-03-25 01:00:00 -0700
+title: Rev.6 Guide Key 7 Machining Procedure
+tip: machining guide key 7, rev 6
+date:   2026-03-30 01:00:00 -0700
 binder:
   tome:  project  # a single word common to all levels in the work 
   level: blog # identifies presentation level of this file.
@@ -19,7 +19,9 @@ binder:
 
 Last update {{ page.date | date: "%d %b %Y" }}.
 
-Revision 5:
+Revision 6:
+* Actual procedure followed based on rev5 proposal.
+
 * Based on R.4a
   - reformatted and updated
 

@@ -181,6 +181,8 @@ the end of the bar is cantilevered about 3/4" overhang.
 ---
 <br>
 
+23mar2026
+
 The new experiment is much like the old, but using 1/4cs 60$^{\circ}$ 1-flute countersink:
 
 1. Mount a piece of 1/4" square bar on top of a 1/4" spacer so that
@@ -233,7 +235,47 @@ I was careful to tighten the collet completely.
 So this experiment is much ado about nothing. Except as a reminder to
 steadfastly identify and observe best practices!
 
-I need to confirm the above result by repeating the experiment with the
-6-flute, properly tightened in the collet.
+I need to confirm the above result by repeating the 2nd half of the
+experiment with the 6-flute, properly tightened in the collet.
 
+---
+<br>
+
+25mar2026
+
+1. 5/16cs 60$^{\circ}$ 6-flute
+   * Tool inserted in collet and snugly tightened.
+   * Using the ohmmeter I was able to lower the cs into the hole and
+     recenter it. (A new way to find a hole center!)
+   * Set Z=0
+   * Set speed much lower
+   * Liberal cutting oil
+   * Slowly advance Z to 30mil with jogging and adding cut oil
+     - Again noticed resistance to advancing Z above 30mil or so.
+   * Increased speed
+   * Slowly advance Z to 52mil with lots of jogging and adding cut oil
+     - jogging and cutting oil
+     - considerable resistance
+     - once at 52mil let it run there for 30 sec or so.
+   * Retract Z and evaluate size of cs.
+     - substantial burr around countersink observed.
+     - placing screw in hole, it's head excessively proud of top surface
+     of the bar
+   * Removed bar
+     - deburred
+     - measured cs rim as 165mil!
+2. Evaluation and comments
+   * Shucks!  Almost exactly the same result as in previous experiment.
+   * My theory about the loose collet does not really explain what's
+     going on
+
+---
+<br>
+
+At this point I am forced to go with what works.
+Perhaps the number of flutes makes all of the difference after all.
+So use the single-flute
+tool for making the primary countersink.  If desired, then use the
+6-flute cs to finish using minimal Z drive.  Do not attempt to go
+all the way with the 6-flute countersink.
 
