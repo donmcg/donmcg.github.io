@@ -8,7 +8,7 @@ binder:
   level: blog # identifies presentation level of this file.
   topics: [ ] # applies to book level
   themes: [ guideKey.7 ] # applies to chapter level
-  blog: prddoject/su.piston.position/guideKey.7/machining
+  blog: project/su.piston.position/guideKey.7/machining
 ---
 
 {% include mathjax.html %}
@@ -30,7 +30,7 @@ Revision 5:
 * Use drawing newKey.5
   - The newKey.5 drawing adds guidepoint for tongue length trim.
 
-* The procedure below was proposed for making the next newKey.
+* The procedure here was proposed for making the next newKey.
   - See
     [newKeyMachining 7.6]({{ site.url | append: "/mini/project/su.piston.position/guideKey.7/machining/newKeyMachining.7.6.html" }})
  for actual steps followed with results. 

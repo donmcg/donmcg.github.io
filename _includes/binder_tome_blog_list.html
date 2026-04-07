@@ -42,7 +42,11 @@ within the particular blog. By convention the path to the blog is used for that 
 
       {%- if gab -%}
         <!-- limit list items to those associated with blogs -->
-        file "{{ file.title }}" <br> blog: {{ file.blog }} <br>
+        {%- if file.binder.blog == include.blog -%}
+				<!--	<br> matching blog: "{{ file.binder.blog }}" <br> title: "{{ file.title }}" <br> -->
+        {%- else -%}
+					<br> MISMATCH blog: "{{ file.binder.blog }}" <br> title: "{{ file.title }}" <br>
+        {%- endif -%}
       {%- endif gab -%}
 
       {%- if file.binder.blog == include.blog -%}
@@ -51,8 +55,10 @@ within the particular blog. By convention the path to the blog is used for that 
         {%- assign fposts = fposts | push: file -%}
 
         {%- if gab -%}
+          <br>
           fposts size: {{ fposts.size }} <br>
-          date: {{ post[0] }}<br> url: "{{post[1]}}"<br> title: "{{post[2]}}"<br> tip: {{post[3]}}" <br>
+					title: "{{ file.title }}" <br> date: {{ file.date }} <br> tip: "{{ file.tip }}" <br>
+					url: "{{ file.url }}"<br> blog: "{{ file.binder.blog }}" <br>
         {%- endif -%}
       
         {%- comment -%}
@@ -64,6 +70,10 @@ within the particular blog. By convention the path to the blog is used for that 
     {%- endif -%} <!-- blog -->
   {%- endif -%} <!-- tome -->
 {%- endfor -%}
+
+{%- if gab -%}
+  <br><br>
+{%- endif -%}
 
 {%- if order == 'reverse' -%}
   <!-- present the newest post first -->
