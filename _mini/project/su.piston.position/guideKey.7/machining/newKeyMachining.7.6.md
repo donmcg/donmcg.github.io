@@ -19,10 +19,10 @@ binder:
 
 Last update {{ page.date | date: "%d %b %Y" }}.
 
-Revision 6:
+New Key Machining Revision 6:
 * Actual procedure followed based on rev5 proposal.
 
-* Produced third physical newKey
+* Produced third physical newKey, aka brassKey6
 
 * Use drawing newKey.5
   - The newKey.5 drawing adds guidepoint for tongue length trim.
@@ -107,6 +107,13 @@ Diameters:
   of the tongue.
 
 ```
+
+{% include figure.html
+           img-dir=image-dir
+           img-file='brassKey4Machine-comp.png'
+           alt='brassKey4 in mill'
+           caption='BrassKey4 at Machining. Workpiece mounted on table.'
+%}
 
 <br>
 1. tram / 4hblk: Mount and tram block as straight edge for workpiece
@@ -648,6 +655,9 @@ Diameters:
 
     <br>
 25. __Finishing and trimming tongue to length is left as a future exercise.__
+    * Procedure followed to finish brassKey6: 
+    [newKeyFinishing 7.6]({{ site.url | append: "/mini/project/su.piston.position/guideKey.7/machining/newKeyFinishing.7.6.html" }})
+
 
 <br>
 
@@ -687,7 +697,6 @@ key thickness | 100 | ...99.5...
 *  Why is heel too long?  Heel dado was based on uncut endB. Step 15.
    Did I mis-count and place it at 695 + 50 = 745?  This does not seem
    to be the explanation.
-
 
 {% comment %}
 [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
