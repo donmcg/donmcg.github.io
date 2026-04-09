@@ -96,7 +96,7 @@ in producing brassKeys.
     * Tram adjust vise parallel to X axis
 
     <br>
-14. Caliper: Measure heel and tongue width  
+2.  caliper: Measure heel and tongue width  
     Heel width is determined by the original 1/4" workpiece.  Tongue width is determined
     by the Machining process.  The goal tongue width of this procedure is 140mil.
 
@@ -108,7 +108,7 @@ in producing brassKeys.
       - Tongue width Measured: <ins>...163.5...</ins> mil  
 
     <br>
-2. hd: Mount brassKey  
+3. vise: Mount brassKey  
 
     * Cant (Cantilever bar) is modified workpiece: 0.25" Brass Square Bar 360-H02 Extruded
     * Cant has one end milled to 200mil thick with 1/8" hole beyond milling to form a step.
@@ -122,7 +122,7 @@ in producing brassKeys.
     * Level the assembly and tighten vise.
 
     <br>
-3. 1/8em: Measure tongueA - sideA
+4. 1/8em: Measure tongueA - sideA
 
     * Retract Z and change tool.
     * Gross center X Y at exposed end of brassKey
@@ -145,7 +145,7 @@ in producing brassKeys.
     * Retract Y to -15mil from tongueA
 
     <br>
-4. 1/8em: Measure sideC - tongueC
+5. 1/8em: Measure sideC - tongueC
 
     * Retract Z to -50mil from 50
     * Retract X to 100mil from 150 (in order to clear the nut)
@@ -176,7 +176,7 @@ in producing brassKeys.
       - It is lucky that the goal can be achieved by removing material rather than adding it!
 
     <br>
-5. 1/8em: Remove material to reset tongueC for gapC = -55mil
+6. 1/8em: Remove material to reset tongueC for gapC = -55mil
 
     * Z is at 50mil
     * X is at 100mil
@@ -191,7 +191,7 @@ in producing brassKeys.
 
 
     <br>
-5. 1/8em: Remove material to reset tongueA for gapA = 55mil
+7. 1/8em: Remove material to reset tongueA for gapA = 55mil
 
     * Retract Z to -15mil from 150mil
     * Retract Y behind sideA 
@@ -212,7 +212,9 @@ in producing brassKeys.
     * Retract X to -15mil from 150mil
     * Retract Z to -50mil from 150mil
 
-14. Caliper: Verify tongue width is 140mil  
+
+    <br>
+8.  caliper: Verify tongue width is 140mil  
     * Measure in situ: tongue width should be 140mil
       - Measured in situ tongue width: <ins>...139.5...</ins> mil
       - Appearance: <ins>...beautiful...</ins>
@@ -225,6 +227,7 @@ in producing brassKeys.
       - Appearance: <ins>...beautiful...</ins>
       - Error: Finished_Measured - 140 : <ins>...-0.5...</ins> mil  
 
+    <br>
 
 ---
 
