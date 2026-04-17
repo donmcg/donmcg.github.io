@@ -537,7 +537,6 @@ pulses continue as long as the *Red* cell is aligned with a stripe.
 <br>
 
 ### __Tuning__
-
 Substituting $E_e$ $\eqref{eq:ledEe}$, as developed for the drive circuit
 into $V_t$ $\eqref{eq:tiaVt}$,
 as developed for the TIA circuit, yields the primary design equation
@@ -595,52 +594,95 @@ readily identifiable target positions:
 
 - $\Gamma^{park}$ - the cell is near the double stripe at the target end
 
-Prior to starting the tuning process, it is suggested to center all
-potentiometers $R_d^{cell}$ and $R_t^{cell}$.  This will put the circuit into
-a responsive pre-tune condition allowing for monitoring $V_t^{cell}$ as
-adjustments are made.
-
-The most important value of $V_t^{cell}$ will be used to determine the alignment
-of a cell at $\Gamma_{stripe}$.  This voltage will be used by the
+The most important value of $V_t^{cell}$ will be used to determine the
+alignment of a cell at $\Gamma_{stripe}$.  This voltage will be used by the
 comparator circuit to detect stripe alignment.  In equation $\eqref{eq:snsVt1}$
 it is seen that when
 $({\kappa \alpha \beta \gamma \over R_e} \Gamma - {1\over R_b}) = 0$
 that $V_t^{cell} = V_r$. Note that this
 condition is independent of the value $R_t^{cell}$.
 
-The _tuning mode_ is entered by holding the [_tune_ button](#mute-circuit)
+Prior to starting the tuning process, it is suggested to set all
+$R_d^{cell}$ and $R_t^{cell}$ potentiometers to their full CCW positions.
+This will put the circuit into a safe pre-tune condition that
+minimizes LED $D_{cell}$ current and _cell_ gain.  
+__(Prototype $R_d$ pots are CCW correct but $R_t$ pots are backwards.)__
+
+The adjustment of $R_d^{cell}$ and $R_t^{cell}$ potentiometers for each
+_cell_ proceeds as follows:
+
+1. Preset the _cell_ gain:
+   - Adjust $R_t^{Blu}$, $R_t^{Yel}$ and $R_t^{Red}$ full CCW
+     to their minimum value. __(CW on prototype board)__
+
+   <br>
+2. Pretune the _cell_ LED current:
+   - Turn on the [Decode Circuit](#decode-circuit).
+   - Preset the $D_{cell}$ LED current:
+     + Connect the voltmeter to measure $V_e^{cell}$, the voltage drop
+       across $R_e^{cell}$ .
+     + Adjust $R_d^{cell}$ for $V_e^{cell} \approx 1.0 volts$.
+
+   <br>
+3. The _tuning mode_ is entered by holding the [_tune_ button](#mute-circuit)
 while cycling power to the [Decode Circuit](#decode-circuit).
 In this mode each transducer cell LED 
-can be illuminated, one at a time, by successive presses of the _tune_
+will be illuminated continuously, one at a time, by successive presses
+of the _tune_
 button. The [mute cycler](#mute-circuit) provides indicator LEDs that 
 correspond to those in the sensor.
 
-The tuning of $R_d^{cell}$ and $R_t^{cell}$ for each _cell_
-proceeds by
-selecting the _cell_ using the _tune_ button, and
-connecting a voltmeter to $V_t^{cell}$:
+4. Select the particular _cell_ to be tuned (_Blu_, _Yel_ or _Red_) using
+the _tune_ button.
 
-1. Select the particular _cell_ (_Blu_, _Yel_ or _Red_) using the _tune_ button.
- 
-2. Connect the voltmeter to measure between $V_r^{cell}$ and $V_t$.
-Move the middle of the target to a location where $V_t^{cell}$ reaches a peak
-value.  This is a $\Gamma^{stripe}$ alignment.
-Adjust $R_d^{cell}$ for 0 Volts measured, ($V_t = V_r^{cell}$).
-This sets the $R_d^{cell}$ position, $\kappa^{cell}$.
+   <br>
+5. Establish the nominal $\Gamma^{stripe}$ irradiance current, $I_e^{cell}$,
+   for the _cell_.  
+   - Connect the voltmeter to measure $V_t^{cell}$,
+     the voltage from $V_t^{cell}$ to _GND_.
+   - Move the middle of the target to a location where $V_t^{cell}$
+     reaches its peak positive value.  
+     This is a $\Gamma^{stripe}$ alignment.  
+     __Do not move the target from
+     this position for the remainder of adjusting this cell.__
+   - Connect the voltmeter negative terminal to $V_r$ in order to 
+     measure $V_{tr}^{cell}$, the voltage from $V_t^{cell}$ to $V_r$.
+   - Adjust $R_d^{cell}$ such that the measured voltage is
+     $V_{tr}^{cell} \approx 0$ Volts ($V_t^{cell} = V_r$).  
+     Recall that adjusting $R_d$ is equivalent to setting $\kappa$ in 
+     equation $\eqref{eq:snsVt1}$.  
+     (At this point this zero value of $V_{tr}^{cell}$ should be 
+     largely independent of any $R_t^{cell}$ adjustment.)
 
-3. **(This step needs work: $R_t$ adjust for voltage just above TIA low rail?
-Possibly else and add TIA feedback diode? Setting gain based on
-$\Gamma^{dark}$ seems arbitrary? )**
-Connect the voltmeter to measure between $V_r^{cell}$ and $GND$.
-Move the target by $1{1 \over 2}$ stripes to locate a local minimum.
-This is a $\Gamma^{dark}$ alignment. Adjust $R_t^{cell}$ for 
-**(~1.5v is low rail of tia)** 2? Volts measured.
-This sets the $m_t^{cell}$ slope and $b_t^{cell}$ intercept per
-equations $\eqref{eq:snsVt2}$ and $\eqref{eq:snsVtmb}$. 
+   <br>
+6. Set the gain for the _cell_.  
+   A second voltmeter makes this step easier.
+   - Connect (a second) voltmeter to measure the voltage
+     drop, $V_e^{cell}$, across the resistor $R_e^{cell}$.
+   - Compute $V_{temp} = 0.8 \times V_e^{cell}$. Record the value.
+   - Adjust $R_d^{cell}$ for $V_e^{cell} = V_{temp}$.  
+     $V_{tr}^{cell}$ will swing negative.  
+     This approximates
+     the reduction in irradiance from $\Gamma^{stripe}$ to $\Gamma^{dark}$
+     _without_ having to move the target away from the $\Gamma^{stripe}$
+     position.
+   - Adjust $R_t^{cell}$ for $V_{tr}^{cell} = -1.00$ Volts . 
+     This sets the level of gain for good sensitivity without driving 
+     the TIA to the rails during normal operation.
+    
+   <br>
+7. Set the final $\Gamma^{stripe}$ irradiance current, $I_e^{cell}$,
+   for the _cell_.  
+   - Restore $R_d^{cell}$ to its nominal position where the measured
+     voltage is
+     $V_{tr}^{cell} = 0 V$. 
+   - The _cell_ in now fully tuned.
 
-4. Repeat for each of the _Blu_, _Yel_ and _Red_ cells.  After tuning, each cell
+   <br>
+8. Repeat, from step 4, for each of the _Blu_, _Yel_ and _Red_ cells.
+After tuning, each cell
 will yield $V_t^{cell} = V_r = 5 V$ when presented with $\Gamma^{stripe}$, and
-$V_t^{cell} = 4 V$ when presented with $\Gamma^{dark}$.  Furthermore,
+$V_t^{cell} \approx 4 V$ when presented with $\Gamma^{dark}$.  Furthermore,
 when presented with $\Gamma^{park}$, which occurs at the extreme end
 of the target, the _Blu_ cell will produce a $V_t^{Blu}$ voltage somewhat
 higher than 5 Volts.
