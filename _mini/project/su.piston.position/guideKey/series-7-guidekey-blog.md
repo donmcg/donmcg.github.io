@@ -19,11 +19,11 @@ For each attempt new challenges arise that are addressed in subsequent
 procedures.  Some of the listings below were proposed but not used, serving
 to help clarify and organize the development. They are listed as 'Proposal'.
 
-These milling operations were performed on a
-[Sherline 5400](https://www.sherline.com/product/54005410-deluxe-mill/#instructions).
+These milling operations are performed on a
+[Sherline 5400](https://www.sherline.com/product/54005410-deluxe-mill/#instructions) mill.
 
 <ol>
-  {%- include binder_tome_blog_list.html sitecoll=site.mini tome="project" blog="project/su.piston.position/guideKey.7/machining" gab=false order='reverse' -%}
+  {%- include binder_tome_blog_list.html sitecoll=site.mini tome="project" blog="project/su.piston.position/guideKey/series-7-guidekey" gab=false order='reverse' -%}
 </ol>
 
 <br>

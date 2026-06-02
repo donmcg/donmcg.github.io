@@ -8,13 +8,13 @@ binder:
   level: blog # identifies presentation level of this file.
   topics: [ ] # applies to book level
   themes: [ guideKey.7 ] # applies to chapter level
-  blog: project/su.piston.position/guideKey.7/machining
+  blog: project/su.piston.position/guideKey/series-7-guidekey
 ---
 
 {% include mathjax.html %}
 
 {% capture image-dir %}
-  {{site.url}}/assets/mini/project/su.piston.position/guideKey/
+  {{site.url}}/assets/mini/project/su.piston.position/guideKey/series-7/
 {% endcapture %}
 
 Last update {{ page.date | date: "%d %b %Y" }}.

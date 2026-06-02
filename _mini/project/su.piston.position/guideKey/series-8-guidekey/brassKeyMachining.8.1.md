@@ -1,17 +1,19 @@
 ---
 layout: default
-title: Rev.7 Guide Key 7 Machining Proposal
-tip: machining guide key 7, rev 7
-date:   2026-04-17 01:00:00 -0700
+title: Proposal Rev.1 - Series 8 Guide Key Machining 
+tip: machining brassKey.10, rev 1
+date:   2026-05-31 01:00:00 -0700
 binder:
   tome:  project  # a single word common to all levels in the work 
   level: blog # identifies presentation level of this file.
   topics: [ ] # applies to book level
-  themes: [ guideKey.7 ] # applies to chapter level
-  blog: project/su.piston.position/guideKey.7/machining
+  themes: [ guideKey.8 ] # applies to chapter level
+  blog: project/su.piston.position/guideKey/series-8-guidekey
 ---
 
 {% include mathjax.html %}
+
+# Edit below here...
 
 {% capture image-dir %}
   {{site.url}}/assets/mini/project/su.piston.position/guideKey/
