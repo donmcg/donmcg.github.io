@@ -11,9 +11,8 @@ binder:
 ---
 Last update {{ page.date | date: "%d %b %Y" }}.
 
-{% assign image = site.url | append: "/assets/mini/project/su.piston.position/calib.7.2/" %}
 {% capture image-dir %}
-  {{site.url}}/assets/mini/project/su.piston.position/calib/series-7/
+  {{site.url}}/assets/mini/project/su.piston.position/calibFixture/series-7/
 {% endcapture %}
 
 # SU Piston Position Calibration Fixture for 7.2 design
@@ -199,6 +198,7 @@ development of the system.  Adjustment of the micrometer is quite smooth
 and satisfying.
 
 {% comment %}
+{% assign image = site.url | append: "/assets/mini/project/su.piston.position/calibFixture/series-7/" %}
 <!-- these images are not needed -->
 ![Closeup drawing of flex sensor]({{ image }}assy.see.3p.sensor.png "3p_sensor_7.2 close")
 
