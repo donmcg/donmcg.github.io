@@ -2,7 +2,7 @@
 layout: page
 title: Calibration fixture 7.2 drawings
 tip: drawings of calib.7.2
-date:   2025-11-28 01:00:00 -0700
+date:   2026-06-05 01:00:00 -0700
 binder:
   tome:  project  # a single word common to all levels in the work 
   level: page # identifies presentation level of this file.
@@ -13,7 +13,7 @@ Last update {{ page.date | date: "%d %b %Y" }}.
 
 {% assign image = site.url | append: "/assets/mini/project/su.piston.position/calib.7.2/" %}
 {% capture image-dir %}
-  {{site.url}}/assets/mini/project/su.piston.position/calib.7.2/
+  {{site.url}}/assets/mini/project/su.piston.position/calib/series-7/
 {% endcapture %}
 
 # SU Piston Position Calibration Fixture for 7.2 design

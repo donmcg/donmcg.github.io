@@ -2,16 +2,17 @@
 layout: default
 title: Calibration fixture 7.2
 tip: calib.7.2 fixture
-date:   2025-11-28 01:00:00 -0700
+date:   2026-06-05 01:00:00 -0700
 binder:
   tome:  project  # a single word common to all levels in the work 
-  level: chapter # identifies presentation level of this file.
-  topics: [ su.piston.position ] # applies to book level
-  themes: [ calib.7.2 ] # applies to chapter level
+  level: blog # identifies presentation level of this file.
+  topics: [ ] # applies to book level
+  themes: [ calibFix.7 ] # applies to chapter level
+  blog: project/su.piston.position/calibFixture/series-7-calibfix
 ---
 Last update {{ page.date | date: "%d %b %Y" }}.
 
-# SU Piston Position Calibration Fixture for 7.2 design
+# SU Piston Position Calibration Fixture for series 7 sensors.
 
 Knowing the position of the piston along with the AFR, as the vehicle
 is running, provides information to validate the needle profile.
@@ -81,7 +82,7 @@ is similarly made.
 
 {% assign image-dir = site.url | append: "/assets/mini/project/su.piston.position/calib.7.2/" %}
 {% capture link-dir %}
-  {{site.url}}/mini/project/su.piston.position/calib.7.2/
+  {{site.url}}/mini/project/su.piston.position/calibFixture/series-7-calibfix/
 {% endcapture %}
 
 {% include img_cap_link.html
