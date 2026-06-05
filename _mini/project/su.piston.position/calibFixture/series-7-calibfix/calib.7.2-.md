@@ -80,7 +80,7 @@ is similarly made.
 
 ---
 
-{% assign image-dir = site.url | append: "/assets/mini/project/su.piston.position/calib.7.2/" %}
+{% assign image-dir = site.url | append: "/assets/mini/project/su.piston.position/calibFixture/series-7/" %}
 {% capture link-dir %}
   {{site.url}}/mini/project/su.piston.position/calibFixture/series-7-calibfix/
 {% endcapture %}
