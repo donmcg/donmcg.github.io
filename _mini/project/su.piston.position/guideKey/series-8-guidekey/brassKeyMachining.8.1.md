@@ -2,7 +2,7 @@
 layout: default
 title: Proposal Rev.1 - Series 8 Guide Key Machining 
 tip: machining brassKey.10, rev 1
-date:   2026-05-31 01:00:00 -0700
+date:   2026-06-06 01:00:00 -0700
 binder:
   tome:  project  # a single word common to all levels in the work 
   level: blog # identifies presentation level of this file.
@@ -14,7 +14,7 @@ binder:
 {% include mathjax.html %}
 
 {% capture image-dir %}
-  {{site.url}}/assets/mini/project/su.piston.position/guideKey/series-8/
+  {{site.url}}/assets/mini/project/su.piston.position/guideKey/series-8/thumbs/
 {% endcapture %}
 {% comment %}
   use thumbs for actual printing...  saves a lot of paper!
@@ -48,6 +48,8 @@ Series 8 Brass Key Machining Proposal Revision 1:
 
 | __TOOL__ | __FIXTURE__ | __DESCRIPTION__ |
 | ----------- |:----------:| ----------:|
+mic | Handheld | Micrometer Gauge
+di | diBase | Dial Indicator Gauge
 tram | Chuck | Dial Tram Gauge
 4hblk | 4" x 10" Mill Tooling Plate | 4 hole block 1/4" x 1-1/2" x 4"
 hd | 4" x 10" Mill Tooling Plate | hold-down  
@@ -119,7 +121,8 @@ Definitions:
 1. tram / 4hblk: Mount and tram block as straight edge for workpiece
 
     * Mount block along front edge of tooling plate, exposing two rows of holes.
-    * Tram align block parallel to X axis
+    * Mount block in extreme left position.
+    * Tram align block parallel to X axis.
 
     <br>
 2. hd: Mount workpiece  
@@ -153,55 +156,141 @@ Definitions:
     * Advance X to 250mil from -15mil
     * Set Y=0 at topZ using ohmmeter
     * Retract Y to -50mil from 0
+    * Retract Z to -15mil from 50mil
     * Retract X to -15mil from 250mil
     * Advance Z to 260mil from -15mil
     * Turn on mill
     * Repeat to goal of squared workpiece endB ( $\approx$20mil total depth of cut )
-      - Advance X in 5mil steps for $\approx$20mil total depth of cut
+      - Advance X in 5mil steps for $\approx$10mil total depth of cut and visually smooth.
       - Full Sweep Y: advance to Y=450mil (_SC_), retract to Y=-50mil(_NCC_)  
     * Turn off mill
+
     ![]({{image-dir}}pocket2-comp.png)
     Squared endB with remaining lip
 
-    <br>
-3. 3/8em: Reduce to 1/4" width of anchor to establish sideA 
+   <br>
+4.  3/8em: Reduce to 1/4" width of anchor to establish sideA
 
-    * Retract Z and change tool.
+    > Note: this first section yielded poor results.  Why?
+    * Retract Z.
     * Rotate workpiece 180$^{\circ}$, endB lip is uppermost.
       - sideA is facing up.
       - endB is facing to left.
       - botZ is facing away from operator
-    * Gross center Y, tool overlaps both sides of workpiece
+     Gross center Y, tool overlaps both sides of workpiece
     * Adjust X to just beyond lip at endB of workpiece, lower Z as needed.
     * Set X=0 (gross)
     * Retract X to -50mil from 0
     * Advance Z to approach surface of tooling plate
     * Set Z=0 at tooling plate using ohmmeter
     * Retract Z to -350mil from 0: tool is $\approx$37.5mil above top of workpiece
-    * Advance Z to -310mil from -350mil
+    * Advance Z to -320mil from -350mil
     * Turn on mill
       - Incrementally lower Z, in 10mil increments to goal of -250mil
-      - Full Sweep X: (advance to X=750mil, retract to X=-50mil)  
+      - Full Sweep X: (advance to X=750mil, retract to X=-50mil)
+        * 15 rotations of X knob from X=0 to X=750
     * Turn off mill
     * X is at -50mil
+    * Clean area then check height by comparing against 1/4" bar stock.
     * Advance Z to -200mil from -250mil
     * Set X=0 cut at endB using ohmmeter
     * Retract X to -15mil from 0
-    * Retract Z to -310mil from -200mil
+    * Retract Z to -320mil from -200mil
     * Retract Y just beyond botZ
     * Set Y=0 cut (gross)
     * Retract Y to -50mil from 0
+    * Advance X to 750mil from 0 (15 rotations)
     * Turn on mill
       - Incrementally lower Z, in 10mil increments to goal of -250mil
-      - Full Sweep Y: (advance to Y=700mil, retract to Y=-50mil)  
+      - Full Sweep Y: (advance to Y=600mil, retract to Y=-50mil)  
+        * 13 rotations of X knob from Y=0 to Y=600
     * Turn off mill
     * Retract Z to -350mil from -250mil
+    * Remove workpiece from table
+    >
+    * Measure: sideA to sideC; should be 250mil +5 -0
+      - Measured: <ins>...     ...</ins> mil
+      - Appearance: <ins>...    ...</ins>
+    >
+
+    Note: trial procedure follows
+    * Retract Z
+    * Remove workpiece and deburr edge at endB / sideB
+      - it must be able to lay flat on table
+    * Rotate workpiece 180$^{\circ}$, endB lip is uppermost.
+      - sideA is facing up.
+      - endB is facing to left.
+      - botZ is facing away from operator
+     Gross center Y, tool overlaps both sides of workpiece
+    * Adjust X to just beyond lip at endB of workpiece, lower Z as needed.
+    * Set X=0 (gross)
+    * Advance X to 400mil from 0
+    * Set Z=0 at sideA using ohmmeter
+    * Retract Z to -15mil from 0
+    * Retract X to -50mil from 0
+    * Advance Z to 10mil from -15mil
+    * Turn on mill
+      - Full Sweep X: (advance to X=750mil, retract to X=-50mil) 
+        + 15 rotations of X knob from X=0 to X=750
+    * Turn off mill
+
+    * $\boldsymbol{\xi}$ &nbsp; &nbsp;  X is at -50mil
+    * Retract Z
+    * Clean area then measure $\eta$, height from table to fresh cut using dial indicator
+      - Measured: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;    ...</ins> mil
+      - Appearance: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;   ...</ins>
+      - Evaluate planarity; is it level across entire cut?
+    * Compute new Z goal, $\zeta$, where $\zeta$ = **260** - $\eta$ mil
+    * Advance X to 400mil from -50mil
+    * Set Z=0 at sideA using ohmmeter
+    * Retract Z to -15mil from 0
+    * Retract X to -50mil from 0
+    * Advance Z to 10mil from -15mil
+    * Turn on mill
+      - Incrementally lower Z, in 10mil increments to goal of $\zeta$ mil
+      - Full Sweep X: (advance to X=750mil, retract to X=-50mil)
+        * 16 rotations of X knob from X=-50 to X=750
+      - Brush tool cutting edge and surrounding area to clear debris
+      - Continue from $\boldsymbol{\xi}$ if desired
+    * Turn off mill
+
+    * Repeat from $\boldsymbol{\xi}$ with modifications:
+      - This is the final setting of sideA
+      - Compute final Z goal, $\zeta$, where $\zeta$ = **250** - $\eta$ mil
+      - Perhaps use 5mil increments, or less
+
+    <br>
+    * Z is at final $\zeta$ with sideA at 250mil above table
+    * X is at -50mil
+    * Set Z=0
+    * Advance Z to 50mil from 0
+    * Set X=0 cut at endB using ohmmeter
+    * Retract X to -15mil from 0
+    * Retract Z to -100mil from 50mil
+    * Retract Y just beyond botZ
+    * Set Y=0 cut (gross)
+    * Retract Y to -50mil from 0
+    * Advance X to 750mil from -15mil (15$^+$ rotations)
+    * Advance Z to -70mil from -100mil
+    * Turn on mill
+      - Incrementally advance Z, in 10mil increments to goal of 0mil
+      - Full Sweep Y: (advance to Y=600mil, retract to Y=-50mil)  
+        * 14 rotations of X knob from Y=-50 to Y=600
+    * Turn off mill
+    * Retract Z
+    * Remove workpiece from table
+    
+    * Measure: sideA to sideC; should be 250mil +5 -0
+      - Measured: <ins>... &nbsp; &nbsp; &nbsp; &nbsp;  ...</ins> mil
+      - Appearance: <ins>...    ...</ins>
+
+    <br>
 
     ![]({{image-dir}}pocket3-comp.png)
     SideA is facing upwards.
 
     <br>
-3.  ef: Locate hole for adhesive arch
+5.  ef: Locate hole for adhesive arch
 
     Much of the area around this hole will be cut away in subsequent steps.
 
@@ -232,7 +321,7 @@ Definitions:
     * X,Y are now centered on screw hole
 
     <br>
-3. 1/8cd: Cut guide divot for drill in topZ
+6. 1/8cd: Cut guide divot for drill in topZ
     * Retract Z and change tool
     * Recenter X,Y at (195,-210) to remove backlash
     * Advance Z and locate Z$\approx$0
@@ -244,7 +333,7 @@ Definitions:
     * Turn off mill
 
     <br>
-3. 7/64sd: Drill hole to form arch behind tongue  
+7. 7/64sd: Drill hole to form arch behind tongue  
     * Retract Z and change tool
     * Recenter X,Y at (195,-210) to remove backlash
     * Advance Z and locate Z$\approx$0  
@@ -262,7 +351,7 @@ Definitions:
     Hole for arch. SideA facing down, sideC facing up.
 
     <br>
-4. 1/4em: Gross Cut tongueA (10mil oversize)  
+8. 1/4em: Gross Cut tongueA (10mil oversize)  
    Gross cut of tongueA and tongueC yields gross tongue width 140 + 10 + 10 = 160mil
 
     * Retract Z and change tool.
@@ -296,7 +385,7 @@ Definitions:
     * Retract Z to -15mil from 300mil
 
     <br>
-5. 1/4em: Gross Cut tongueC (10mil oversize)  
+9. 1/4em: Gross Cut tongueC (10mil oversize)  
    Gross cut of tongueA and tongueC yield gross tongue width 140 + 10 + 10 = 160mil
 
     * Advance Y to 550mil from -15mil (cut beyond sideC)
@@ -326,7 +415,7 @@ Definitions:
       - Appearance: <ins>...    ...</ins>
 
     <br>
-6. 1/4em: Establish botT, the lower surface of the tongue
+10. 1/4em: Establish botT, the lower surface of the tongue
 
     * Rotate workpiece 180$^{\circ}$
       - sideA is facing operator.
@@ -361,7 +450,7 @@ Definitions:
     Lower surface of tongue
 
     <br>
-6. 1/8em: Establish cantilever at lower end of tongue
+11. 1/8em: Establish cantilever at lower end of tongue
 
     * Retract Z and change tool
     * Gross center X,Y
@@ -393,7 +482,7 @@ Definitions:
     Cantilever at lower end of tongue
 
     <br>
-6. 3/8em: Establish topT, the upper surface of the tongue
+12. 3/8em: Establish topT, the upper surface of the tongue
 
     * Rotate workpiece 180$^{\circ}$
       - sideA is facing away from operator.
@@ -423,7 +512,7 @@ Definitions:
     Upper surface of tongue
 
     <br>
-6. 3/8em: Establish topK, the upper surface of the key anchor
+13. 3/8em: Establish topK, the upper surface of the key anchor
 
     * X,Y,Z is 150,-50,-15 mil
     * Advance X to 475mil from 150mil
@@ -452,7 +541,7 @@ Definitions:
     Upper surface of anchor
 
     <br>
-6. 1/8rem: Fillet on rear of tongue
+14. 1/8rem: Fillet on rear of tongue
 
     ```
     1/8rem bit has 10thou radius.
@@ -481,7 +570,8 @@ Definitions:
     Fillet on rear of tongue
 
     <br>
-6.  ef: Locate screw hole center
+15. ef: Locate screw hole center 
+
     * Retract Z and change tool
     * Gross adjust X,Y for tool centered on tongue beyond endB
     * Gross set Z=0 at topT
@@ -509,7 +599,7 @@ Definitions:
     * X,Y are now centered on screw hole
 
     <br>
-7. 1/8cd: Cut guide divot for drill in topZ
+16. 1/8cd: Cut guide divot for drill in topZ
     * Retract Z and change tool
     * Advance Z to topK using ohmmeter
     * Set Z=0
@@ -522,7 +612,7 @@ Definitions:
     * Turn off mill
 
     <br>
-8. 1/8sd: Drill pocket for screw hole
+17. 1/8sd: Drill pocket for screw hole
     * Retract Z and change tool
     * Advance Z to topK divot using ohmmeter
       (Use ohmmeter contact with divot as Z=0)
@@ -539,7 +629,7 @@ Definitions:
     Pocket for screw hole
 
     <br>
-9.  1/4cs (1-flute 82$^{\circ}$): Countersink the screw hole  
+18. 1/4cs (1-flute 82$^{\circ}$): Countersink the screw hole  
     __These dimensions are for the standard HIF44 screw and the substitue #4-40 screw.__
     * The top diameter of the chamfer must exceed ???mil
       to accomodate the #4-40 screw.  
@@ -598,7 +688,7 @@ Definitions:
       + Diameter Measured: <ins>...     ...</ins> mil
 
     <br>
-6. 3/8em: Establish botK, the lower surface of the key anchor
+19. 3/8em: Establish botK, the lower surface of the key anchor
 
     * Retract Z and change tool
     * Rotate workpiece 180$^{\circ}$
@@ -635,7 +725,7 @@ Definitions:
     Bottom surface of anchor
 
     <br>
-4. 1/8em: Final Cut tongueA
+20. 1/8em: Final Cut tongueA
    Final cut of tongueA and tongueC yields tongue width 140mil
     ```
     For final width of 150mil use delta Y = 50 instead of 55mil
@@ -668,7 +758,7 @@ Definitions:
     * Retract Z to -15mil from 300mil
 
     <br>
-5. 1/4em: Final Cut tongueC 
+21. 1/4em: Final Cut tongueC 
    Final cut of tongueA and tongueC yield tongue width 140mil
 
     * Advance Y to 550mil from -15mil (cut beyond sideC)
@@ -697,7 +787,7 @@ Definitions:
       - Appearance: <ins>...    ...</ins>
 
     <br>
-6. 050em: Adhesive overflow channel
+22. 050em: Adhesive overflow channel
 
     ```
     This step is intentionally delayed to this point to minimize the
@@ -737,7 +827,7 @@ Definitions:
     Adhesive overflow channel
 
     <br>
-22. 1/8em: Preliminary dado for key cut off.
+23. 1/8em: Preliminary dado for key cut off.
 
     Goal is 20mil deep dado in botK surface
 
@@ -770,7 +860,7 @@ Definitions:
     Preliminary dado for cut off
 
     <br>
-22. 1/8em: Penultimate dado for key cut off.
+24. 1/8em: Penultimate dado for key cut off.
 
     Goal is 40mil deep dado in topK surface
 
@@ -808,7 +898,7 @@ Definitions:
     Penultimate dado for cut off
 
     <br>
-22. 1/8em: Ultimate dado for key cut off.
+25. 1/8em: Ultimate dado for key cut off.
 
     Goal is 10mil deep dado in topK surface to separate guide key from workpiece
 
@@ -863,3 +953,4 @@ $ magick mogrify -format png -thumbnail 200x200 *.png
 $ mkdir thumbs
 $ magick mogrify  -format gif -path thumbs -thumbnail 200x200 *.jpg
 ```
+
