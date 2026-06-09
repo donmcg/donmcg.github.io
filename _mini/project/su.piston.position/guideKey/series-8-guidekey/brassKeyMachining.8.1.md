@@ -44,11 +44,14 @@ Series 8 Brass Key Machining Proposal Revision 1:
   - Sensor bonded to back side of tongue with adhesive
 
 <br>
+{% comment %}
+<div style="page-break-after: always;"></div>
+{% endcomment %}
 ### Tools
 
 | __TOOL__ | __FIXTURE__ | __DESCRIPTION__ |
 | ----------- |:----------:| ----------:|
-mic | Handheld | Micrometer Gauge
+caliper | Handheld | Micrometer Gauge
 di | diBase | Dial Indicator Gauge
 tram | Chuck | Dial Tram Gauge
 4hblk | 4" x 10" Mill Tooling Plate | 4 hole block 1/4" x 1-1/2" x 4"
@@ -65,7 +68,6 @@ ef | End Mill Holder | edge finder, Starrett 827A
 1/8cd | 1/4" collet | 1/8" center drill
 1/4cs | 1/4" collet | 1/4" countersink (1-flute 60$^{\circ}$)
 5/16cs | 1/4" collet | 5/16" countersink (6-flute 60$^{\circ}$)
-caliper | hand | digital caliper
 
 ## Procedure:
 
@@ -99,10 +101,10 @@ _`CC:`_ Climb Cut
 _`NCC:`_ No Climb Cut, No cut made despite climb direction motion
 
 ```
-Definitions:
-  * topZ is the upper surface of the workpiece.
-  * sideA is the surface of the workpiece bar opposite the operator.
+Definitions (standard orientation):
+  * topZ is the upper surface of the workpiece: the standard orientation.
   * endB is the exposed end of the workpiece that faces to the operator's left.
+  * sideA is the progressively milled surface of the workpiece bar opposite the operator.
   * sideC is the surface of the workpiece bar closest to the operator.  
     (The sideC surface is against the mounting block.)
   * botZ is the bottom surface of the workpiece.
@@ -117,180 +119,250 @@ Definitions:
   * botK is the bottom surface of the key anchor
 ```
 
-<br>
-1. tram / 4hblk: Mount and tram block as straight edge for workpiece
+   <br>
+1. tram / 4hblk: Mount and tram block as straight edge for workpiece 
 
-    * Mount block along front edge of tooling plate, exposing two rows of holes.
-    * Mount block in extreme left position.
-    * Tram align block parallel to X axis.
+   * Mount block along front edge of tooling plate, exposing two rows of holes.
+   * Mount block in extreme right position to leave room for the dial indicator
+     to the left of the workpiece.
+   * Tram align block parallel to X axis.
 
-    <br>
+   <br>
 2. hd: Mount workpiece  
 
-    * Workpiece: 5/16" Brass Square Bar 360-H02 Extruded
-    * Position workpiece against block with 1" exposed left (operator pov)
-    * Add hold-downs using >5/16" rear support block (do not use step-blocks) 
-      - sideC is facing up.
-      - topZ is facing away from operator.
-      - endB (raw) is facing to left.
+   * Workpiece: 5/16" Brass Square Bar 360-H02 Extruded
+   * Position workpiece against block with 1" exposed left (operator pov)
+   * Add hold-downs using >5/16" rear support block (do not use step-blocks) 
+     - sideC is facing up.
+     - topZ is facing away from operator.
+     - endB (raw) is facing to left.
 
-    ![]({{image-dir}}pocket1-comp.png)
-    Workpiece on table. Arrow always points toward topZ surface.
+   ![]({{image-dir}}pocket1-comp.png)
+   Workpiece on table. 
+   Arrow always points toward topZ surface.
  
-    <br>
+   <br>
 2. 3/8em: Square off end of workpiece to establish endB
 
    Rigid 3/8em required to achieve suitable results.  
    This step leaves an $\approx$ 1/16" lip, at botZ, beyond the endB surface
    depending on the initial quality of the workpiece end.
 
-    * Retract Z and change tool.
-    * Gross center X Y at exposed end of workpiece
-    * Set Z=0 at sideC using ohmmeter
-    * Retract Z to -15mil from 0
-    * Gross adjust Y for cutter centered, X cut just beyond uncut endB
-    * Advance Z to 50mil from -15mil
-    * Set X=0 at uncut endB using ohmmeter
-    * Retract X to -15mil from 0
-    * Gross adjust Y beyond topZ
-    * Advance X to 250mil from -15mil
-    * Set Y=0 at topZ using ohmmeter
-    * Retract Y to -50mil from 0
-    * Retract Z to -15mil from 50mil
-    * Retract X to -15mil from 250mil
-    * Advance Z to 260mil from -15mil
-    * Turn on mill
-    * Repeat to goal of squared workpiece endB ( $\approx$20mil total depth of cut )
-      - Advance X in 5mil steps for $\approx$10mil total depth of cut and visually smooth.
-      - Full Sweep Y: advance to Y=450mil (_SC_), retract to Y=-50mil(_NCC_)  
-    * Turn off mill
+   ``` 
+   Examine the 3/8em cutting edges under the microscope.
+   Any burrs or metal adhesions must be removed.
+   ```
 
-    ![]({{image-dir}}pocket2-comp.png)
-    Squared endB with remaining lip
+   * Retract Z and change tool.
+   * Gross center X Y at exposed end of workpiece
+   * Set Z=0 at sideC using ohmmeter
+   * Retract Z to -15mil from 0
+   * Gross adjust Y for cutter centered, X cut just beyond uncut endB
+   * Advance Z to 50mil from -15mil
+   * Set X=0 at uncut endB using ohmmeter
+   * Retract X to -15mil from 0
+   * Retract Gross adjust Y beyond topZ
+   * Advance X to 250mil from -15mil
+   * Set Y=0 at topZ using ohmmeter
+   * Retract Y to -50mil from 0
+   * Retract Z to -15mil from 50mil
+   * Retract X to -15mil from 250mil
+   * Advance Z to 260mil from -15mil
+   * Advance X to 0 from -15mil
+   * Turn on mill
+   * Repeat to goal of squared workpiece endB (total depth of cut depends on roughness of endB)
+     - Advance X in 5mil steps for $\approx$10mil total depth of cut and visually smooth.
+     - Full Sweep Y: advance to Y=700mil (_SC_), retract to Y=-50mil(_NCC_) 
+       + 12 turns
+   * Turn off mill
+
+   ![]({{image-dir}}pocket2-comp.png)
+   Squared endB with remaining lip
 
    <br>
-4.  3/8em: Reduce to 1/4" width of anchor to establish sideA
+4. 3/8em: Reduce to 1/4" width of anchor to establish sideA
 
-    > Note: this first section yielded poor results.  Why?
-    * Retract Z.
-    * Rotate workpiece 180$^{\circ}$, endB lip is uppermost.
-      - sideA is facing up.
-      - endB is facing to left.
-      - botZ is facing away from operator
-     Gross center Y, tool overlaps both sides of workpiece
-    * Adjust X to just beyond lip at endB of workpiece, lower Z as needed.
-    * Set X=0 (gross)
-    * Retract X to -50mil from 0
-    * Advance Z to approach surface of tooling plate
-    * Set Z=0 at tooling plate using ohmmeter
-    * Retract Z to -350mil from 0: tool is $\approx$37.5mil above top of workpiece
-    * Advance Z to -320mil from -350mil
-    * Turn on mill
-      - Incrementally lower Z, in 10mil increments to goal of -250mil
-      - Full Sweep X: (advance to X=750mil, retract to X=-50mil)
-        * 15 rotations of X knob from X=0 to X=750
-    * Turn off mill
-    * X is at -50mil
-    * Clean area then check height by comparing against 1/4" bar stock.
-    * Advance Z to -200mil from -250mil
-    * Set X=0 cut at endB using ohmmeter
-    * Retract X to -15mil from 0
-    * Retract Z to -320mil from -200mil
-    * Retract Y just beyond botZ
-    * Set Y=0 cut (gross)
-    * Retract Y to -50mil from 0
-    * Advance X to 750mil from 0 (15 rotations)
-    * Turn on mill
-      - Incrementally lower Z, in 10mil increments to goal of -250mil
-      - Full Sweep Y: (advance to Y=600mil, retract to Y=-50mil)  
-        * 13 rotations of X knob from Y=0 to Y=600
-    * Turn off mill
-    * Retract Z to -350mil from -250mil
-    * Remove workpiece from table
-    >
-    * Measure: sideA to sideC; should be 250mil +5 -0
-      - Measured: <ins>...     ...</ins> mil
-      - Appearance: <ins>...    ...</ins>
-    >
+   ```
+   Note: the source file for this page contains an alternate approach to this
+   step which yielded poor results.
+   ```
+   > Note: this first approach yielded poor results.
 
-    Note: trial procedure follows
-    * Retract Z
-    * Remove workpiece and deburr edge at endB / sideB
-      - it must be able to lay flat on table
-    * Rotate workpiece 180$^{\circ}$, endB lip is uppermost.
-      - sideA is facing up.
-      - endB is facing to left.
-      - botZ is facing away from operator
-     Gross center Y, tool overlaps both sides of workpiece
-    * Adjust X to just beyond lip at endB of workpiece, lower Z as needed.
-    * Set X=0 (gross)
-    * Advance X to 400mil from 0
-    * Set Z=0 at sideA using ohmmeter
-    * Retract Z to -15mil from 0
-    * Retract X to -50mil from 0
-    * Advance Z to 10mil from -15mil
-    * Turn on mill
-      - Full Sweep X: (advance to X=750mil, retract to X=-50mil) 
-        + 15 rotations of X knob from X=0 to X=750
-    * Turn off mill
+   > Why?  Answer: Mostly due to dull 3/8em tool 
+   * Retract Z.
+   * Rotate workpiece 180$^{\circ}$, endB lip is uppermost.
+     - sideA is facing up.
+     - endB is facing to left.
+     - botZ is facing away from operator
+   * Gross center Y, tool overlaps both sides of workpiece
+   * Adjust X to just beyond lip at endB of workpiece, lower Z as needed.
+   * Set X=0 (gross)
+   * Retract X to -50mil from 0
+   * Advance Z to approach surface of tooling plate
+   * Set Z=0 at tooling plate using ohmmeter
+   * Retract Z to -350mil from 0: tool is $\approx$37.5mil above top of workpiece
+   * Advance Z to -320mil from -350mil
+   * Turn on mill
+     - Incrementally lower Z, in 10mil increments to goal of -250mil
+     - Full Sweep X: (advance to X=750mil, retract to X=-50mil)
+       * 15 rotations of X knob from X=0 to X=750
+   * Turn off mill
+   * X is at -50mil
+   * Clean area then check height by comparing against 1/4" bar stock.
+   * Advance Z to -200mil from -250mil
+   * Set X=0 cut at endB using ohmmeter
+   * Retract X to -15mil from 0
+   * Retract Z to -320mil from -200mil
+   * Retract Y just beyond botZ
+   * Set Y=0 cut (gross)
+   * Retract Y to -50mil from 0
+   * Advance X to 750mil from 0 (15 rotations)
+   * Turn on mill
+     - Incrementally lower Z, in 10mil increments to goal of -250mil
+     - Full Sweep Y: (advance to Y=600mil, retract to Y=-50mil)  
+       * 13 rotations of X knob from Y=0 to Y=600
+   * Turn off mill
+   * Retract Z to -350mil from -250mil
+   * Remove workpiece from table
+   >
+   * Measure: sideA to sideC; should be 250mil +5 -0
+     - Measured: <ins>...     ...</ins> mil
+     - Appearance: <ins>...    ...</ins>
+   >
 
-    * $\boldsymbol{\xi}$ &nbsp; &nbsp;  X is at -50mil
-    * Retract Z
-    * Clean area then measure $\eta$, height from table to fresh cut using dial indicator
-      - Measured: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;    ...</ins> mil
-      - Appearance: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;   ...</ins>
-      - Evaluate planarity; is it level across entire cut?
-    * Compute new Z goal, $\zeta$, where $\zeta$ = **260** - $\eta$ mil
-    * Advance X to 400mil from -50mil
-    * Set Z=0 at sideA using ohmmeter
-    * Retract Z to -15mil from 0
-    * Retract X to -50mil from 0
-    * Advance Z to 10mil from -15mil
-    * Turn on mill
-      - Incrementally lower Z, in 10mil increments to goal of $\zeta$ mil
-      - Full Sweep X: (advance to X=750mil, retract to X=-50mil)
-        * 16 rotations of X knob from X=-50 to X=750
-      - Brush tool cutting edge and surrounding area to clear debris
-      - Continue from $\boldsymbol{\xi}$ if desired
-    * Turn off mill
+   <br>
+   <br>
+   ```
+   Note: This alternative procedure yielded good results but may
+   be overly cautious. Consider future simplification.
+   ```
+   * Retract Z
+   * Remove workpiece and deburr edge at endB / sideC
+     - it must be able to lay flat on table
+   * Measure $\delta$, sideA to sideC near endB using caliper
+     - It should be damn close to 5/16" = 312.5mil; expect undersize maybe 310mil
+     - Measured $\delta$: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;    ...</ins> mil
+     - Appearance: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;   ...</ins>
+   * Clean table surface
+   * Rotate and mount workpiece 180$^{\circ}$, endB lip is uppermost. 1" exposed.
+     - sideA is facing up.
+     - endB is facing to left.
+     - botZ is facing away from operator
+   * Measure $\eta$, height from table to sideA near endB using dial indicator
+     - It should be damn close to $\delta$ as measured above.
+     - Measured $\eta$: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;    ...</ins> mil
+     - Appearance: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;   ...</ins>
+   * Gross center Y, tool overlaps both sides of workpiece (above surface of sideA)
+   * Adjust X visually to $\approx$50mil beyond lip at endB of workpiece, lower Z as needed.
+   * Set X=0 (gross)
+   * Advance X to 450mil from 0 (9 turns)
+   * Set Z=0 at sideA using ohmmeter
+   * Retract Z to -15mil from 0
+   * Retract X to -50mil from 450mil (10 turns)
+   * Advance Z to 5mil from -15mil
+   * Add cutting oil
+   * Turn on mill
+     - Full Sweep X: (advance to X=750mil, retract to X=-50mil) 
+       + 16 turns of X knob from X=-50 to X=750
+   * Turn off mill
+     - Appearance of fresh surface should be very smooth.  Else there is a problem with 3/8em. 
 
-    * Repeat from $\boldsymbol{\xi}$ with modifications:
-      - This is the final setting of sideA
-      - Compute final Z goal, $\zeta$, where $\zeta$ = **250** - $\eta$ mil
-      - Perhaps use 5mil increments, or less
+   <br>
+   * $\boldsymbol{\xi}$ &nbsp; &nbsp;  _begin sub-procedure_
+   * X is at -50mil
+   * Retract Z and Y to make room for dial indicator.  Do not move X.
+   * Clean area then measure $\eta$, height from table to fresh cut using dial indicator
+     - Measure at $\approx$ 1/8" intervals starting near endB
+     - Measured $\eta$: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;    ...</ins> mil
+     - Appearance: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;   ...</ins>
+     - Evaluate planarity; is it level across entire cut?
+   * Compute new Z goal, $\zeta$, where $\zeta$ = $\eta$ - **260** mil
+   * Remove dial indicator
+   * Gross center Y,Z tool overlaps both sides of workpiece (above surface of sideA)
+   * Advance X to 450mil from -50mil (10 turns)
+   * Set Z=0 at sideA using ohmmeter
+   * Retract Z to -15mil from 0
+   * Retract X to -50mil from 450mil (10 turns)
+   * Advance Z to 0 from -15mil
 
-    <br>
-    * Z is at final $\zeta$ with sideA at 250mil above table
-    * X is at -50mil
-    * Set Z=0
-    * Advance Z to 50mil from 0
-    * Set X=0 cut at endB using ohmmeter
-    * Retract X to -15mil from 0
-    * Retract Z to -100mil from 50mil
-    * Retract Y just beyond botZ
-    * Set Y=0 cut (gross)
-    * Retract Y to -50mil from 0
-    * Advance X to 750mil from -15mil (15$^+$ rotations)
-    * Advance Z to -70mil from -100mil
-    * Turn on mill
-      - Incrementally advance Z, in 10mil increments to goal of 0mil
-      - Full Sweep Y: (advance to Y=600mil, retract to Y=-50mil)  
-        * 14 rotations of X knob from Y=-50 to Y=600
-    * Turn off mill
-    * Retract Z
-    * Remove workpiece from table
-    
-    * Measure: sideA to sideC; should be 250mil +5 -0
-      - Measured: <ins>... &nbsp; &nbsp; &nbsp; &nbsp;  ...</ins> mil
-      - Appearance: <ins>...    ...</ins>
+   * Incrementally lower Z, in 10mil increments to goal of $\zeta$ mil
+     - Add cutting oil
+     - Turn on mill
+     - Full Sweep X: (advance to X=750mil, retract to X=-50mil)
+       * 16 rotations of X knob from X=-50 to X=750
+     - Turn off mill
+     - Brush tool cutting edge and surrounding area to clear debris
+     - Visually inspect quality of fresh surface of sideA
 
-    <br>
+   * Continue from $\boldsymbol{\xi}$ if desired
 
-    ![]({{image-dir}}pocket3-comp.png)
-    SideA is facing upwards.
+   * _end of sub-procedure_ $\boldsymbol{\xi}$
 
-    <br>
-5.  ef: Locate hole for adhesive arch
+   ```
+   Extreme caution for the next step is warranted.  Something may be 
+   wrong with my mill but I found that cuts are consistently several
+   thou deeper than Z knob would indicate. My first attempt yielded
+   $\zeta$ = 8.5mil, but I chose to be conservative and advance Z 
+   by only 5mil and then repeating $\xi$ to find $\eta$ = 250.5mil.
+   This was the desired goal, but had I used $\zeta$ = 8.5mil I would 
+   have overshot the 250mil limit and been very sad.
+   ```
+
+   * Repeat from $\boldsymbol{\xi}$ with modifications:
+     - This is the final setting of sideA
+     - Compute final Z goal, $\zeta$, where $\zeta$ = $\eta$ - **250** mil
+     - Perhaps use 5mil increments, or less
+     - Confirm using sub-process $\boldsymbol{\xi}$
+
+   <br>
+   * Z is at sideA with $\eta \approx$250mil above table and 
+   a crescent cut that's 5/16" - 1/4" $\approx$62.5mil tall.
+   * X is at -50mil
+   * Set Z=0 (sideA is now at 0)
+   * Advance Z to 50mil from 0
+   * Set X=0 cut at endB using ohmmeter
+   * Retract X to -15mil from 0
+   * Retract Z to -100mil from 50mil to clear crescent cut. (3 turns)
+   * Retract Y just beyond botZ
+   * Set Y=0 cut (gross)
+   * Retract Y to -50mil from 0
+   * Advance X to 750mil from -15mil (15$^+$ rotations)
+   * Advance Z to -65mil from -100mil
+   * Turn on mill (penultimate)
+     - Incrementally advance Z, in 10mil increments to goal of -5mil
+     - Full Sweep Y: (advance to Y=600mil, retract to Y=-50mil)  
+       * 14 turns of X knob from Y=-50 to Y=600
+   * Turn off mill
+   * Incrementally advance Z, in 0.5mil increments to flush with sideA
+     - Turn on mill (ultimate)
+     - Full Sweep Y: (advance to Y=600mil, retract to Y=-50mil)  
+       * 14 turns of X knob from Y=-50 to Y=600
+     - Turn off mill
+     - Visual inspect for evidence of crescent.
+     - Repeat until crescent is just removed. 
+
+   <br>
+   * Retract Z and Y to make room for dial indicator.  Do not move X.
+   * Clean area then measure $\eta$, height from table to fresh cut using dial indicator
+     - Measure at $\approx$ 1/8" intervals starting near endB
+     - Measured $\eta$: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;    ...</ins> mil
+     - Appearance: <ins>...  &nbsp; &nbsp; &nbsp; &nbsp;   ...</ins>
+     - Evaluate planarity; is it level across entire cut?
+
+   <br>
+   * Remove workpiece from table
+   * Measure $\delta$: sideA to sideC; should be 250mil +5 -0
+     - Measure at $\approx$ 1/4" intervals starting near endB
+     - Measured $\delta$: <ins>... &nbsp; &nbsp; &nbsp; &nbsp;  ...</ins> mil
+     - Appearance: <ins>...    ...</ins>
+
+   <br>
+
+   ![]({{image-dir}}pocket3-comp.png)
+   SideA is facing upwards.
+
+   <br>
+5. ef: Locate hole for adhesive arch
 
     Much of the area around this hole will be cut away in subsequent steps.
 
