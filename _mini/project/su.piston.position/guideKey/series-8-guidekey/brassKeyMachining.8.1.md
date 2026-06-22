@@ -32,7 +32,7 @@ Series 8 Brass Key Machining Proposal Revision 1:
 * Use drawing brassKey.10.4
 {% include figure.html
            img-dir=image-dir
-           img-file='pocket19-comp.png'
+           img-file='guideKey-8-comp.png'
            alt='series 8 brass key finished'
            caption='Series 8 Guide Key'
 %}

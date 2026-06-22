@@ -155,7 +155,7 @@ Here's a view of brassKey.10.3 as used in conjunction with 3p_sensor_8.4:
 
 {% include figure.html
            img-dir=image-dir
-           img-file='series-8/brassKey1-comp.png'
+           img-file='series-8/guideKey-8-comp.png'
            alt='Drawing of series 8 guide key'
            caption='Series 8 Guide Key'
 %}

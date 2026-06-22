@@ -25,7 +25,7 @@ to help clarify and organize the development. They are listed as 'Proposal'.
 
 {% include figure.html
            img-dir=image-dir
-           img-file='series-8/brassKey0-comp.png'
+           img-file='series-8/guideKey-8-comp.png'
            alt='Drawing of series 8 guide key'
            caption='Series 8 Guide Key'
 %}
