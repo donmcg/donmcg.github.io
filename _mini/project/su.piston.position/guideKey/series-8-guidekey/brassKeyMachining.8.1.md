@@ -14,11 +14,11 @@ binder:
 {% include mathjax.html %}
 
 {% capture image-dir %}
-  {{site.url}}/assets/mini/project/su.piston.position/guideKey/series-8/thumbs/
+  {{site.url}}/assets/mini/project/su.piston.position/guideKey/series-8/
 {% endcapture %}
 {% comment %}
   use thumbs for actual printing...  saves a lot of paper!
-  {{site.url}}/assets/mini/project/su.piston.position/guideKey/series-8/thumbs/
+  {{site.url}}/assets/mini/project/su.piston.position/guideKey/series-8/thumbs.tmp/
 {% endcomment %}
 
 Last update {{ page.date | date: "%d %b %Y" }}.

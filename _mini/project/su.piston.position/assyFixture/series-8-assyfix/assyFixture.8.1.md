@@ -14,11 +14,11 @@ binder:
 {% include mathjax.html %}
 
 {% capture image-dir %}
-  {{site.url}}/assets/mini/project/su.piston.position/assyFixture/series-8/thumbs/
+  {{site.url}}/assets/mini/project/su.piston.position/assyFixture/series-8/
 {% endcapture %}
 {% comment %}
   use thumbs for actual printing...  saves a lot of paper!
-  {{site.url}}/assets/mini/project/su.piston.position/assyFixture/series-8/thumbs/
+  {{site.url}}/assets/mini/project/su.piston.position/assyFixture/series-8/thumbs.tmp/
 {% endcomment %}
 
 Last update {{ page.date | date: "%d %b %Y" }}.
@@ -55,7 +55,7 @@ ef | End Mill Holder | edge finder, Starrett 827A
 5/16cs1 | 1/4" collet | 5/16" countersink (1-flute 82$^{\circ}$)
 127rmr | 3mm collet | 127mil reamer (straight-flute 140$^{\circ}$)
 caliper | hand | digital caliper
-ss | hand | sabre saw fitted with fine brass-cutting blade
+coj | miter saw | cut-off jig / slide miter saw / 8" brass cutting blade 
 {% comment %}
 1/8cd | 1/4" collet | 1/8" center drill (not for drill centering!)
 {% endcomment %}
@@ -474,12 +474,12 @@ These steps choose $H$=25mil as the target depth for divots.
     Countersink for screw hole
 
     <br>
-22. ss: Base cut off.
+22. coj: Base cut off.
 
     * Retract Z and remove workpiece.
     * Mark cut line at 2-13/16"
-    * Mount workpiece in bench vise
-    * Cut with sabre saw beyond cut linea
+    * Mount workpiece in coj
+    * Cut beyond cut linea
     * If desired, raw end can be restored with em as in step 3
 
     ![]({{image-dir}}Base/BasePinScrew-comp.png)
@@ -1147,16 +1147,16 @@ requires removing the tram bar.
     Chamfer at Bolster endB
 
     <br>
-9.  ss (sabre saw): Chop Bolster 
+9.  coj: Chop Bolster 
 
     ```
-    This procedure is a bit rough.  I don't really have a simple way
-    to chop other than milling opposing dado's. (painful)
+    This procedure depends on the cut-off-jig to chop using 
+    slide miter saw fitted with 8" brass cutting blade.
     ```
 
     * Dismount workpiece
     * Mark $\perp\chi$ at 1" beyond endB with pen
-    * Mount in bench vise (?)
+    * Mount in coj
     * Chop off Bolster
     * Tidy up the chopped end by hand.
 
