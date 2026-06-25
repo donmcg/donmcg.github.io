@@ -45,8 +45,10 @@ url: "https://donmcg.github.io" # the base hostname & protocol for your site, e.
 baseurl: "" # the subpath of your site, e.g. /blog
 #github_username:  gun_donmcg
 github_username:  donmcg
-email: your-email@example.com
-author:  author_donmcg
+# email: your-email@example.com
+email: fairhillbilly@proton.me
+#author:  author_donmcg
+author:  fairhillbilly
 
 #author:  'Errabundi Saepe, Semper Certi'
 #email: '(Often wrong, but always certain.)'
