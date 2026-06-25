@@ -2,7 +2,7 @@
 layout: default
 title: Fairhillbillies SU Piston Position Sensor
 tip: Fairhillbillies SU piston position sensor
-date:   2025-11-15 01:00:00 -0700
+date:   2026-06-25 01:00:00 -0700
 binder:
   tome:  project  # a single word common to all levels in the work 
   level: chapter # identifies presentation level of this file.
@@ -583,7 +583,7 @@ can be considered as the cell gain.
 The operation of tuning is to identify the circuit values of $\kappa$
 and $R_t$ that balances the $I_q = I_b$ nominal operating point and
 accounts for the $\alpha \beta \gamma$ cell gain in order to establish the
-desired response of $V_t$ due to target movement induced changes to $\Gamma$.
+desired response, $V_t$, due to target movement induced changes to $\Gamma$.
 
 The $\Gamma$ reflectance can be associated with several
 readily identifiable target positions:
@@ -621,7 +621,7 @@ _cell_ proceeds as follows:
    - Preset the $D_{cell}$ LED current:
      + Connect the voltmeter to measure $V_e^{cell}$, the voltage drop
        across $R_e^{cell}$ .
-     + Adjust $R_d^{cell}$ for $V_e^{cell} \approx 1.0 volts$.
+     + Adjust $R_d^{cell}$ for $V_e^{cell} \approx 1.0 volts$. ($I_e^{cell} \approx 1 mA$).
 
    <br>
 3. The _tuning mode_ is entered by holding the [_tune_ button](#mute-circuit)
@@ -630,7 +630,11 @@ In this mode each transducer cell LED
 will be illuminated continuously, one at a time, by successive presses
 of the _tune_
 button. The [mute cycler](#mute-circuit) provides indicator LEDs that 
-correspond to those in the sensor.
+correspond to those in the sensor cells.
+These assist in identifying which cell is currently active.
+(A fourth press in the _tuning mode_ cylce illuminates all cells in
+the normal operation sequence.
+In this mode all three indicator LEDs will appear illuminated, but at a reduced brightness.)
 
 4. Select the particular _cell_ to be tuned (_Blu_, _Yel_ or _Red_) using
 the _tune_ button.
