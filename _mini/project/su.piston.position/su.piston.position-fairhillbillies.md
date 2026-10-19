@@ -700,6 +700,7 @@ See Also:
 
 [SU Piston Position Guide Key]({{ site.url | append: "/mini/project/su.piston.position/guideKey.7/guideKey.7-.html" }})
 
+[KiCad Library Management](https://hackaday.com/2017/05/18/kicad-best-practises-library-management/)
 
 ---
 <br>
